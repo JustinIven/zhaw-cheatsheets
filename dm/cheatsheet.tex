@@ -6,7 +6,11 @@
 \usepackage{hyperref}
 \usepackage{amsmath, amssymb}
 \usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
 \usepackage[ngerman]{babel}
+
+
 
 \begin{document}
 \include{content/def}
@@ -109,9 +113,122 @@ $$\forall x\,B \Leftrightarrow B, \quad \exists x\,B \Leftrightarrow B$$
   \item \textbf{Folgerungen:} Mengen sind ungeordnet; Mehrfachaufzählung desselben Elements ändert die Menge nicht. Für jede Menge \(A\) gilt \(\varnothing\subseteq A\).
 \end{itemize}
 
-\section{Eindeutigkeit der leeren Menge}
+\subsection{Eindeutigkeit der leeren Menge}
 Seien \(e_1,e_2\) leere Mengen. Dann ist für alle \(x\) die Aussage \(x\in e_1\) falsch, also ist die Implikation \(x\in e_1\Rightarrow x\in e_2\) wahr; somit \(e_1\subseteq e_2\). Analog \(e_2\subseteq e_1\). Nach Extensionalität folgt \(e_1=e_2\).
 
+
+\subsection{Aussonderungsprinzip}
+Ist \(A\) eine Menge und \(E(x)\) eine Eigenschaft, dann gilt:
+\[
+\{x \in A \mid E(x)\} = \text{Menge aller } x \in A \text{ mit Eigenschaft } E(x).
+\]
+\[
+a \in \{x \in A \mid E(x)\} \iff a \in A \wedge E(a)
+\]
+
+\textbf{Beispiele:}
+\begin{itemize}
+  \item Gerade Zahlen: \(\{x \in \mathbb{N} \mid \exists y \in \mathbb{N} (x = 2y)\}\)
+  \item Zahlen \(> 17\): \(\{x \in \mathbb{N} \mid x > 17\}\)
+  \item Alle außer \(22\): \(\{x \in \mathbb{N} \mid x \neq 22\}\)
+\end{itemize}
+
+\subsection{Ersetzungsprinzip}
+Ist \(A\) eine Menge und \(t(x)\) ein Ausdruck, so gilt:
+\[ \{t(x) \mid x \in A\} = \text{Menge aller Werte von } t(x) \text{ mit } x \in A. \]
+\[ a \in \{t(x) \mid x \in A\} \iff \exists x \in A (a = t(x)) \]
+
+\textbf{Beispiele:}
+\begin{itemize}
+  \item Quadratzahlen: \(\{x^2 \mid x \in \mathbb{N}\}\)
+  \item Ungerade Zahlen: \(\{2x + 1 \mid x \in \mathbb{N}\}\)
+  \item Rationale Zahlen: \(\left\{\frac{a}{b} \mid a,b \in \mathbb{Z},\, b \neq 0\right\}\)
+  \item Anfangsabschnitte von \(\mathbb{N}\): \(\{\{x \in \mathbb{N} \mid x < y\} \mid y \in \mathbb{N}\}\)
+\end{itemize}
+
+
+
+
+\subsection{Vereinigung}
+Die Vereinigung von zwei Mengen beinhaltet genau die Elemente, die in mindestens einer der beiden Mengen enthalten sind:
+\[
+A\cup B:=\{x\mid x\in A\vee x\in B\}.
+\]
+Allgemein: \(\displaystyle\bigcup_{i\in I} A_i=\{x\mid\exists i\in I:\,x\in A_i\}.\)
+
+\subsection{Schnitt}
+Die Schnittmenge von zwei Mengen beinhaltet genau die Elemente, die in beiden Mengen enthalten sind:
+\[
+A\cap B:=\{x\mid x\in A\wedge x\in B\}.
+\]
+Allgemein: \(\displaystyle\bigcap_{i\in I} A_i=\{x\mid\forall i\in I:\,x\in A_i\}.\)
+
+\subsection{Differenz}
+Die Differenz von zwei Mengen beinhaltet genau die Elemente, die in der ersten Menge, aber nicht in der zweiten Menge enthalten sind:
+\[
+A\setminus B:=\{x\in A\mid x\notin B\}.
+\]
+
+% TODO: Ergänzen
+\subsection{Paarweise disjunkt}
+Mengen \(A_i\) sind \emph{paarweise disjunkt}, falls für \(i\neq j\) stets \(A_i\cap A_j=\varnothing\).
+
+\subsection{Wichtige Eigenschaften}
+Für beliebige Mengen \(A,B,C\) gelten:
+\begin{itemize}[noitemsep]
+  \item Idempotenz: \(A\cup A=A,\; A\cap A=A\).
+  \item Kommutativität: \(A\cup B=B\cup A,\; A\cap B=B\cap A\).
+  \item Assoziativität: \(A\cup(B\cup C)=(A\cup B)\cup C\) und analog für \(\cap\).
+  \item Teilmengen: \(A\subseteq A\cup B\) und \(A\cap B\subseteq A\).
+  \item Distributivität:
+  \[
+  A\cup(B\cap C)=(A\cup B)\cap(A\cup C),
+  \]
+  \[
+  A\cap(B\cup C)=(A\cap B)\cup(A\cap C).
+  \]
+  \item De Morgansche Regeln:
+  \[
+  C\setminus(A\cap B)=(C\setminus A)\cup(C\setminus B),
+  \]
+  \[
+  C\setminus(A\cup B)=(C\setminus A)\cap(C\setminus B).
+  \]
+\end{itemize}
+
+\subsection{Venn-Diagramm}
+\begin{tikzpicture}[scale=.45]
+    \begin{scope}
+        \clip \firstcircle;
+        \fill[filled] \secondcircle;
+    \end{scope}
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \node[anchor=south] at (current bounding box.north) {$A \cap B$};
+\end{tikzpicture}
+%Set A or B but not (A and B) also known a A xor B
+\begin{tikzpicture}[scale=.45]
+    \draw[filled, even odd rule] \firstcircle node {$A$}
+                                 \secondcircle node{$B$};
+    \node[anchor=south] at (current bounding box.north) {$\overline{A \cap B}$};
+\end{tikzpicture}
+% Set A or B
+\begin{tikzpicture}[scale=.45]
+    \draw[filled] \firstcircle node {$A$}
+                  \secondcircle node {$B$};
+    \node[anchor=south] at (current bounding box.north) {$A \cup B$};
+\end{tikzpicture}
+% Set A but not B
+\begin{tikzpicture}[scale=.45]
+    \begin{scope}
+        \clip \firstcircle;
+        \draw[filled, even odd rule] \firstcircle node {$A$}
+                                     \secondcircle;
+    \end{scope}
+    \draw[outline] \firstcircle
+                   \secondcircle node {$B$};
+    \node[anchor=south] at (current bounding box.north) {$A\setminus B$};
+\end{tikzpicture}
 
 \vspace{1cm}
 
@@ -120,7 +237,7 @@ Seien \(e_1,e_2\) leere Mengen. Dann ist für alle \(x\) die Aussage \(x\in e_1\
 
 Copyright \copyright\ 2025 Justin Iven Müller
 
-\href{https://github.com/JustinIven}{https://github.com/JustinIven}
+\href{https://github.com/JustinIven/zhaw-cheatsheets}{github.com/JustinIven/zhaw-cheatsheets}
 
 
 \end{multicols*}

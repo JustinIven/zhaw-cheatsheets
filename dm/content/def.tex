@@ -1,4 +1,3 @@
-
 % Turn off header and footer
 \pagestyle{empty}
  
@@ -19,19 +18,23 @@
                                 {\normalfont\small\bfseries}}
 \makeatother
 
-% Reduziere den Abstand zwischen den Listenpunkten
+% Remove indentation in itemize/enumerate and set left margin to zero
 \setlist[itemize]{leftmargin=*}
-
-% Define BibTeX command
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 % Don't print section numbers
 \setcounter{secnumdepth}{0}
 
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt plus 0.5ex}
-
+% Set font size and alignment for the whole document
 \raggedright
 \footnotesize
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+\definecolor{myblue}{cmyk}{1,.72,0,.38}
+
+\colorlet{circle edge}{myblue}
+\colorlet{circle area}{myblue!5}
