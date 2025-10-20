@@ -1,0 +1,54 @@
+# LaTeX intermediate files
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.blg
+*.bbl
+*.fdb_latexmk
+*.synctex.gz
+*.synctex.gz(busy)
+
+# Editors
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+*.backup
+*.DS_Store
+
+# Output files
+*.pdf
+*.dvi
+*.ps
+
+# TexStudio
+*.nav
+*.snm
+*.vrb
+
+# Kile
+*.backup
+
+# latexmk
+latexmk.out
+
+# Overleaf-style cache
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+
+# Arara build tool
+*.run.xml
