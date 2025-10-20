@@ -25,11 +25,6 @@
 *.backup
 *.DS_Store
 
-# Output files
-*.pdf
-*.dvi
-*.ps
-
 # TexStudio
 *.nav
 *.snm
