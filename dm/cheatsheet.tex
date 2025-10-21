@@ -73,7 +73,7 @@ Quantoren dienen zur Formalisierung von Aussagen wie:
 \end{itemize}
 
 Mehrere gleichartige Quantoren:
-$$\forall x,y\,A(x,y) \quad\text{statt}\quad \forall x\,\forall y\,A(x,y)$$
+$$\forall x,y\;A(x,y) \quad\text{statt}\quad \forall x\,\forall y\;A(x,y)$$
 
 
 \subsection{Eingeschränkte Quantoren}
@@ -123,14 +123,14 @@ Ist \(A\) eine Menge und \(E(x)\) eine Eigenschaft, dann gilt:
 \{x \in A \mid E(x)\} = \text{Menge aller } x \in A \text{ mit Eigenschaft } E(x).
 \]
 \[
-a \in \{x \in A \mid E(x)\} \iff a \in A \wedge E(a)
+a \in \{x \in A \mid E(x)\} \iff a \in A \land E(a)
 \]
 
 \textbf{Beispiele:}
 \begin{itemize}
   \item Gerade Zahlen: \(\{x \in \mathbb{N} \mid \exists y \in \mathbb{N} (x = 2y)\}\)
   \item Zahlen \(> 17\): \(\{x \in \mathbb{N} \mid x > 17\}\)
-  \item Alle außer \(22\): \(\{x \in \mathbb{N} \mid x \neq 22\}\)
+  \item Alle ausser \(22\): \(\{x \in \mathbb{N} \mid x \neq 22\}\)
 \end{itemize}
 
 \subsection{Ersetzungsprinzip}
@@ -154,14 +154,29 @@ Die Vereinigung von zwei Mengen beinhaltet genau die Elemente, die in mindestens
 \[
 A\cup B:=\{x\mid x\in A\vee x\in B\}.
 \]
-Allgemein: \(\displaystyle\bigcup_{i\in I} A_i=\{x\mid\exists i\in I:\,x\in A_i\}.\)
 
 \subsection{Schnitt}
 Die Schnittmenge von zwei Mengen beinhaltet genau die Elemente, die in beiden Mengen enthalten sind:
 \[
-A\cap B:=\{x\mid x\in A\wedge x\in B\}.
+A\cap B:=\{x\mid x\in A\land x\in B\}.
 \]
-Allgemein: \(\displaystyle\bigcap_{i\in I} A_i=\{x\mid\forall i\in I:\,x\in A_i\}.\)
+
+\subsection{Allgemeine Vereinigung / Schnitt}
+Sei \(I\) eine beliebige Indexmenge (z.\,B. \(I = \{1,2,\dots,n\}\) oder \(I = \mathbb{N}\)).  
+Für jedes \(i \in I\) sei \(A_i\) eine Menge.
+
+\subsubsection{Allgemeine Vereinigung}
+\(x\) gehört zur Vereinigung genau dann, wenn es in \emph{mindestens einer} der Mengen \(A_i\) enthalten ist.
+\[
+\bigcup_{i \in I} A_i := \{\, x \mid \exists i \in I : x \in A_i \,\}.
+\]
+
+
+\subsubsection{Allgemeiner Schnitt}
+\(x\) gehört zum Schnitt genau dann, wenn es in \emph{allen} Mengen \(A_i\) enthalten ist.
+\[
+\bigcap_{i \in I} A_i := \{\, x \mid \forall i \in I : x \in A_i \,\}.
+\]
 
 \subsection{Differenz}
 Die Differenz von zwei Mengen beinhaltet genau die Elemente, die in der ersten Menge, aber nicht in der zweiten Menge enthalten sind:
@@ -169,13 +184,21 @@ Die Differenz von zwei Mengen beinhaltet genau die Elemente, die in der ersten M
 A\setminus B:=\{x\in A\mid x\notin B\}.
 \]
 
-% TODO: Ergänzen
+\subsection*{Disjunkte Mengen}
+Zwei Mengen \(A\) und \(B\) heissen disjunkt, wenn sie keine gemeinsamen Elemente besitzen.
+\[
+A \cap B = \varnothing.
+\]
+
 \subsection{Paarweise disjunkt}
-Mengen \(A_i\) sind \emph{paarweise disjunkt}, falls für \(i\neq j\) stets \(A_i\cap A_j=\varnothing\).
+Eine Familie von Mengen \((A_i)_{i \in I}\) heisst paarweise disjunkt, wenn keine zwei verschiedenen Mengen ein gemeinsames Element haben. Es gilt:
+\[
+\forall i,j \in I \; (i \neq j \Rightarrow A_i \cap A_j = \varnothing).
+\]
 
 \subsection{Wichtige Eigenschaften}
 Für beliebige Mengen \(A,B,C\) gelten:
-\begin{itemize}[noitemsep]
+\begin{itemize}
   \item Idempotenz: \(A\cup A=A,\; A\cap A=A\).
   \item Kommutativität: \(A\cup B=B\cup A,\; A\cap B=B\cap A\).
   \item Assoziativität: \(A\cup(B\cup C)=(A\cup B)\cup C\) und analog für \(\cap\).
@@ -197,6 +220,7 @@ Für beliebige Mengen \(A,B,C\) gelten:
 \end{itemize}
 
 \subsection{Venn-Diagramm}
+% Set A and B
 \begin{tikzpicture}[scale=.45]
     \begin{scope}
         \clip \firstcircle;
@@ -229,6 +253,31 @@ Für beliebige Mengen \(A,B,C\) gelten:
                    \secondcircle node {$B$};
     \node[anchor=south] at (current bounding box.north) {$A\setminus B$};
 \end{tikzpicture}
+
+\subsection{Potenzmenge}
+Für eine Menge \(A\) bezeichnet die Potenzmenge \( \mathcal{P}(A) \) die Menge aller Teilmengen von \(A\):
+\[
+\mathcal{P}(A):=\{X \mid X\subseteq A\}
+\]
+
+\textbf{Beispiele:}
+\begin{align*}
+\mathcal{P}(\{1,2\}) &= \{\varnothing,\{1\},\{2\},\{1,2\}\},\\
+\mathcal{P}(\varnothing) &= \{\varnothing\},\\
+\mathcal{P}(\{\{a\}\}) &= \{\varnothing,\{\{a\}\}\}.
+\end{align*}
+
+\textbf{Eigenschaften:}
+\begin{itemize}
+  \item \(A\in\mathcal{P}(A)\) und \(\varnothing\in\mathcal{P}(A)\).
+  \item Aus \(A\subseteq B\) folgt \(\mathcal{P}(A)\subseteq\mathcal{P}(B)\).
+  \item Für die leere Menge gilt \(\mathcal{P}(\varnothing)=\{\varnothing\}\neq\varnothing\).
+  \item \(\mathcal{P}(A\cap B)=\mathcal{P}(A)\cap\mathcal{P}(B)\)
+  \item \(\mathcal{P}(A\cup B)\supseteq \mathcal{P}(A)\cup\mathcal{P}(B)\)
+\end{itemize}
+
+
+
 
 \vspace{1cm}
 
