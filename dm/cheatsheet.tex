@@ -120,7 +120,7 @@ Seien \(e_1,e_2\) leere Mengen. Dann ist für alle \(x\) die Aussage \(x\in e_1\
 \subsection{Aussonderungsprinzip}
 Ist \(A\) eine Menge und \(E(x)\) eine Eigenschaft, dann gilt:
 \[
-\{x \in A \mid E(x)\} = \text{Menge aller } x \in A \text{ mit Eigenschaft } E(x).
+\{x \in A \mid E(x)\} = \text{Menge aller } x \in A \text{ mit } E(x).
 \]
 \[
 a \in \{x \in A \mid E(x)\} \iff a \in A \land E(a)
@@ -277,9 +277,58 @@ Für eine Menge \(A\) bezeichnet die Potenzmenge \( \mathcal{P}(A) \) die Menge 
 \end{itemize}
 
 
+\section{Relationen und Funktionen}
+\subsection{Tupel}
+Ein \(n\)-Tupel ist ein \emph{geordneter} Vektor
+\[
+  (a_1,\dots,a_n).
+\]
+Der \(i\)-te Eintrag eines Tupels \(a=(a_1,\dots,a_n)\) wird mit \(a[i]\) bezeichnet.
+Zwei Tupel sind genau dann gleich, wenn sie dieselbe Länge haben und alle entsprechenden Einträge übereinstimmen:
 
+\begin{multline*}
+  (a_1,\dots,a_n)=(b_1,\dots,b_k) \iff \\
+  n=k\ \land\ a_1=b_1\ \land \dots \land a_n=b_k
+\end{multline*}
 
-\vspace{1cm}
+\subsubsection{Kartesisches Produkt}
+Das kartesische Produkt \(A_1\times\cdots\times A_n\) ist die Menge aller \(n\)-Tupel, deren Einträge aus den Mengen \(A_1,\dots,A_n\) stammen.
+\[
+  A_1\times\cdots\times A_n:=\{(a_1,\dots,a_n)\mid a_i\in A_i\ \text{für }1\le i\le n\}.
+\]
+
+\textbf{Besonderheiten:}
+\begin{itemize}
+  \item Für das $n$-fache Produkt von \(A\) mit sich selbst gilt \(A^n:=A\times\cdots\times A\) (n-mal).
+  \item Für ein kartesisches Produkt von der Form \(A_1\times\cdots\times A_n\) wird auch die Kurzschreibweise \(\prod_{i=1}^n A_i\) verwendet.
+\end{itemize}
+
+\textbf{Beispiele:}
+\begin{align*}
+  \{1\} \times \{a, b\} &= \{(1, a), (1, b)\} \\
+  \mathbb{N}^2 &= \{(x, y) \mid x \in \mathbb{N} \land y \in \mathbb{N}\}
+\end{align*}
+
+\subsubsection{Projektionen}
+Für eine Menge \(A\) von \(n\)-Tupeln und ist \(k \le n\) eine natürliche Zahl, definiert man die \(k\)-te Projektion:
+\[
+  \operatorname{pr}_k(A) := \{ x[k] \mid x \in A \}.
+\]
+
+\textbf{Insbesondere gilt:}
+\[
+  \operatorname{pr}_k(A_1 \times \cdots \times A_n) = A_k.
+\]
+\textbf{Beispiele:}
+\begin{align*}
+  \operatorname{pr}_1(\{1,2\} \times \{a,b\}) &= \{1, 2\} \\
+  \operatorname{pr}_2(\{1,2\} \times \{a,b\}) &= \{a, b\}
+\end{align*}
+
+% \input{content/relations.tex.tex}
+% \input{content/equivalenceRelation.tex}
+
+\vfill
 
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize
