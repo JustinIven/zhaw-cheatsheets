@@ -1,0 +1,43 @@
+\section{Äquivalenzrelationen}
+Eine Relation $\sim$ auf einer Menge $A$ heisst \emph{Äquivalenzrelation}, falls sie für alle $x,y,z\in A$ die folgenden Eigenschaften erfüllt:
+\begin{itemize}
+  \item \textbf{reflexiv:} \quad $x\sim x$,
+  \item \textbf{symmetrisch:} \quad $x\sim y \Rightarrow y\sim x$,
+  \item \textbf{transitiv:} \quad $x\sim y \land y\sim z \Rightarrow x\sim z$.
+\end{itemize}
+
+\subsection{Beispiele}
+\begin{itemize}
+  \item Die Gleichheitsrelation $=$ auf jeder Menge.
+  \item Auf $\mathbb{Z}$: $a\equiv_n b :\Leftrightarrow n\mid(a-b)$ (Restklasse modulo $n$).
+  \item Relation „sitzen in derselben Sitzreihe“ in einem Kinosaal.
+\end{itemize}
+
+\subsection{Kleinste und gr\"osste Äquivalenzrelation}
+Auf jeder Menge $A$ gibt es bezüglich Teilmengen die kleinste Äquivalenzrelation (die Gleichheit) und die grösste Äquivalenzrelation (die gesamte Relation $A\times A$).
+
+\subsection{Äquivalenzklassen und Faktormenge}
+Für $a\in A$ ist die \emph{Äquivalenzklasse}
+\[
+[a]_\sim := \{x\in A \mid x\sim a\}.
+\]
+Die Menge aller Äquivalenzklassen heisst Faktormenge $A/\sim = \{[a]_\sim \mid a\in A\}$.
+Jedes Element einer Äquivalenzklasse ist ein Repräsentant dieser Klasse.
+
+\subsection{Wichtige Eigenschaften}
+Für eine Äquivalenzrelation $\sim$ und $a,b\in A$ sind äquivalent:
+\begin{enumerate}
+  \item $a\sim b$,
+  \item $[a]_\sim = [b]_\sim$,
+  \item $[a]_\sim \cap [b]_\sim \neq \varnothing$,
+  \item $a\in [b]_\sim$,
+  \item $b\in [a]_\sim$.
+\end{enumerate}
+Daraus folgt: Zwei Äquivalenzklassen sind entweder gleich oder disjunkt.
+
+\subsection{Anschauliche Beispiele in $\mathbb{R}^2$}
+\begin{itemize}
+  \item $(a,b)\approx(c,d)\iff a=c$ \;— Äquivalenzklassen = vertikale Geraden.
+  \item $(a,b)\simeq(c,d)\iff \sqrt{a^2+b^2}=\sqrt{c^2+d^2}$ \;— Äquivalenzklassen = Kreise um den Ursprung.
+  \item Auf $\mathbb{R}^2\setminus\{(0,0)\}$: $(a,b)\sim(c,d)\iff \exists r\in\mathbb{R}:\ (ra,rb)=(c,d)$ \;— Äquivalenzklassen = Geraden durch den Ursprung.
+\end{itemize}

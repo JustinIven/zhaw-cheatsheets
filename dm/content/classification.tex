@@ -21,12 +21,13 @@ Eine Relation \(R\) heisst \emph{symmetrisch}, wenn für alle \(x,y\in A\) gilt:
   \forall x,y\;(xRy\Rightarrow yRx).
 \]
 \begin{itemize}
-  \item Symmetrie: zu jedem Pfeil im gerichteten Graph existiert der umgekehrte Pfeil. Für alle \(x,y\in A\) gilt:\\
+  \item Zu jedem Pfeil im gerichteten Graph existiert der umgekehrte Pfeil. Für alle \(x,y\in A\) gilt:\\
     \begin{tikzpicture}[main/.style = {draw, circle}] 
       \node[main] (x) {$x$};
       \node[main] (y) [right=0.5cm of x] {$y$};
       \draw[<->] (x) to (y);
     \end{tikzpicture}
+  \item Symmetrie spiegelt die Koordinatendarstellung an der Geraden \(y=x\).
 \end{itemize}
 
 \subsubsection{Antisymmetrie}
@@ -36,14 +37,13 @@ alle \(x,y\in A\) gilt:
     \forall x,y\;(xRy\land yRx\Rightarrow x=y).
 \]
 \begin{itemize}
-  \item Antisymmetrie: es gibt keine zwei verschiedenen Knoten, die wechselseitig verbunden sind.
+  \item Es gibt keine zwei verschiedenen Knoten, die wechselseitig verbunden sind.
     Für alle \(x,y\in A, x\neq y\) gilt:\\
     \begin{tikzpicture}[main/.style = {draw, circle}] 
       \node[main] (x) {$x$};
       \node[main] (y) [right=0.5cm of x] {$y$};
       \draw[->] (x) to (y);
     \end{tikzpicture}
-  \item Symmetrie spiegelt die Koordinatendarstellung an der Geraden \(y=x\).
 \end{itemize}
 
 \subsubsection{Transitivität}
@@ -66,8 +66,21 @@ Eine Relation \(R\) heisst \emph{transitiv}, wenn für jeden endlichen Pfad ein 
 \subsubsection{Totalität und Eindeutigkeit}
 Sei \(R\subseteq A\times B\) eine Relation von \(A\) nach \(B\) mit
 \begin{itemize}
-  \item \textbf{Linksvollständig / linkstotal:} \(\mathrm{dom}(R)=A\) (jede \(x\in A\) hat ein Bild).
-  \item \textbf{Rechtsvollständig / rechtstotal:} \(\mathrm{im}(R)=B\) (jedes \(y\in B\) wird erreicht).
-  \item \textbf{Linkseindeutig:} \(\forall x_1,x_2,y\;(x_1Ry\land x_2Ry\Rightarrow x_1=x_2)\).
-  \item \textbf{Rechtseindeutig:} \(\forall x,y_1,y_2\;(xRy_1\land xRy_2\Rightarrow y_1=y_2)\).
+  \item \textbf{Linksvollständig / linkstotal:} \(\mathrm{dom}(R)=A\) (jedes Element in \(A\) hat min. eine \emph{ausgehende} Kante).
+  \item \textbf{Rechtsvollständig / rechtstotal:} \(\mathrm{im}(R)=B\) (jedes Element in \(B\) hat min. eine \emph{eingehende} Kante).
+  \item \textbf{Linkseindeutig:} \(\forall x_1,x_2,y\;(x_1Ry\land x_2Ry\Rightarrow x_1=x_2)\) (jedes Element in \(B\) hat max. eine \emph{eingehende} Kante).
+  \item \textbf{Rechtseindeutig:} \(\forall x,y_1,y_2\;(xRy_1\land xRy_2\Rightarrow y_1=y_2)\) (jedes Element in \(A\) hat max. eine \emph{ausgehende} Kante).
+\end{itemize}
+
+\subsection{Inverse Relationen}
+Für eine Relation $R = (G, A, B)$ ist die \emph{inverse Relation} definiert durch
+\[
+R^{-1} = (G', B, A), \quad G' := \{ (y,x) \mid (x,y) \in G \}.
+\]
+Eigenschaften:
+\begin{itemize}
+    \item $(R^{-1})^{-1} = R$
+    \item $R$ ist linksvollständig $\Leftrightarrow R^{-1}$ ist rechtsvollständig
+    \item $R$ ist linkseindeutig $\Leftrightarrow R^{-1}$ ist rechtseindeutig
+    \item Für jede symmetrische Relation $R$ gilt $R = R^{-1}$
 \end{itemize}
