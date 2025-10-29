@@ -13,16 +13,20 @@ Eine Relation $\sim$ auf einer Menge $A$ heisst \emph{Äquivalenzrelation}, fall
   \item Relation „sitzen in derselben Sitzreihe“ in einem Kinosaal.
 \end{itemize}
 
-\subsection{Kleinste und gr\"osste Äquivalenzrelation}
-Auf jeder Menge $A$ gibt es bezüglich Teilmengen die kleinste Äquivalenzrelation (die Gleichheit) und die grösste Äquivalenzrelation (die gesamte Relation $A\times A$).
+\subsection{Klein. und grösst. Äquivalenzrelation}
+Auf jeder Menge \(A\) existiert:
+\begin{itemize}[noitemsep]
+  \item die \emph{kleinste} Äquivalenzrelation: die Gleichheitsrelation \(\{(a,a)\mid a\in A\}\).
+  \item die \emph{grösste} Äquivalenzrelation: das ganze \(A\times A\) (alles ist äquivalent).
+\end{itemize}
 
 \subsection{Äquivalenzklassen und Faktormenge}
 Für $a\in A$ ist die \emph{Äquivalenzklasse}
 \[
 [a]_\sim := \{x\in A \mid x\sim a\}.
 \]
-Die Menge aller Äquivalenzklassen heisst Faktormenge $A/\sim = \{[a]_\sim \mid a\in A\}$.
-Jedes Element einer Äquivalenzklasse ist ein Repräsentant dieser Klasse.
+Die Menge aller Äquivalenzklassen heisst \emph{Faktormenge} $A\diagup{\sim} := \{[a]_\sim \mid a\in A\}$.
+Jedes Element einer Äquivalenzklasse ist ein \emph{Repräsentant} dieser Klasse.
 
 \subsection{Wichtige Eigenschaften}
 Für eine Äquivalenzrelation $\sim$ und $a,b\in A$ sind äquivalent:
@@ -35,9 +39,44 @@ Für eine Äquivalenzrelation $\sim$ und $a,b\in A$ sind äquivalent:
 \end{enumerate}
 Daraus folgt: Zwei Äquivalenzklassen sind entweder gleich oder disjunkt.
 
-\subsection{Anschauliche Beispiele in $\mathbb{R}^2$}
+\subsection{Beispiele in $\mathbb{R}^2$}
 \begin{itemize}
-  \item $(a,b)\approx(c,d)\iff a=c$ \;— Äquivalenzklassen = vertikale Geraden.
-  \item $(a,b)\simeq(c,d)\iff \sqrt{a^2+b^2}=\sqrt{c^2+d^2}$ \;— Äquivalenzklassen = Kreise um den Ursprung.
-  \item Auf $\mathbb{R}^2\setminus\{(0,0)\}$: $(a,b)\sim(c,d)\iff \exists r\in\mathbb{R}:\ (ra,rb)=(c,d)$ \;— Äquivalenzklassen = Geraden durch den Ursprung.
+  \item $(a,b)\approx(c,d) := a=c$\\ Äquivalenzklassen = vertikale Geraden.
+  \item $(a,b)\simeq(c,d) := \sqrt{a^2+b^2}=\sqrt{c^2+d^2}$\\Äquivalenzklassen = Kreise um den Ursprung.
+  \item Auf $\mathbb{R}^2\setminus\{(0,0)\}$: $(a,b)\sim(c,d) := \exists r\in\mathbb{R}(ra,rb)=(c,d)$\\Äquivalenzklassen = Geraden durch den Ursprung.
 \end{itemize}
+
+
+
+\subsection{Partitionen}
+Eine \emph{Partition} einer Menge \(A\) ist eine Menge \(\{A_i\}_{i\in I}\) paarweise disjunkter, nichtleerer Teilmengen mit
+\[
+\bigcup_{i\in I} A_i = A.
+\]
+Die \(A_i\) nennt man auch \emph{Blöcke} der Partition.
+
+\subsubsection{Beispiele}
+\begin{itemize}
+  \item Gerade und ungerade natürliche Zahlen: \(A_0=\{2n\},\; A_1=\{2n+1\}\).
+  \item Einzelmengen \(\{n\}\) liefern eine feine Partition.
+  \item Es gibt Partitionen von \(\mathbb{N}\) in unendlich viele unendliche Blöcke.
+\end{itemize}
+
+\subsubsection{Induzierte Partition}
+Ist \(\sim\) eine Äquivalenzrelation auf \(A\), so sind die Äquivalenzklassen \([a]_\sim\) die Blöcke der Partition \(A\diagup{\sim}\).
+Insbesondere sind die Klassen nichtleer und paarweise disjunkt.
+
+\subsubsection{Induzierte Äquivalenzrelation}
+Ist \(P=\{A_i\}_{i\in I}\) eine Partition von \(A\), definiert
+\[
+a\sim b \quad:\Leftrightarrow\quad \exists i\in I\; (a\in A_i \wedge b\in A_i)
+\]
+eine Äquivalenzrelation auf \(A\) mit Quotientenmenge \(A\diagup{\sim} = P\).
+
+\subsubsection{Äquivalenzrelationen und Funktionen}
+Eine Relation \(\sim\) auf \(A\) ist genau dann eine Äquivalenzrelation, wenn es eine Menge \(B\) und eine Abbildung \(f\colon A\to B\) gibt mit
+\[
+x\sim y \quad\Leftrightarrow\quad f(x)=f(y).
+\]
+(Äquivalenzklassen sind dann die Urbilder einzelner Werte von \(f\).)
+
