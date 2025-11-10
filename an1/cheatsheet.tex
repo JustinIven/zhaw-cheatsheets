@@ -1,0 +1,37 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape, a4paper, top=3mm, left=3mm, right=3mm, bottom=3mm]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\begin{document}
+\include{content/def}
+\begin{multicols*}{4}
+
+\begin{center}
+     \Large{\textbf{Analysis 1}} \\
+\end{center}
+
+% \input{content/temp.tex}
+\input{content/basics.tex}
+\input{content/functions.tex}
+\input{content/polynom.tex}
+\input{content/derivatives.tex}
+
+\vfill
+
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize
+
+Copyright \copyright\ 2025 Justin Iven Müller
+
+\href{https://github.com/JustinIven/zhaw-cheatsheets}{github.com/JustinIven/zhaw-cheatsheets}
+
+
+\end{multicols*}
+\end{document}

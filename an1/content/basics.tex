@@ -1,0 +1,82 @@
+\section{Basics}
+
+\subsection{Intervalle}
+\begin{itemize}
+    \item Offenes Intervall: \(]a,b[ \ = (a,b) = \{ x \in \mathbb{R} \mid a < x < b \}\)
+    \item Geschlossenes Intervall: \([a,b] = \{ x \in \mathbb{R} \mid a \leq x \leq b \}\)
+    \item Halboffenes Intervall: \([a,b[ = \{ x \in \mathbb{R} \mid a \leq x < b \}\), \(]a,b] = \{ x \in \mathbb{R} \mid a < x \leq b \}\)
+    \item Unendliche Intervalle: \((-\infty, a] = \{ x \in \mathbb{R} \mid x \leq a \}\), \([b, \infty) = \{ x \in \mathbb{R} \mid x \geq b \}\)
+\end{itemize}
+
+\subsection{Quadratische Gleichungen}
+Eine quadratische Gleichung hat die Form \(ax^2 + bx + c = 0\) mit \(a \neq 0\).
+
+\subsubsection*{Lösungsformel}
+Die Lösungen sind gegeben durch:
+\[
+x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+\]
+
+\subsubsection*{Diskriminante}
+Die Diskriminante \(D = b^2 - 4ac\) entscheidet über die Art der Lösungen:
+\begin{itemize}
+    \item \(D > 0\): zwei verschiedene reelle Lösungen
+    \item \(D = 0\): eine doppelte reelle Lösung
+    \item \(D < 0\): keine reellen Lösungen (komplexe Lösungen)
+\end{itemize}
+
+\subsection{Potenzregel}
+\begin{align*}
+    a^m \cdot a^n &= a^{m+n} \\
+    \frac{a^m}{a^n} &= a^{m-n} \\
+    (a^m)^n &= a^{m \cdot n} \\
+    a^0 &= 1 \quad (a \neq 0) \\
+    a^{-n} &= \frac{1}{a^n} \quad (a \neq 0) \\
+    (ab)^n &= a^n b^n \\
+    \left(\frac{a}{b}\right)^n &= \frac{a^n}{b^n} \quad (b \neq 0) \\
+    a^{\frac{m}{n}} &= \sqrt[n]{a^m} = (\sqrt[n]{a})^m \quad (n \neq 0)
+\end{align*}
+
+\subsection{Logarithmusregeln}
+\begin{align*}
+    \log_a(xy) &= \log_a(x) + \log_a(y) \\
+    \log_a\left(\frac{x}{y}\right) &= \log_a(x) - \log_a(y) \\
+    \log_a(x^r) &= r \cdot \log_a(x) \\
+    \log_a(1) &= 0 \\
+    \log_a(a) &= 1 \\
+    \log_a(x) &= \frac{\log_b(x)}{\log_b(a)} \quad (a, b > 0, \; a, b \neq 1)
+\end{align*}
+
+\subsection{Binomische Formeln}
+\begin{align*}
+    (a + b)^2 &= a^2 + 2ab + b^2 \\
+    (a - b)^2 &= a^2 - 2ab + b^2 \\
+    (a + b)(a - b) &= a^2 - b^2
+\end{align*}
+
+\subsection{Fakultät}
+Die Fakultät einer natürlichen Zahl \(n\) ist definiert als:
+\[
+n! = n \cdot (n-1) \cdot (n-2) \cdots 2 \cdot 1,
+\]mit der Besonderheit \(0! = 1\).
+
+\subsection{Binomialkoeffizient}
+Der Binomialkoeffizient \(\binom{n}{k}\) gibt die
+Anzahl der Möglichkeiten an, \(k\) Objekte aus \(n\) auszuwählen, und ist definiert als:
+\[\binom{n}{k} = \frac{n!}{k!(n-k)!} \quad \text{für } 0 \leq k \leq n.\]
+
+\subsection{Summenregeln}
+Für endliche Summen gelten folgende Regeln:
+\begin{align*}
+    \sum_{i=1}^{n} c &= n \cdot c \\
+    \sum_{i=1}^{n} (a_i + b_i) &= \sum_{i=1}^{n} a_i + \sum_{i=1}^{n} b_i \\
+    \sum_{i=1}^{n} (c \cdot a_i) &= c \cdot \sum_{i=1}^{n} a_i
+\end{align*}
+
+\section{Betragsfunktion}
+Der Betrag einer reellen Zahl \(x\) ist definiert als:
+\[|x| = 
+\begin{cases}
+x, & \text{falls } x \geq 0 \\
+-x, & \text{falls } x < 0
+\end{cases}\]
