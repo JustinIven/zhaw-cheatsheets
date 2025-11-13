@@ -1,0 +1,129 @@
+\section{Integralrechnung}
+\subsection{Unbestimmte Integrale}
+Sei \(f:\mathbb{R}\to\mathbb{R}\) eine Funktion.
+Das \textbf{unbestimmte Integral} von \(f\) ist definiert als
+\[\int f(x)\,dx = F(x) + C,
+\]
+wobei \(F\) eine Stammfunktion von \(f\) ist, also \(F'(x) = f(x)\) für alle \(x \in \mathbb{R}\), und \(C\) eine Konstante ist.
+
+\subsection{Bestimmte Integrale}
+Sei \(f:[a,b]\to\mathbb{R}\) eine Funktion.
+Das \textbf{bestimmte Integral} von \(f\) über das Intervall \([a,b]\) ist definiert als
+\[\int_a^b f(x)\,dx = F(b) - F(a),
+\]
+wobei \(F\) eine beliebige Stammfunktion von \(f\) ist, also \(F'(x) = f(x)\) für alle \(x \in [a,b]\).
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xmin=-3, xmax=3,
+    ymin=-10, ymax=10,
+    xtick distance=1, ytick distance=4,
+    scale=.45, yticklabel={\empty}, xticklabel={\empty}
+    ]
+    \path [name path=xaxis] (axis cs:-10,0) -- (axis cs:10,0);
+    \addplot [domain=-2.5:2.5, samples=100, name path=f, thick, color=red!50]{-x^2 + 2*x + 5};
+    \addplot[red!10, opacity=0.4] fill between[of=f and xaxis, soft clip={domain=-0.5:2}];
+    \draw [dashed, opacity=0.4] (axis cs:{-0.5,0}) -- (axis cs:{-0.5,8});
+    \draw [dashed, opacity=0.4] (axis cs:{2,0}) -- (axis cs:{2,8});
+    \node at (axis cs: -0.5,-1) {\tiny$a$};
+    \node at (axis cs: 2,-1) {\tiny$b$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection{Flächeninhalt unter einer Funktion}
+Sei \(f:[a,b]\to\mathbb{R}\) eine Funktion mit \(f(x) \geq 0\) für alle \(x \in [a,b]\).
+Der Flächeninhalt \(A\) unter der Funktion \(f\) über das Intervall \([a,b]\) ist definiert als
+\[A = \int_a^b f(x)\,dx.
+\]
+
+Für den Fall, dass \(f(x) \leq 0\) für alle \(x \in [a,b]\), ist der Flächeninhalt \(A\) über der Funktion \(f\) definiert als
+\[A = -\int_a^b f(x)\,dx.
+\]
+
+\emph{Im Allgemeinen:} Sei \(X\) die Menge aller Nullstellen von \(f\) im Intervall \([a,b]\), also \(X = \{x_1, x_2, \ldots, x_n\}\) mit \(a = x_0 < x_1 < \ldots < x_n = b\).
+Dann ist der Flächeninhalt \(A\) zwischen der Funktion \(f\) und der \(x\)-Achse über das Intervall \([a,b]\) definiert als
+\[A = \sum_{i=0}^{n-1} \left| \int_{x_i}^{x_{i+1}} f(x)\,dx \right|.\]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xmin=-3, xmax=3,
+    ymin=-10, ymax=10,
+    xtick distance=1, ytick distance=4,
+    scale=.45, yticklabel={\empty}, xticklabel={\empty}
+    ]
+    \addplot [domain=-2.5:2.5, samples=100, name path=f, thick, color=red!50]{3*x^3 - x^2 - 10*x};
+    \path [name path=xaxis] (axis cs:-10,0) -- (axis cs:10,0);
+    \draw [dashed, opacity=0.4] (axis cs:{-2,0}) -- (axis cs:{-2,-8});
+    \addplot[red!10, opacity=0.4] fill between [
+        of=f and xaxis, soft clip={domain=-2:2},
+        split,
+        every even segment/.style = {blue!20!white},
+        every odd segment/.style ={red!20!white}];
+    \node at (axis cs: -2,-1) {\tiny$x_0$};
+    \node at (axis cs: 0,-1) {\tiny$x_1$};
+    \node at (axis cs: 2,-1) {\tiny$x_2$};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+
+
+
+\subsection{Integral zwischen zwei Funktionen}
+Seien \(f,g:[a,b]\to\mathbb{R}\) zwei Funktionen.
+Das \textbf{Integral zwischen zwei Funktionen} \(f\) und \(g\) über das Intervall \([a,b]\) ist definiert als
+\[\int_a^b (f(x) - g(x))\,dx = F(b) - G(a),
+\]
+wobei \(F\) eine Stammfunktion von \(f\) und \(G\) eine Stammfunktion von \(g\) ist.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xmin=-3, xmax=3,
+    ymin=-10, ymax=10,
+    xtick distance=1, ytick distance=4,
+    scale=.45, yticklabel={\empty}, xticklabel={\empty}
+    ]
+    \addplot [domain=-2.5:2.5, samples=100, name path=f, thick, color=red!50]{3*x^3 - x^2 - 10*x};
+    \addplot [domain=-2.5:2.5, samples=100, name path=g, thick, color=blue!50]{- x^2 + 2*x};
+    \addplot[red!10, opacity=0.4] fill between[of=f and g, soft clip={domain=-2:2}];
+    \draw [dashed, opacity=0.4] (axis cs:{-2,0}) -- (axis cs:{-2,-8});
+    \node[color=red, font=\footnotesize] at (axis cs: -1.6,7) {\tiny$f(x)$};
+    \node[color=blue, font=\footnotesize] at (axis cs: 1.1,2.2) {\tiny$g(x)$};
+    \node at (axis cs: -2,-1) {\tiny$a$};
+    \node at (axis cs: 2,-1) {\tiny$b$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection{Integrationsregeln}
+\subsubsection{Konstantenregel}
+Sei \(c \in \mathbb{R}\) eine Konstante. Dann gilt für das Integral einer konstanten Funktion
+\[\int_a^b c\,dx = c \cdot (b-a).\]
+
+\subsubsection{Summenregel}
+Seien \(f,g:[a,b]\to\mathbb{R}\) zwei Funktionen. Dann gilt für das Integral der Summe von zwei Funktionen
+\[\int_a^b (f(x) + g(x))\,dx = \int_a^b f(x)\,dx + \int_a^b g(x)\,dx.\]
+
+\subsubsection{Polynomregel}
+Sei \(n \in \mathbb{N}_0\). Dann gilt für das Integral einer Potenzfunktion
+\[\int x^n\,dx = \frac{1}{n+1} x^{n+1} + C.\]
+
+\subsection{Integrale von ausgewählten Funktionen}
+Potentz- und Logarithmusfunktionen:
+\begin{align*}
+\int a^x\,dx &= \frac{a^x}{\ln(a)} + C \quad (a > 0, a \neq 1)\\
+\int \ln(x)\,dx &= x \ln(x) - x + C \quad (x > 0)\\
+\int \log_a(x)\,dx &= \frac{x \ln(x) - x}{\ln(a)} + C \quad (a > 0, a \neq 1, x > 0)
+\end{align*}
+Trigonometrische Funktionen:
+\begin{align*}
+\int \sin(x)\,dx &= -\cos(x) + C\\
+\int \cos(x)\,dx &= \sin(x) + C\\
+\int \tan(x)\,dx &= -\ln|\cos(x)| + C
+\end{align*}

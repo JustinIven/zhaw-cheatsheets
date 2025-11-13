@@ -1,19 +1,46 @@
-\section{Ableitungen}
-Eine Ableitung beschreibt die Änderung (Steigung in der Ebene) einer Funktion. Die Ableitung einer Funktion $f(x)$ wird als $f'(x)$ oder $\frac{df}{dx}$ notiert.
+\section{Differentialrechnung}
+Sei \(f(x) : D \to \mathbb{R}\) eine Funktion. Die Ableitung \(f'(x_0)\) beschreibt die Änderungsrate der Funktion an der Stelle \(x_0\). Sie wird definiert als der Grenzwert des Differenzenquotienten:
+\[
+    f'(x_0) = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
+\]
 
-\subsection{Regeln der Differentiation}
-Es gibt einige grundlegende Regeln zur Ableitung von Funktionen:
-
+\subsection{Ableitungsregeln}
 \begin{itemize}
-    \item \textbf{Konstantenregel:} \(f(x) = c \Rightarrow f'(x) = 0\), wobei \(c\) eine Konstante ist.
-    \item \textbf{Potenzregel:} \(f(x) = x^n \Rightarrow f'(x) = n \cdot x^{n-1}\).
-    \item \textbf{Summenregel:} \(f(x) = g(x) + h(x) \Rightarrow f'(x) = g'(x) + h'(x)\).
-    \item \textbf{Produktregel:} \(f(x) = g(x) \cdot h(x) \Rightarrow f'(x) = g'(x) \cdot h(x) + g(x) \cdot h'(x)\).
-    \item \textbf{Quotientenregel:} \(f(x) = \frac{g(x)}{h(x)} \Rightarrow f'(x) = \frac{g'(x) \cdot h(x) - g(x) \cdot h'(x)}{h(x)^2}\).
+    \item \textbf{Faktorregel:} \((c \cdot f)'(x) = c \cdot f'(x)\)
+    \item \textbf{Summenregel:} \((f + g)'(x) = f'(x) + g'(x)\)
+    \item \textbf{Produktregel:} \((f \cdot g)'(x) = f'(x) \cdot g(x) + f(x) \cdot g'(x)\)
+    \item \textbf{Quotientenregel:} \(\left(\frac{f}{g}\right)'(x) = \frac{f'(x) \cdot g(x) - f(x) \cdot g'(x)}{(g(x))^2}\)
+    \item \textbf{Kettenregel:} \((f \circ g)'(x) = f'(g(x)) \cdot g'(x)\)
 \end{itemize}
 
-\subsection{Höhere Ableitungen}
-Die zweite Ableitung $f''(x)$ ist die Ableitung der ersten Ableitung und beschreibt die Krümmung der Funktion. Höhere Ableitungen können ebenfalls gebildet werden und liefern Informationen über das Verhalten der Funktion.
+\subsection{Wichtige Ableitungen}
+\begin{align*}
+    (x^n)' &= n \cdot x^{n-1} \quad\text{ für } n \in \mathbb{R} \\
+    (e^x)' &= e^x \\
+    (\ln x)' &= \frac{1}{x} \quad \text{ für } x > 0 \\
+    (\log_a x)' &= \frac{1}{x \ln a} \quad \text{ für } x > 0, a > 0, a \neq 1 \\
+    (\sin x)' &= \cos x \\
+    (\cos x)' &= -\sin x \\
+\end{align*}
 
-\subsection{Anwendungen der Ableitung}
-Ableitungen finden in vielen Bereichen Anwendung, z.B. in der Physik zur Beschreibung von Geschwindigkeiten und Beschleunigungen oder in der Wirtschaft zur Analyse von Kosten- und Erlösfunktionen.
+\subsection{Differenzierbarkeit}
+Eine Funktion \(f(x)\) ist an der Stelle \(x_0\) differenzierbar, wenn die links- und rechtsseitigen Ableitungen übereinstimmen. Differenzierbarkeit impliziert Stetigkeit, aber nicht umgekehrt.\\
+\emph{Definition:} Eine Funktion heisst differenzierbar, wenn die Ableitung an jeder Stelle ihres Definitionsbereichs existiert.
+
+\subsection{Tangenten- und Normalengleichung}
+Die Tangente an die Funktion \(f(x)\) an der Stelle \(x_0\) hat die Gleichung:
+\[
+    y = f'(x_0)(x - x_0) + f(x_0)
+\]
+Die Normalenlinie, die senkrecht zur Tangente steht, hat die Gleichung:
+\[
+    y = -\frac{1}{f'(x_0)}(x - x_0) + f(x_0)
+\]
+
+\subsection{Newton-Verfahren}
+Das Newton-Verfahren ist ein iteratives Verfahren zur Bestimmung von Nullstellen einer Funktion. Gegeben sei eine Funktion \(f(x)\) und eine Näherung \(x_0\) für eine Nullstelle (Fixpunkt). Die Iterationsformel lautet:
+\[
+    x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+\]
+Die Konvergenz des Verfahrens hängt von der Wahl der Startnäherung und den Eigenschaften der Funktion ab.
+
