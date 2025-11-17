@@ -1,0 +1,37 @@
+\section{Quantoren}
+Quantoren dienen zur Formalisierung von Aussagen wie:
+\begin{itemize}
+  \item $\forall x\,A(x)$: \emph{Für alle $x$ gilt $A(x)$}
+  \item $\exists x\,A(x)$: \emph{Es existiert ein $x$ mit $A(x)$}
+\end{itemize}
+
+Mehrere gleichartige Quantoren:
+$$\forall x,y\;A(x,y) \quad\text{statt}\quad \forall x\,\forall y\;A(x,y)$$
+
+
+\subsection{Eingeschränkte Quantoren}
+$$\forall x \in M\,A(x): \text{Für alle }x\in M \text{ gilt }A(x)$$
+$$\exists x \in M\,A(x): \text{Es gibt }x\in M \text{ mit }A(x)$$
+
+Auch möglich mit Relationen:
+$$\forall x < y\,A(x) \quad \text{oder} \quad \exists x \le y\,A(x)$$
+
+\subsection{Als Junktoren}
+Für endliche Mengen $M = \{x_1, \dots, x_n\}$ gilt:
+$$\forall x \in M\,A(x) \Leftrightarrow A(x_1)\land \dots \land A(x_n)$$
+$$\exists x \in M\,A(x) \Leftrightarrow A(x_1)\lor \dots \lor A(x_n)$$
+
+\subsection{Als Makros}
+$$\exists x \in M\,A(x) \Leftrightarrow \exists x\,(x \in M \land A(x))$$
+$$\forall x \in M\,A(x) \Leftrightarrow \forall x\,(x \in M \Rightarrow A(x))$$
+
+\subsection{Zusammenhang mit Junktoren}
+$$\neg \forall x\,A(x) \Leftrightarrow \exists x\,\neg A(x)
+\quad\text{und}\quad
+\neg \exists x\,A(x) \Leftrightarrow \forall x\,\neg A(x)$$
+$$\forall x\,(A(x)\land B(x)) \Leftrightarrow (\forall x\,A(x)) \land (\forall x\,B(x))$$
+$$\exists x\,(A(x)\lor B(x)) \Leftrightarrow (\exists x\,A(x)) \lor (\exists x\,B(x))$$
+
+\subsection{Leere Quantoren}
+Wenn $x$ in $B$ nicht vorkommt:
+$$\forall x\,B \Leftrightarrow B, \quad \exists x\,B \Leftrightarrow B$$

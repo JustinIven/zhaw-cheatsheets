@@ -1,0 +1,32 @@
+\section{Unendliche Mengen}
+Zwei Mengen \(A\) und \(B\) haben dieselbe Mächtigkeit (Kardinalität) \(|A|=|B|\), genau dann, wenn eine bijektive Abbildung \(f:A\longleftrightarrow B\) existiert. Eine Menge heisst endlich, falls sie bijektiv zu \(\{1,\dots,n\}\) für ein \(n\in\mathbb{N}\) ist; andernfalls heisst sie unendlich.
+
+\subsection{Wichtige Definitionen}
+\begin{itemize}
+  \item \(|A|=|B|\) : Existenz einer Bijektion \(f:A\to B\).
+  \item \(|A|\le|B|\) : Es existiert eine injektive Abbildung \(g:A\hookrightarrow B\) (äquivalent: surjektive Abbildung \(B\twoheadrightarrow A\)).
+  \item \(|A|=\infty\) : Abkürzung dafür, dass \(A\) nicht endlich ist.
+  \item \(|\varnothing|\le|A|\) für alle Mengen \(A\).
+\end{itemize}
+
+\subsection{Elementare Eigenschaften}
+\begin{itemize}
+  \item Die Relation \(\sim\) mit \(A\sim B \Leftrightarrow |A|=|B|\) ist eine Äquivalenzrelation.
+  \item Für endliche Mengen \(A\) und \(B\) mit \(|A|=n\) und \(|B|=m\) gilt \(|A|\le|B|\iff n\le m\).
+  \item Eine Menge \(A\) ist genau dann unendlich, wenn \(|\mathbb{N}|\le|A|\).
+  \item \(A\subseteq B \Rightarrow |A|\le|B|\). Umgekehrt: \(|A|\le|B|\) genau dann, wenn es \(A'\subseteq B\) mit \(|A'|=|A|\) gibt.
+\end{itemize}
+
+\subsection{Satz von Cantor--Bernstein}
+Sind \(A\) und \(B\) nichtleer, dann gilt
+\[
+(|A|\le|B|\ \wedge\ |B|\le|A|)\ \Longleftrightarrow\ |A|=|B|.
+\]
+(Dieser Satz liefert aus beidseitigen Injektionen eine Bijektion.)
+
+\subsection{Wichtige Folgerungen}
+\begin{itemize}
+  \item \textbf{Schubfachprinzip (Pigeonhole):} Aus \(|A|\le|B|\) und \(|A|\neq|B|\) folgt \(|B|\not\le|A|\).
+  \item \textbf{Dedekind:} \(A\) ist unendlich \(\Leftrightarrow\) es existiert eine injektive, nicht surjektive Abbildung \(f:A\hookrightarrow A\). z.B. die Abbildung \(f:\mathbb{N}, n\mapsto n+1\).
+  \item \textbf{Hilbert's Hotel (Anschaulichkeit):} Eine Menge \(A\) ist unendlich genau dann, wenn es eine echte Teilmenge \(B\subset A\) mit \(|B|=|A|\) gibt.
+\end{itemize}

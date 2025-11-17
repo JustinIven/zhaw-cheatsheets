@@ -1,0 +1,54 @@
+\section{Überabzählbare Mengen}
+\begin{itemize}
+  \item Es gibt verschiedene ``Grössen'' unendlicher Mengen; aus $|A|=\infty$ und $|B|=\infty$ folgt nicht notwendigerweise $|A|=|B|$.
+  \item Es existiert eine unendliche \emph{Hierarchie} von Kardinalitäten: Mengen $A_0,A_1,A_2,\dots$ mit
+    \[
+      |A_0|<|A_1|<|A_2|<\dots
+    \]
+  \item Die Menge aller unendlichen Binärsequenzen $B=\{0,1\}^{\mathbb{N}}$ ist \emph{nicht abzählbar}.
+\end{itemize}
+
+\subsection{Sequenzen}
+Eine \emph{Sequenz} in einer Menge $A$ ist eine Abbildung $s:\mathbb{N}\to A$. Die Menge aller Sequenzen in $A$ sei $A^{\mathbb{N}}$.\\
+Entspricht \(s(0)=a_0, \, s(1)=a_1, \, s(2)=a_2, \, \dots\), so schreiben wir
+\[  s = (a_0, a_1, a_2, \dots). \]
+
+\subsection{Unendliche Binärsequenzen}
+Eine \emph{Binärsequenz} ist eine Funktion $s:\mathbb{N}\to\{0,1\}$. Die Menge aller Binärsequenzen sei $B=\{0,1\}^{\mathbb{N}}$.
+
+\subsection{Cantors Diagonalisierungsargument}
+Für jede Abbildung $f:\mathbb{N}\to B$ konstruiere man $s\in B$ durch
+\[
+  s_n := 1 - f(n)_n
+\]
+\begin{align*}
+    f(0) &= (\textcolor{red}{a^0_0}, a^0_1, a^0_2, \dots a^0_n, \dots) \\
+    f(1) &= (a^1_0, \textcolor{red}{a^1_1}, a^1_2, \dots a^1_n, \dots) \\
+    f(2) &= (a^2_0, a^2_1, \textcolor{red}{a^2_2}, \dots a^2_n, \dots) \\
+    \vdots \\
+    f(n) &= (a^n_0, a^n_1, a^n_2, \dots \textcolor{red}{a^n_n}, \dots) \\
+    \vdots
+\end{align*}
+$s$ unterscheidet sich von jedem Bild $f(n)$ in der $\textcolor{red}{n}$-ten Stelle. Somit ist $s\notin\operatorname{im}(f)$ und es gibt keine surjektive Abbildung $\mathbb{N}\to B$. Daher ist $B$ nicht abzählbar.
+
+\subsection{Folgerungen}
+\begin{itemize}
+  \item Das Intervall $[0,1)$ und damit $\mathbb{R}$ sind überabzählbar.
+  \item Die Menge aller Funktionen $\mathbb{N}\to\mathbb{N}$ ist überabzählbar.
+  \item Es existieren Funktionen $\mathbb{N}\to\mathbb{N}$, die nicht berechenbar sind.
+\end{itemize}
+
+\subsection{Potenzmenge und Cantors Theorem}
+Für jede Menge $A$ gilt streng:
+\[
+  |A| < | \mathcal{P}(A) |.
+\]
+Begründung:
+\begin{enumerate}
+  \item Es existiert eine Injektion $A\hookrightarrow\mathcal{P}(A)$, $x\mapsto\{x\}$, also $|A|\le|\mathcal{P}(A)|$.
+  \item Für jede Abbildung $f:A\to\mathcal{P}(A)$ betrachte die Menge
+    \[
+      \Delta_f := \{ a\in A \mid a\notin f(a)\}.
+    \]
+    $\Delta_f\in\mathcal{P}(A)$, aber $\Delta_f\notin\operatorname{im}(f)$ (diagonalisiertes Argument), also ist $f$ nicht surjektiv. Damit $|\mathcal{P}(A)|\nleq|A|$.
+\end{enumerate}

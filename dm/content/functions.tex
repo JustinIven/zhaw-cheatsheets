@@ -1,11 +1,11 @@
-\subsection{Funktionen}
+\section{Funktionen}
 Eine \emph{Funktion} \(f\) von der Menge \(A\) nach \(B\) ist eine Relation, die \emph{linksvollständig} und \emph{rechtseindeutig} ist. Man schreibt:
 \[
 f: A \to B,
 \]
 und für jedes \(x\in A\) existiert genau ein \(y\in B\) mit \(y=f(x)\).
 
-\subsubsection{Schreibweise}
+\subsection{Schreibweise}
 Oft werden Funktionen durch Angabe von Definitions- und Zielmenge sowie einer
 Zuordnungsvorschrift beschrieben. Beispielsweise gilt:
 \[
@@ -16,7 +16,7 @@ bzw. äquivalent in der gebräuchlicheren Schreibweise:
 f : \mathbb{N} \to \mathbb{N}, \quad f(x) = x^3.
 \]
 
-\subsubsection{Injektive Funktionen}
+\subsection{Injektive Funktionen}
 Eine Funktion $f : A \to B$ ist \emph{injektiv}, falls die Relation \emph{linksvollständig}, \emph{rechtseindeutig} und zusätzlich \emph{linkseindeutig} ist:
 \begin{align*}
   \forall x_1, x_2 &\in A (f(x_1) = f(x_2) \Rightarrow x_1 = x_2)\\
@@ -26,7 +26,7 @@ Jedes Element in \(A\) wird auf ein eigenes unterschiedliches Element in \(B\) a
 
 Notation: $f : A \hookrightarrow B$.
 
-\subsubsection{Umkehrbarkeit}
+\subsection{Umkehrbarkeit}
 Eine Funktion $f : A \to B$ ist genau dann \emph{umkehrbar}, wenn sie injektiv ist. Dann gilt:
 \[
 f^{-1} : \operatorname{im}(f) \to A.
@@ -35,7 +35,7 @@ f^{-1} : \operatorname{im}(f) \to A.
 (G^\prime_f, \operatorname{im}(f), A), \quad G^\prime_f = \{(y,x) | (x,y) \in G_f\}
 \]
 
-\subsubsection{Surjektivität}
+\subsection{Surjektivität}
 Eine Funktion $f : A \to B$ ist \emph{surjektiv}, falls die Relation \emph{linksvollständig}, \emph{rechtseindeutig} und zusätzlich \emph{rechtsvollständig} ist:
 \[
 \operatorname{im}(f) = B
@@ -43,7 +43,7 @@ Eine Funktion $f : A \to B$ ist \emph{surjektiv}, falls die Relation \emph{links
 Jedes Element in \(B\) wird von mindestens einem Element in \(A\) erreicht.\\
 Notation: \(f:A \twoheadrightarrow B\)
 
-\subsubsection{Bijektivität}
+\subsection{Bijektivität}
 Eine Funktion $f : A \to B$ ist \emph{bijektiv}, wenn sie sowohl injektiv als auch surjektiv ist. Die Umkehrfunktion ist dann definiert durch:
 \[
 f^{-1} : B \to A.
@@ -52,13 +52,13 @@ J
 Notation: \(f : A \rightleftharpoons B\)
 
 
-\subsubsection{Umkehrfunktion}
+\subsection{Umkehrfunktion}
 Für eine bijektive Funktion $f : A \rightleftharpoons B$ gilt:
 \[
 f^{-1} \circ f = \operatorname{id}_A, \qquad f \circ f^{-1} = \operatorname{id}_B.
 \]
 
-\subsubsection{Komposition}
+\subsection{Komposition}
 Für $g : A \to B$ und $f : B \to C$ definiert man die \emph{Komposition}:
 \[
 (f \circ g)(x) = f(g(x)), \quad f \circ g : A \to C.
@@ -68,7 +68,7 @@ Komposition ist \emph{assoziativ}:
 h \circ (g \circ f) = (h \circ g) \circ f.
 \]
 
-\subsubsection{Eigenschaften der Komposition}
+\subsection{Eigenschaften der Komposition}
 Für Funktionen $f : A \to B$ und $g : B \to C$ gilt:
 \begin{itemize}
   \item Sind $f$ und $g$ injektiv, dann ist $g \circ f$ injektiv.

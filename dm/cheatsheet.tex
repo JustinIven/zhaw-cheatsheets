@@ -14,7 +14,6 @@
 \usepackage{faktor}
 
 
-
 \begin{document}
 \include{content/def}
 \begin{multicols*}{4}
@@ -23,277 +22,25 @@
      \Large{\textbf{Diskrete Mathematik}} \\
 \end{center}
 
-\section{Zahlenmengen}
-\begin{tabular}{@{}ll@{}}
-\(\mathbb{N}\) & natürliche Zahlen \\
-\(\mathbb{N}_0\) & natürliche Zahlen mit 0 \\
-\(\mathbb{Z}\) & ganze Zahlen \\
-\(\mathbb{Q}\) & rationale Zahlen \\
-\(\mathbb{R}\) & reelle Zahlen \\
-\(\mathbb{C}\) & komplexe Zahlen \\
-\end{tabular}
-
-\section{Aussagenlogik}
-\begin{tabular}{@{} p{1.2cm}|p{4.5cm}| @{}}
-Aussage & Ein Satz, der entweder wahr (w) oder falsch (f) ist. \\
-Prädikat & Eine Aussage mit Variablen. {\it n}-stellige Prädikate. \\
-\end{tabular}
-
-\subsection{Grundidee}
-Aus gegebenen Prädikaten/Aussagen lassen sich durch Junktoren neue Aussagen bilden. (z.\,B. Kombinationen mit \(\land,\lor,\lnot,\Rightarrow,\Leftrightarrow\)).
-
-\subsection{Definitionen}
-\begin{itemize}
-  \item \textbf{Negation:} \(\lnot A\) ist genau dann wahr, wenn \(A\) falsch ist. (Doppelte Negation: \(A\Leftrightarrow\lnot\lnot A\).)
-  \item \textbf{Konjunktion:} \(A\land B\) ist wahr genau dann, wenn \(A\) und \(B\) wahr sind. (assoziativ, kommutativ, idempotent)
-  \item \textbf{Disjunktion:} \(A\lor B\) ist wahr, wenn mindestens eine der Aussagen wahr ist. (assoziativ, kommutativ, idempotent)
-  \item \textbf{Implikation:} \(A\Rightarrow B\) ist äquivalent zu \(\lnot A\lor B\). (Kontraposition: \(A\Rightarrow B \Leftrightarrow \lnot B\Rightarrow\lnot A\).)
-  \item \textbf{Äquivalenz:} \(A\Leftrightarrow B\) genau dann, wenn \(A\Rightarrow B \land B\Rightarrow A\).
-\end{itemize}
-
-\subsection{Wichtige Regeln}
-\begin{itemize}
-  \item \textbf{De Morgan:}\\ 
-    \(\lnot(A\land B)\Leftrightarrow \lnot A\lor\lnot B\) 
-    \(\lnot(A\lor B)\Leftrightarrow\lnot A\land\lnot B\)
-  \item \textbf{Distributivität:}
-    \(A\land(B\lor C)\Leftrightarrow (A\land B)\lor(A\land C)\)
-    \(A\lor(B\land C)\Leftrightarrow (A\lor B)\land(A\lor C)\)
-  \item \textbf{Syntaktische Bindung:} \(\lnot\) bindet stärker als \(\land,\lor\); diese binden stärker als \(\Rightarrow,\Leftrightarrow\).
-  \item \textbf{Modus Ponens:} Aus \(A \land (A\Rightarrow B\)) folgt \(B\).
-  \item \textbf{Transitivität:} Aus \((A\Rightarrow B) \land (B\Rightarrow C)\) folgt \(A\Rightarrow C\).
-\end{itemize}
-
-\subsection{Hinweis zur Redundanz}
-Jeder Ausdruck mit den Junktoren $\lnot,\land,\lor,\Rightarrow$ lässt sich ausschliesslich mit \(\lnot\) und \(\lor\) darstellen. z.B.
-$$A\land B \Leftrightarrow \lnot(\lnot A\lor\lnot B)$$
-
-\section{Quantoren}
-Quantoren dienen zur Formalisierung von Aussagen wie:
-\begin{itemize}
-  \item $\forall x\,A(x)$: \emph{Für alle $x$ gilt $A(x)$}
-  \item $\exists x\,A(x)$: \emph{Es existiert ein $x$ mit $A(x)$}
-\end{itemize}
-
-Mehrere gleichartige Quantoren:
-$$\forall x,y\;A(x,y) \quad\text{statt}\quad \forall x\,\forall y\;A(x,y)$$
-
-
-\subsection{Eingeschränkte Quantoren}
-$$\forall x \in M\,A(x): \text{Für alle }x\in M \text{ gilt }A(x)$$
-$$\exists x \in M\,A(x): \text{Es gibt }x\in M \text{ mit }A(x)$$
-
-Auch möglich mit Relationen:
-$$\forall x < y\,A(x) \quad \text{oder} \quad \exists x \le y\,A(x)$$
-
-\subsection{Als Junktoren}
-Für endliche Mengen $M = \{x_1, \dots, x_n\}$ gilt:
-$$\forall x \in M\,A(x) \Leftrightarrow A(x_1)\land \dots \land A(x_n)$$
-$$\exists x \in M\,A(x) \Leftrightarrow A(x_1)\lor \dots \lor A(x_n)$$
-
-\subsection{Als Makros}
-$$\exists x \in M\,A(x) \Leftrightarrow \exists x\,(x \in M \land A(x))$$
-$$\forall x \in M\,A(x) \Leftrightarrow \forall x\,(x \in M \Rightarrow A(x))$$
-
-\subsection{Zusammenhang mit Junktoren}
-$$\neg \forall x\,A(x) \Leftrightarrow \exists x\,\neg A(x)
-\quad\text{und}\quad
-\neg \exists x\,A(x) \Leftrightarrow \forall x\,\neg A(x)$$
-$$\forall x\,(A(x)\land B(x)) \Leftrightarrow (\forall x\,A(x)) \land (\forall x\,B(x))$$
-$$\exists x\,(A(x)\lor B(x)) \Leftrightarrow (\exists x\,A(x)) \lor (\exists x\,B(x))$$
-
-\subsection{Leere Quantoren}
-Wenn $x$ in $B$ nicht vorkommt:
-$$\forall x\,B \Leftrightarrow B, \quad \exists x\,B \Leftrightarrow B$$
-
-\section{Mengen}
-\begin{itemize}
-  \item \textbf{Menge / Element:} Eine Menge fasst mathematische Objekte (Elemente) zu einem Ganzen zusammen. Für Menge \(X\) und Element \(y\) gilt \(y\in X\) bzw.\ \(y\notin X\).
-  \item \textbf{Aufzählende Schreibweise:} \(\{x_1,\dots,x_n\}\) bezeichnet die Menge, die genau die genannten Elemente enthält. Die leere Menge heisst \(\varnothing\).
-  \item \textbf{Extensionalitätsprinzip:} Zwei Mengen sind genau dann gleich, wenn sie dieselben Elemente haben:
-  \[ A=B \iff \forall x\,(x\in A \Leftrightarrow x\in B). \]
-  \item \textbf{Teilmenge:} \(A\subseteq B\) genau dann, wenn \(\forall x\,(x\in A \Rightarrow x\in B)\). Ist \(A\subseteq B\) und \(A\neq B\), so ist \(A\) eine \emph{echte} Teilmenge, geschrieben \(A\subset B\).
-  \item \textbf{Folgerungen:} Mengen sind ungeordnet; Mehrfachaufzählung desselben Elements ändert die Menge nicht. Für jede Menge \(A\) gilt \(\varnothing\subseteq A\).
-\end{itemize}
-
-\subsection{Eindeutigkeit der leeren Menge}
-Seien \(e_1,e_2\) leere Mengen. Dann ist für alle \(x\) die Aussage \(x\in e_1\) falsch, also ist die Implikation \(x\in e_1\Rightarrow x\in e_2\) wahr; somit \(e_1\subseteq e_2\). Analog \(e_2\subseteq e_1\). Nach Extensionalität folgt \(e_1=e_2\).
-
-
-\subsection{Aussonderungsprinzip}
-Ist \(A\) eine Menge und \(E(x)\) eine Eigenschaft, dann gilt:
-\[
-\{x \in A \mid E(x)\} = \text{Menge aller } x \in A \text{ mit } E(x).
-\]
-\[
-a \in \{x \in A \mid E(x)\} \iff a \in A \land E(a)
-\]
-
-\textbf{Beispiele:}
-\begin{itemize}
-  \item Gerade Zahlen: \(\{x \in \mathbb{N} \mid \exists y \in \mathbb{N} (x = 2y)\}\)
-  \item Zahlen \(> 17\): \(\{x \in \mathbb{N} \mid x > 17\}\)
-  \item Alle ausser \(22\): \(\{x \in \mathbb{N} \mid x \neq 22\}\)
-\end{itemize}
-
-\subsection{Ersetzungsprinzip}
-Ist \(A\) eine Menge und \(t(x)\) ein Ausdruck, so gilt:
-\[ \{t(x) \mid x \in A\} = \text{Menge aller Werte von } t(x) \text{ mit } x \in A. \]
-\[ a \in \{t(x) \mid x \in A\} \iff \exists x \in A (a = t(x)) \]
-
-\textbf{Beispiele:}
-\begin{itemize}
-  \item Quadratzahlen: \(\{x^2 \mid x \in \mathbb{N}\}\)
-  \item Ungerade Zahlen: \(\{2x + 1 \mid x \in \mathbb{N}\}\)
-  \item Rationale Zahlen: \(\left\{\frac{a}{b} \mid a,b \in \mathbb{Z},\, b \neq 0\right\}\)
-  \item Anfangsabschnitte von \(\mathbb{N}\): \(\{\{x \in \mathbb{N} \mid x < y\} \mid y \in \mathbb{N}\}\)
-\end{itemize}
-
-
-
-
-\subsection{Vereinigung}
-Die Vereinigung von zwei Mengen beinhaltet genau die Elemente, die in mindestens einer der beiden Mengen enthalten sind:
-\[
-A\cup B:=\{x\mid x\in A\vee x\in B\}.
-\]
-
-\subsection{Schnitt}
-Die Schnittmenge von zwei Mengen beinhaltet genau die Elemente, die in beiden Mengen enthalten sind:
-\[
-A\cap B:=\{x\mid x\in A\land x\in B\}.
-\]
-
-\subsection{Allgemeine Vereinigung / Schnitt}
-Sei \(I\) eine beliebige Indexmenge (z.\,B. \(I = \{1,2,\dots,n\}\) oder \(I = \mathbb{N}\)).  
-Für jedes \(i \in I\) sei \(A_i\) eine Menge.
-
-\subsubsection{Allgemeine Vereinigung}
-\(x\) gehört zur Vereinigung genau dann, wenn es in \emph{mindestens einer} der Mengen \(A_i\) enthalten ist.
-\[
-\bigcup_{i \in I} A_i := \{\, x \mid \exists i \in I : x \in A_i \,\}.
-\]
-
-
-\subsubsection{Allgemeiner Schnitt}
-\(x\) gehört zum Schnitt genau dann, wenn es in \emph{allen} Mengen \(A_i\) enthalten ist.
-\[
-\bigcap_{i \in I} A_i := \{\, x \mid \forall i \in I : x \in A_i \,\}.
-\]
-
-\subsection{Differenz}
-Die Differenz von zwei Mengen beinhaltet genau die Elemente, die in der ersten Menge, aber nicht in der zweiten Menge enthalten sind:
-\[
-A\setminus B:=\{x\in A\mid x\notin B\}.
-\]
-
-\subsection*{Disjunkte Mengen}
-Zwei Mengen \(A\) und \(B\) heissen disjunkt, wenn sie keine gemeinsamen Elemente besitzen.
-\[
-A \cap B = \varnothing.
-\]
-
-\subsection{Paarweise disjunkt}
-Eine Familie von Mengen \((A_i)_{i \in I}\) heisst paarweise disjunkt, wenn keine zwei verschiedenen Mengen ein gemeinsames Element haben. Es gilt:
-\[
-\forall i,j \in I \; (i \neq j \Rightarrow A_i \cap A_j = \varnothing).
-\]
-
-\subsection{Wichtige Eigenschaften}
-Für beliebige Mengen \(A,B,C\) gelten:
-\begin{itemize}
-  \item Idempotenz: \(A\cup A=A,\; A\cap A=A\).
-  \item Kommutativität: \(A\cup B=B\cup A,\; A\cap B=B\cap A\).
-  \item Assoziativität: \(A\cup(B\cup C)=(A\cup B)\cup C\) und analog für \(\cap\).
-  \item Teilmengen: \(A\subseteq A\cup B\) und \(A\cap B\subseteq A\).
-  \item Distributivität:
-  \[
-  A\cup(B\cap C)=(A\cup B)\cap(A\cup C),
-  \]
-  \[
-  A\cap(B\cup C)=(A\cap B)\cup(A\cap C).
-  \]
-  \item De Morgansche Regeln:
-  \[
-  C\setminus(A\cap B)=(C\setminus A)\cup(C\setminus B),
-  \]
-  \[
-  C\setminus(A\cup B)=(C\setminus A)\cap(C\setminus B).
-  \]
-\end{itemize}
-
-\subsection{Venn-Diagramm}
-% Set A and B
-\begin{tikzpicture}[scale=.45]
-    \begin{scope}
-        \clip \firstcircle;
-        \fill[filled] \secondcircle;
-    \end{scope}
-    \draw[outline] \firstcircle node {$A$};
-    \draw[outline] \secondcircle node {$B$};
-    \node[anchor=south] at (current bounding box.north) {$A \cap B$};
-\end{tikzpicture}
-%Set A or B but not (A and B) also known a A xor B
-\begin{tikzpicture}[scale=.45]
-    \draw[filled, even odd rule] \firstcircle node {$A$}
-                                 \secondcircle node{$B$};
-    \node[anchor=south] at (current bounding box.north) {$\overline{A \cap B}$};
-\end{tikzpicture}
-% Set A or B
-\begin{tikzpicture}[scale=.45]
-    \draw[filled] \firstcircle node {$A$}
-                  \secondcircle node {$B$};
-    \node[anchor=south] at (current bounding box.north) {$A \cup B$};
-\end{tikzpicture}
-% Set A but not B
-\begin{tikzpicture}[scale=.45]
-    \begin{scope}
-        \clip \firstcircle;
-        \draw[filled, even odd rule] \firstcircle node {$A$}
-                                     \secondcircle;
-    \end{scope}
-    \draw[outline] \firstcircle
-                   \secondcircle node {$B$};
-    \node[anchor=south] at (current bounding box.north) {$A\setminus B$};
-\end{tikzpicture}
-
-\subsection{Potenzmenge}
-Für eine Menge \(A\) bezeichnet die Potenzmenge \( \mathcal{P}(A) \) die Menge aller Teilmengen von \(A\):
-\[
-\mathcal{P}(A):=\{X \mid X\subseteq A\}
-\]
-
-\textbf{Beispiele:}
-\begin{align*}
-\mathcal{P}(\{1,2\}) &= \{\varnothing,\{1\},\{2\},\{1,2\}\},\\
-\mathcal{P}(\varnothing) &= \{\varnothing\},\\
-\mathcal{P}(\{\{a\}\}) &= \{\varnothing,\{\{a\}\}\}.
-\end{align*}
-
-\textbf{Eigenschaften:}
-\begin{itemize}
-  \item \(A\in\mathcal{P}(A)\) und \(\varnothing\in\mathcal{P}(A)\).
-  \item Aus \(A\subseteq B\) folgt \(\mathcal{P}(A)\subseteq\mathcal{P}(B)\).
-  \item Für die leere Menge gilt \(\mathcal{P}(\varnothing)=\{\varnothing\}\neq\varnothing\).
-  \item \(\mathcal{P}(A\cap B)=\mathcal{P}(A)\cap\mathcal{P}(B)\)
-  \item \(\mathcal{P}(A\cup B)\supseteq \mathcal{P}(A)\cup\mathcal{P}(B)\)
-\end{itemize}
-
-\section{Relationen und Funktionen}
+\input{content/numberSets.tex}
+\input{content/propositionalLogic.tex}
+\input{content/quantifiers.tex}
+\input{content/sets.tex}
 \input{content/tuple.tex}
 \input{content/relations.tex}
-\input{content/classification.tex}
 \input{content/functions.tex}
 \input{content/equivalenceRelation.tex}
-\input{content/halbordnungen.tex}
+\input{content/posets.tex}
+\input{content/infiniteSets.tex}
+\input{content/countableSets.tex}
+\input{content/uncountableSets.tex}
 
 \vfill
 
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize
 
-Copyright \copyright\ 2025 Justin Iven Müller
-
+By Justin Iven Müller (2025)
 \href{https://github.com/JustinIven/zhaw-cheatsheets}{github.com/JustinIven/zhaw-cheatsheets}
 
 

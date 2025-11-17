@@ -1,0 +1,172 @@
+\section{Mengen}
+\begin{itemize}
+  \item \textbf{Menge / Element:} Eine Menge fasst mathematische Objekte (Elemente) zu einem Ganzen zusammen. Für Menge \(X\) und Element \(y\) gilt \(y\in X\) bzw.\ \(y\notin X\).
+  \item \textbf{Aufzählende Schreibweise:} \(\{x_1,\dots,x_n\}\) bezeichnet die Menge, die genau die genannten Elemente enthält. Die leere Menge heisst \(\varnothing\).
+  \item \textbf{Extensionalitätsprinzip:} Zwei Mengen sind genau dann gleich, wenn sie dieselben Elemente haben:
+  \[ A=B \iff \forall x\,(x\in A \Leftrightarrow x\in B). \]
+  \item \textbf{Teilmenge:} \(A\subseteq B\) genau dann, wenn \(\forall x\,(x\in A \Rightarrow x\in B)\). Ist \(A\subseteq B\) und \(A\neq B\), so ist \(A\) eine \emph{echte} Teilmenge, geschrieben \(A\subset B\).
+  \item \textbf{Folgerungen:} Mengen sind ungeordnet; Mehrfachaufzählung desselben Elements ändert die Menge nicht. Für jede Menge \(A\) gilt \(\varnothing\subseteq A\).
+\end{itemize}
+
+\subsection{Eindeutigkeit der leeren Menge}
+Seien \(e_1,e_2\) leere Mengen. Dann ist für alle \(x\) die Aussage \(x\in e_1\) falsch, also ist die Implikation \(x\in e_1\Rightarrow x\in e_2\) wahr; somit \(e_1\subseteq e_2\). Analog \(e_2\subseteq e_1\). Nach Extensionalität folgt \(e_1=e_2\).
+
+
+\subsection{Aussonderungsprinzip}
+Ist \(A\) eine Menge und \(E(x)\) eine Eigenschaft, dann gilt:
+\[
+\{x \in A \mid E(x)\} = \text{Menge aller } x \in A \text{ mit } E(x).
+\]
+\[
+a \in \{x \in A \mid E(x)\} \iff a \in A \land E(a)
+\]
+
+\textbf{Beispiele:}
+\begin{itemize}
+  \item Gerade Zahlen: \(\{x \in \mathbb{N} \mid \exists y \in \mathbb{N} (x = 2y)\}\)
+  \item Primzahlen: \(\{x \in \mathbb{N} \mid \exists y \in \mathbb{N} (y > 1) \land \forall a,b \in \mathbb{N} (ab = x \Rightarrow x=a \lor x=b)\}\)
+\end{itemize}
+
+\subsection{Ersetzungsprinzip}
+Ist \(A\) eine Menge und \(t(x)\) ein Ausdruck, so gilt:
+\[ \{t(x) \mid x \in A\} = \text{Menge aller Werte von } t(x) \text{ mit } x \in A. \]
+\[ a \in \{t(x) \mid x \in A\} \iff \exists x \in A (a = t(x)) \]
+
+\textbf{Beispiele:}
+\begin{itemize}
+  \item Quadratzahlen: \(\{x^2 \mid x \in \mathbb{N}\}\)
+  \item Ungerade Zahlen: \(\{2x + 1 \mid x \in \mathbb{N}\}\)
+  \item Rationale Zahlen: \(\left\{\frac{a}{b} \mid a,b \in \mathbb{Z},\, b \neq 0\right\}\)
+  \item Anfangsabschnitte von \(\mathbb{N}\): \(\{\{x \in \mathbb{N} \mid x < y\} \mid y \in \mathbb{N}\}\)
+\end{itemize}
+
+
+
+
+\subsection{Vereinigung}
+Die Vereinigung von zwei Mengen beinhaltet genau die Elemente, die in mindestens einer der beiden Mengen enthalten sind:
+\[
+A\cup B:=\{x\mid x\in A\vee x\in B\}.
+\]
+
+\subsection{Schnitt}
+Die Schnittmenge von zwei Mengen beinhaltet genau die Elemente, die in beiden Mengen enthalten sind:
+\[
+A\cap B:=\{x\mid x\in A\land x\in B\}.
+\]
+
+\subsection{Allgemeine Vereinigung / Schnitt}
+Sei \(I\) eine beliebige Indexmenge (z.\,B. \(I = \{1,2,\dots,n\}\) oder \(I = \mathbb{N}\)).  
+Für jedes \(i \in I\) sei \(A_i\) eine Menge.
+
+\subsubsection{Allgemeine Vereinigung}
+\(x\) gehört zur Vereinigung genau dann, wenn es in \emph{mindestens einer} der Mengen \(A_i\) enthalten ist.
+\[
+\bigcup_{i \in I} A_i := \{\, x \mid \exists i \in I : x \in A_i \,\}.
+\]
+
+
+\subsubsection{Allgemeiner Schnitt}
+\(x\) gehört zum Schnitt genau dann, wenn es in \emph{allen} Mengen \(A_i\) enthalten ist.
+\[
+\bigcap_{i \in I} A_i := \{\, x \mid \forall i \in I : x \in A_i \,\}.
+\]
+
+\subsection{Differenz}
+Die Differenz von zwei Mengen beinhaltet genau die Elemente, die in der ersten Menge, aber nicht in der zweiten Menge enthalten sind:
+\[
+A\setminus B:=\{x\in A\mid x\notin B\}.
+\]
+
+\subsection*{Disjunkte Mengen}
+Zwei Mengen \(A\) und \(B\) heissen disjunkt, wenn sie keine gemeinsamen Elemente besitzen.
+\[
+A \cap B = \varnothing.
+\]
+
+\subsection{Paarweise disjunkt}
+Eine Familie von Mengen \((A_i)_{i \in I}\) heisst paarweise disjunkt, wenn keine zwei verschiedenen Mengen ein gemeinsames Element haben. Es gilt:
+\[
+\forall i,j \in I \; (i \neq j \Rightarrow A_i \cap A_j = \varnothing).
+\]
+
+\subsection{Wichtige Eigenschaften}
+Für beliebige Mengen \(A,B,C\) gelten:
+\begin{itemize}
+  \item Idempotenz: \(A\cup A=A,\; A\cap A=A\).
+  \item Kommutativität: \(A\cup B=B\cup A,\; A\cap B=B\cap A\).
+  \item Assoziativität: \(A\cup(B\cup C)=(A\cup B)\cup C\) und analog für \(\cap\).
+  \item Teilmengen: \(A\subseteq A\cup B\) und \(A\cap B\subseteq A\).
+  \item Distributivität:
+  \[
+  A\cup(B\cap C)=(A\cup B)\cap(A\cup C),
+  \]
+  \[
+  A\cap(B\cup C)=(A\cap B)\cup(A\cap C).
+  \]
+  \item De Morgansche Regeln:
+  \[
+  C\setminus(A\cap B)=(C\setminus A)\cup(C\setminus B),
+  \]
+  \[
+  C\setminus(A\cup B)=(C\setminus A)\cap(C\setminus B).
+  \]
+\end{itemize}
+
+\subsection{Venn-Diagramm}
+% Set A and B
+\begin{tikzpicture}[scale=.45]
+    \begin{scope}
+        \clip \firstcircle;
+        \fill[filled] \secondcircle;
+    \end{scope}
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \node[anchor=south] at (current bounding box.north) {$A \cap B$};
+\end{tikzpicture}
+%Set A or B but not (A and B) also known a A xor B
+\begin{tikzpicture}[scale=.45]
+    \draw[filled, even odd rule] \firstcircle node {$A$}
+                                 \secondcircle node{$B$};
+    \node[anchor=south] at (current bounding box.north) {$\overline{A \cap B}$};
+\end{tikzpicture}
+% Set A or B
+\begin{tikzpicture}[scale=.45]
+    \draw[filled] \firstcircle node {$A$}
+                  \secondcircle node {$B$};
+    \node[anchor=south] at (current bounding box.north) {$A \cup B$};
+\end{tikzpicture}
+% Set A but not B
+\begin{tikzpicture}[scale=.45]
+    \begin{scope}
+        \clip \firstcircle;
+        \draw[filled, even odd rule] \firstcircle node {$A$}
+                                     \secondcircle;
+    \end{scope}
+    \draw[outline] \firstcircle
+                   \secondcircle node {$B$};
+    \node[anchor=south] at (current bounding box.north) {$A\setminus B$};
+\end{tikzpicture}
+
+\subsection{Potenzmenge}
+Für eine Menge \(A\) bezeichnet die Potenzmenge \( \mathcal{P}(A) \) die Menge aller Teilmengen von \(A\):
+\[
+\mathcal{P}(A):=\{X \mid X\subseteq A\}
+\]
+
+\textbf{Beispiele:}
+\begin{align*}
+\mathcal{P}(\{1,2\}) &= \{\varnothing,\{1\},\{2\},\{1,2\}\},\\
+\mathcal{P}(\varnothing) &= \{\varnothing\},\\
+\mathcal{P}(\{\{a\}\}) &= \{\varnothing,\{\{a\}\}\}.
+\end{align*}
+
+\textbf{Eigenschaften:}
+\begin{itemize}
+  \item \(A\in\mathcal{P}(A)\) und \(\varnothing\in\mathcal{P}(A)\).
+  \item Aus \(A\subseteq B\) folgt \(\mathcal{P}(A)\subseteq\mathcal{P}(B)\).
+  \item Für die leere Menge gilt \(\mathcal{P}(\varnothing)=\{\varnothing\}\neq\varnothing\).
+  \item \(\mathcal{P}(A\cap B)=\mathcal{P}(A)\cap\mathcal{P}(B)\)
+  \item \(\mathcal{P}(A\cup B)\supseteq \mathcal{P}(A)\cup\mathcal{P}(B)\)
+  \item \(\mathcal{P}(A)\) einer endlichen Menge mit \(|A|=n\) hat \(|\mathcal{P}(A)|=2^n\) Elemente.
+\end{itemize}
