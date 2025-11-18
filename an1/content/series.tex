@@ -1,0 +1,51 @@
+\section{Folgen und Reihen}
+Eine \textit{Folge} ist eine Abbildung, die jeder natürlichen Zahl \(n\) ein Element \(a_n\) aus einer Menge \(M\) zuordnet. Man schreibt eine Folge als  \(a = (a_n)\).\\
+Eine \textit{Reihe} ist die Summe der Glieder einer Folge, dargestellt als \(\sum_{n=1}^{\infty} a_n\).
+
+\subsection{Darstellung von Folgen}
+Jedes Glied der Folge wird in der...
+\begin{itemize}
+    \item \textbf{Explizite Darstellung}: durch eine Formel in Abhängigkeit von \(n\) definiert, z.B. \(a_n = 2n + 1\).
+    \item \textbf{Implizite Darstellung}: durch das vorherige Glied definiert, z.B. \(a_1 = 1\), \(a_{n} = a_{n-1} + 2\) für \(n > 1\).
+\end{itemize}
+
+\subsection{Grenzwerte von Folgen}
+Eine Folge \((a_n)\) konvergiert gegen einen Grenzwert \(L\), wenn sich die Glieder der Folge immer näher an \(L\) annähern, wenn \(n\) gegen unendlich geht. Formal ausgedrückt:
+\[\lim_{n \to \infty} a_n = L\]
+Eine Folge, die nicht konvergiert, wird als \textit{divergent} bezeichnet.
+
+\subsection{Arithmetische Folgen und Reihen}
+Eine arithmetische Folge ist eine Zahlenfolge, bei der die Differenz zwischen aufeinanderfolgenden Gliedern konstant ist. Diese Differenz wird als \textit{Differenz} \(d\) bezeichnet. Das \(n\)-te Glied einer arithmetischen Folge kann mit der folgenden Formel berechnet werden:$$
+a_n = a_1 + (n-1)d
+$$
+Die Summe \(S_n\) der ersten \(n\) Glieder einer arithmetischen Reihe wird durch die folgende Formel gegeben:
+\[
+S_n = n \left(2a_1 + \frac{n-1}{2}d\right)
+\]
+Durch Umstellen der obigen Formeln können auch die folgenden Grössen berechnet werden:
+\begin{align*}
+n &= \frac{\frac{d}{2}-a_1 \pm \sqrt{\left(a_1 - \frac{d}{2}\right)^2 + 2ds_n}}{d}\\
+d &= \frac{2(S_n - n a_1)}{n(n-1)}\\
+a_1 &= \frac{S_n - \frac{n(n-1)}{2}d}{n}
+\end{align*}
+
+\subsection{Geometrische Folge und Reihen}
+Eine geometrische Folge ist eine Zahlenfolge, bei der das Verhältnis zwischen aufeinanderfolgenden Gliedern konstant ist. Dieses Verhältnis wird als \textit{Quotient} \(q\) bezeichnet. Das \(n\)-te Glied einer geometrischen Folge kann mit der folgenden Formel berechnet werden:
+\[
+a_n = a_1 \cdot q^{n-1}
+\]
+Die Summe \(S_n\) der ersten \(n\) Glieder einer geometrischen Reihe wird durch die folgende Formel gegeben:
+\[
+S_n = 
+\begin{cases}
+    a_1 \frac{1-q^n}{1-q} & \text{für } q \neq 1\\
+    a_1 \cdot n & \text{für } q = 1
+\end{cases}
+\]
+
+Durch Umstellen der obigen Formeln können auch die folgenden Grössen berechnet werden:
+\begin{align*}
+n &= \frac{\log\left(\frac{S_n(1-q)}{a_1} + q^n\right)}{\log(q)} + 1\\
+q &= \sqrt[n-1]{\frac{S_n(1-q)}{a_1} + q^n}\\
+a_1 &= S_n \frac{1-q}{1-q^n}
+\end{align*}
