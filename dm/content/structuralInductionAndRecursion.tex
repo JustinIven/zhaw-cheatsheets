@@ -1,0 +1,81 @@
+\section{Strukturelle Induktion/Rekursion}
+Induktive Mengen verallgemeinern die Struktur der natürlichen Zahlen. Statt eines speziellen Grundelements \(0\) und der Nachfolgerabbildung \(\eta(n)=n+1\) betrachtet man:
+\begin{itemize}
+  \item eine Menge von \emph{Grundelementen} \(A_0\subseteq M\),
+  \item eine Menge von (n-stelligen) \emph{Regeln} \(R\), wobei jede Regel \(r\) eine Funktion \(r:M^n\to M\) ist.
+\end{itemize}
+Die induktive Menge \(N(A_0,R)\) ist die kleinste Teilmenge von \(M\), die \(A_0\) enthält und unter allen Regeln in \(R\) abgeschlossen ist.
+
+\subsection{Abschlussregeln und Abgeschlossenheit}
+Eine Menge \(A\subseteq M\) ist \emph{unter einer Regel} \(r:M^n\to M\) abgeschlossen, falls
+\[
+(x_1,\dots,x_n)\in A^n \;\Rightarrow\; r(x_1,\dots,x_n)\in A.
+\]
+Ist \(R\) eine Menge von Regeln, so ist \(A\) unter \(R\) abgeschlossen, wenn sie unter jeder Regel in \(R\) abgeschlossen ist.
+Beispiele:
+\begin{itemize}
+  \item \(\mathbb{N}\) ist abgeschlossen unter \(\{+,\cdot\}\).
+  \item \(\mathbb{Z}\) ist abgeschlossen unter \(\{+,-,\cdot\}\).
+  \item Die Menge der geraden Zahlen ist abgeschlossen unter \(\{+,-,\cdot\}\).
+\end{itemize}
+
+\subsection{Existenz und Eindeutigkeit}
+Für gegebene \(M\), \(A_0\subseteq M\) und Regelmenge \(R\) existiert eine eindeutige kleinste Menge
+\begin{multline*}
+  N(A_0,R):= \\
+  \bigcap\{A\subseteq M \mid A_0\subseteq A \land A \text{ ist abg. unter } R \},  
+\end{multline*}
+
+die alle Grundelemente enthält und unter \(R\) abgeschlossen ist.
+
+\subsection{Strukturelle Induktion}
+Um eine Eigenschaft \(P(x)\) für alle \(x\in N(A_0,R)\) zu beweisen, reicht es zu zeigen:
+\begin{enumerate}[label=(\alph*)]
+    \item Für alle Grundelemente \(a\in A_0\) gilt \(P(a)\).
+    \item Für jede Regel \(f\in R\) mit \(k\) Argumenten aus \(P(x_1),\dots,P(x_k)\) folgt \(P(f(x_1,\dots,x_k))\).
+\end{enumerate}
+Dann gilt \(P(x)\) für alle \(x\in N(A_0,R)\).
+
+\subsection{Strukturelle Rekursion}
+Strukturelle Rekursion definiert Funktionen auf \(N(A_0,R)\) durch Angabe:
+\begin{itemize}
+  \item Werte für alle Grundelemente \(a\in A_0\) (Basisfälle),
+  \item Rekursionsgleichungen, die jedem Konstruktor \(f\in R\) eine Funktion \(g_f\) zuordnen, welche die Werte auf den Komponenten zu einem Wert für \(f(\dots)\) kombiniert.
+\end{itemize}
+Dies generalisiert primitive Rekursion auf \(\mathbb{N}\).
+
+\subsection{Beispiele}
+\subsubsection{Listen / Tupel \(A^*\)}
+Induktive Definition: \(A^* := N(\{()\},\{ \text{cons}_a \mid a\in A \})\) mit \(\text{cons}_a(\ell)=(a,\ell)\).
+\begin{itemize}
+  \item Länge: 
+     \begin{align*}
+     \mathrm{len}(()) &:= 0, \\
+     \mathrm{len}(\mathrm{cons}_a(\ell)) &:= 1+\mathrm{len}(\ell)
+     \end{align*}
+  \item Summe: 
+    \begin{align*}
+     \mathrm{sum}(()) &:= 0, \\
+     \mathrm{sum}(\mathrm{cons}_a(\ell)) &:= a+\mathrm{sum}(\ell)
+     \end{align*}
+  \item Minimum:
+    \begin{align*}
+    \mathrm{min}(()) &:= \infty, \\
+    \mathrm{min}(\mathrm{cons}_a(\ell)) &:= \min(a,\mathrm{min}(\ell)).
+    \end{align*}
+\end{itemize}
+
+\subsubsection{Binärbäume \(\mathrm{tree}(A)\)}
+Induktive Definition: \(\mathrm{tree}(A):=N(A,\{\mathrm{node}\})\) mit \(\mathrm{node}(x,y)=(x,y)\) und Blättern aus \(A\).
+\begin{itemize}
+  \item Tiefe: 
+    \begin{align*}
+    \mathrm{depth}(a) &:= 0, \\
+    \mathrm{depth}(\mathrm{node}(x,y)) &:= 1+\max(\mathrm{depth}(x),\mathrm{depth}(y)).
+    \end{align*}
+  \item Blatt-Summe: 
+    \begin{align*}
+    \mathrm{sumLeaf}(a) &:= a, \\
+    \mathrm{sumLeaf}(\mathrm{node}(x,y)) &:= \mathrm{sumLeaf}(x)+\mathrm{sumLeaf}(y).
+    \end{align*}
+\end{itemize}

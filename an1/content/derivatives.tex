@@ -1,7 +1,7 @@
 \section{Differentialrechnung}
 Sei \(f(x) : D \to \mathbb{R}\) eine Funktion. Die Ableitung \(f'(x_0)\) beschreibt die Änderungsrate der Funktion an der Stelle \(x_0\). Sie wird definiert als der Grenzwert des Differenzenquotienten:
 \[
-    f'(x_0) = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} = \lim_{x \to 0} \frac{\Delta f}{\Delta x}(x_0) 
+    f'(x_0) = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} = \lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}(x_0) 
 \]
 \begin{center}
 \begin{tikzpicture}[font=\tiny]
@@ -59,6 +59,7 @@ Sei \(f(x) : D \to \mathbb{R}\) eine Funktion. Die Ableitung \(f'(x_0)\) beschre
 \subsection{Wichtige Ableitungen}
 \begin{align*}
     (x^n)' &= n \cdot x^{n-1} \quad\text{ für } n \in \mathbb{R} \\
+    (a^x)' &= a^x \ln a \quad \text{ für } a > 0, a \neq 1 \\
     (e^x)' &= e^x \\
     (\ln x)' &= \frac{1}{x} \quad \text{ für } x > 0 \\
     (\log_a x)' &= \frac{1}{x \ln a} \quad \text{ für } x > 0, a > 0, a \neq 1 \\

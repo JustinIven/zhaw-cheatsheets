@@ -1,0 +1,78 @@
+\section{Induktion}
+
+\subsection{Axiom der vollständigen Induktion}
+Sei $A(n)$ eine Aussage für $n\in\mathbb{N}$. Gilt
+\begin{itemize}
+  \item \emph{Induktionsverankerung (I.V.)}: $A(0)$
+  \item \emph{Induktionsschritt (I.S.)}: $\forall n\in\mathbb{N}\ (A(n)\Rightarrow A(n+1))$,
+\end{itemize}
+so folgt $\forall n\in(\mathbb{N}\ A(n))$.
+
+\subsection{Varianten der vollständigen Induktion}
+\begin{description}
+  \item[Mengeninduktion] Für $A\subseteq\mathbb{N}$ gilt: Ist $0\in A$ und $\forall n\in\mathbb{N}(n\in A\Rightarrow n+1\in A)$, so ist $A=\mathbb{N}$.
+  \item[Induktion mit Startwert] Für festen $z\in\mathbb{Z}$: Aus $A(z)$ und $\forall n\ge z\ (A(n)\Rightarrow A(n+1))$ folgt $\forall n\ge z\ A(n)$. Dies folgt durch Anwendung der normalen Induktion auf $B(n):=A(n+z)$.
+  \item[Minimumsprinzip] Jede nichtleere Teilmenge $A\subseteq\mathbb{N}$ besitzt ein kleinstes Element. Dieses Prinzip ist äquivalent zum Induktionsprinzip.
+  \item[Kleinster Verbrecher] Beweis per Widerspruch: Existiert eine kleinste $n$ ohne Eigenschaft $A$, führt dies oft zu einem Widerspruch und damit zum Beweis von $\forall n\ A(n)$.
+  \item[Starke Induktion] Gilt $\forall n\in\mathbb{N}\ \big(\forall m<n\ A(m)\Rightarrow A(n)\big)$, so folgt $\forall n\in\mathbb{N}\ A(n)$. Die starke Induktion ist logisch äquivalent zur gewöhnlichen Induktion.
+  \item[Absteigende Ketten] Es existiert keine unendliche streng absteigende Folge $a_0>a_1>a_2>\dots$ in $\mathbb{N}$. Andernfalls würde die Menge $\{a_i\}$ kein Minimum besitzen, im Widerspruch zum Minimumsprinzip.
+\end{description}
+
+\subsection{Rekursion}
+Rekursive Algorithmen folgen dem Prinzip: \emph{Problem} \(\to\) in kleinere ähnliche Teilprobleme zerlegen; Basisfälle direkt lösen; Teillösungen rekursiv berechnen und kombinieren.
+
+
+\subsubsection{Rekursive Definitionen}
+\begin{enumerate}[noitemsep]
+  \item Man spezifiziert Basisfälle (einfachste Bestandteile).
+  \item Man gibt Rekursionsschritte an, die aus bereits definierten (einfacheren) Fällen neue Fälle aufbauen.
+  \item Die Gesamtheit dieser Regeln definiert das Objekt.
+\end{enumerate}
+
+\subsubsection{Primitive Rekursion (ohne Parameter)}
+Seien \(M\) eine Menge, \(g: M\times\mathbb{N}\to M\) und \(c\in M\). Dann existiert eindeutig eine Funktion \(f:\mathbb{N}\to M\) mit
+\[
+\begin{aligned}
+f(0)&=c,\\
+f(n+1)&=g(f(n),n).
+\end{aligned}
+\]
+
+\subsubsection{Primitive Rekursion (mit Parameter)}
+Sind \(M,X\) Mengen, \(g: M\times\mathbb{N}\times X\to M\) und \(c:X\to M\), so gibt es eindeutig \(f:\mathbb{N}\times X\to M\) mit
+\[
+\begin{aligned}
+f(0,x)&=c(x),\\
+f(n+1,x)&=g(f(n,x),n,x)\quad(\forall x\in X).
+\end{aligned}
+\]
+
+\subsubsection{Wichtige Beispiele (primitive Rekursion)}
+\begin{itemize}[noitemsep]
+  \item \textbf{Addition:}
+  \[
+  \begin{aligned}
+  x+0&=x,\\
+  x+(n+1)&=(x+n)+1.
+  \end{aligned}
+  \]
+  \item \textbf{Multiplikation:}
+  \[
+  \begin{aligned}
+  x\cdot 0 &= 0,\\
+  x\cdot(n+1) &= (x\cdot n)+x.
+  \end{aligned}
+  \]
+  \item \textbf{Exponentiation:}
+  \[
+  \begin{aligned}
+  x^{0}&=1,\\
+  x^{n+1}&=x\cdot x^n.
+  \end{aligned}
+  \]
+  \item \textbf{Endliche Summen und Produkte} lassen sich ebenfalls rekursiv definieren (rekursiver Startwert und Schritt).
+\end{itemize}
+
+\subsection{Zusammenspiel von Rekursion und Induktion}
+Rekursive Definitionen von Objekten (z.B. Summen, Produkte) erlauben Beweise über deren Eigenschaften (Kommutativität, Assoziativität, etc.) mittels Induktion.
+
