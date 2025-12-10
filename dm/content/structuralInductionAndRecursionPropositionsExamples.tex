@@ -1,0 +1,141 @@
+\section{Formale Aussagenlogik}
+Die Menge der aussagenlogischen Formeln wird induktiv definiert:
+\begin{itemize}[nosep]
+  \item Grundelemente: Variablen $x_1,x_2,\dots$
+  \item Wenn $A,B$ Formeln sind, dann sind $(A\land B)$ und $(A\lor B)$ Formeln.
+  \item Wenn $A$ eine Formel ist, dann ist $\lnot A$ eine Formel.
+\end{itemize}
+
+\subsection{Syntax}
+Die Syntax der Aussagenlogik (Menge aller aussagenlogischen Formeln) wird durch die obige Induktion definiert. Sie ist gegeben durch \(N(\{x_1,x_2,\dots\}, \{\text{and}, \text{or}, \text{not}\})\) mit 
+\begin{align*}
+\text{and}(A,B) &:=(A \land B) \\
+\quad \text{or}(A,B) &:=(A \lor B) \\
+\quad \text{not}(A) &:=(\lnot A).
+\end{align*}
+
+\subsection{Syntaxbaum}
+Jede Formel besitzt einen zugehörigen Syntaxbaum, der ihre rekursive Struktur darstellt.
+\[(\lnot x_3 \lor x_2) \land \lnot (x_1 \lor x_0)\]
+\begin{center}
+\begin{tikzpicture}
+    % Nodes
+    \node (1) at (3,0) {$\land$};
+    \node (2) at (2,-0.8) {$\lor$};
+    \node (3) at (4,-0.8) {$\lnot$};
+    \node (4) at (1.5,-1.6) {$\lnot$};
+    \node (5) at (2.5,-1.6) {$x_2$};
+    \node (6) at (4,-1.6) {$\lor$};
+    \node (0) at (4.5,-2.4) {$x_0$};
+    \node (7) at (3.5,-2.4) {$x_1$};
+    \node (8) at (1.5,-2.4) {$x_3$};
+    % Edges
+    \draw (1) -- (2);
+    \draw (1) -- (3);
+    \draw (2) -- (4);
+    \draw (2) -- (5);
+    \draw (3) -- (6);
+    \draw (4) -- (8);
+    \draw (6) -- (7);
+    \draw (6) -- (0);
+\end{tikzpicture}
+\end{center}
+
+\subsection{Strukturelle Rekursion}
+Strukturelle Rekursion ist wie primitive Rekursion, nur dass sie nicht über \(\mathbb{N}\), sondern über die jeweils echte Unterstruktur eines rekursiven Datentyps (z. B. Listen oder Bäume) definiert wird.
+
+Funktionen auf Formeln werden begründet durch:
+\begin{itemize}
+  \item \emph{Basisfall}: für jede Variable \(x_i\) wird \(f(x_i)\) definiert.
+  \item \emph{Rekursionsschritte}: für jede Verknüpfung (z.B. \(\land, \lor, \lnot\)) wird eine Funktion \(g_{\land}, g_{\lor}, g_{\lnot}\) definiert, die die Werte der Funktion auf den Teilformeln kombiniert.
+\end{itemize}
+
+\textbf{Beispiele:}
+Die Menge aller Subfunktionen einer Formel ist durch strukturelle Rekursion definiert als:
+\begin{align*}
+\text{sufo}(x_i) &:= \{x_i\} \\
+\text{sufo}(A \land B) &:= \{A \land B\} \cup \text{sufo}(A) \cup \text{sufo}(B) \\
+\text{sufo}(A \lor B) &:= \{A \lor B\} \cup \text{sufo}(A) \cup \text{sufo}(B) \\
+\text{sufo}(\lnot A) &:= \{\lnot A\} \cup \text{sufo}(A)
+\end{align*}
+Analog: Menge aller Variablen in einer Formel $\operatorname{vars}(\cdot)$.
+
+
+\subsection{Semantik}
+Jede Formel $A$ mit Variablen in $\{x_1,\dots,x_n\}$ wird als boolesche Funktion
+$\llbracket  A \rrbracket_n:\{0,1\}^n\to\{0,1\}$ interpretiert:
+\begin{align*}
+  \llbracket x_i \rrbracket_n (b_1,\dots,b_n) &=
+  \begin{cases} b_i & 1\le i\le n\\ 0 & \text{sonst}\end{cases} \\
+  \llbracket  A\land B \rrbracket_n (b_1,\dots,b_n) &=\min(\llbracket A\rrbracket_n,\llbracket B\rrbracket_n), \\
+  \llbracket  A\lor B \rrbracket_n (b_1,\dots,b_n) &=\max(\llbracket A\rrbracket_n,\llbracket B\rrbracket_n), \\
+  \llbracket \lnot A \rrbracket_n (b_1,\dots,b_n) &=1-\llbracket A\rrbracket_n.
+\end{align*}
+        
+\subsection{Semantische Eigenschaften}
+Viele Eigenschaften von Formeln lassen sich über ihre semantische Interpretation definieren. Beispiele:
+\begin{itemize}
+  \item \emph{allgemeingültig}: $\llbracket A\rrbracket_n = (\vec{b} \mapsto 1)$ für alle $n \in \mathbb{N}$,
+  \item \emph{unerfüllbar}: $\llbracket A\rrbracket_n = (\vec{b} \mapsto 0)$ für alle $n \in \mathbb{N}$,
+  \item \emph{erfüllbar}: es existiert ein $n \in \mathbb{N}$ und ein Vektor $\vec{b} \in \{0,1\}^n$ mit $\llbracket A \rrbracket_n (\vec{b}) =1$,
+  \item \emph{äquivalent}: $\llbracket A\rrbracket_n=\llbracket B\rrbracket_n$ für alle $n \in \mathbb{N}$.
+\end{itemize}
+
+\subsection{Wahrheitstabellen}
+Die Semantik einer Formel kann durch Wahrheitstabellen dargestellt werden; die letzte Spalte gibt Werte von $\llbracket A\rrbracket_n$ an. Erfüllbarkeit, Allgemeingültigkeit und Äquivalenz lassen sich daraus ablesen. 
+
+{
+  \tiny
+  \[
+  \begin{array}{|c|c|c|c|c|}
+  \hline
+  \{0,1\}^2 & \llbracket x_1 \rrbracket_2 & \llbracket x_2 \rrbracket_2 & \llbracket \neg x_2 \rrbracket_2 & \llbracket (x_1 \wedge \neg x_2) \rrbracket_2 \\
+  \hline
+  (0,0) & 0 & 0 & 1 & 0 \\
+  (1,0) & 1 & 0 & 1 & 1 \\
+  (0,1) & 0 & 1 & 0 & 0 \\
+  (1,1) & 1 & 1 & 0 & 0 \\
+  \hline
+  \end{array}
+  \]
+}
+
+\subsection{Funktionale Vollständigkeit}
+Für jede boolesche Funktion $f:\{0,1\}^n\to\{0,1\}$ existiert eine aussagenlogische Formel $A$ mit $\llbracket A\rrbracket_n=f$.
+Diese kann z.B. durch die disjunktive Normalform (DNF) konstruiert werden.
+
+\subsection{Normalformen}
+Rekursive Definitionen für Mengen $K_n$ und $D_n$:
+\begin{align*}
+K_0=D_0&=\{x_i,\lnot x_i\mid i\in\mathbb{N}\},\\
+K_{n+1}&=\{\bigwedge_{j} A_j \mid A_j\in D_n\},\\
+D_{n+1}&=\{\bigvee_{j} A_j \mid A_j\in K_n\}.
+\end{align*}
+Es gilt für alle $n\in\mathbb{N}$:
+\begin{align*}
+  D_n &\subseteq K_{n+1}, \quad D_n \subseteq D_{n+1}, \\
+  K_n &\subseteq K_{n+1}, \quad K_n \subseteq D_{n+1}.
+\end{align*}
+
+Formeln in $K_2$ sind in konjunktiver Normalform (KNF), solche in $D_2$ in disjunktiver Normalform (DNF).
+Jede Formel \(\llbracket A \rrbracket_n\) besitzt äquivalente Darstellungen in KNF und DNF (Konstruktion über die Wertetabelle und De-Morgan-Transformationen).
+
+\subsubsection{Konstruktion der DNF}
+Die disjunktive Normalform (DNF) einer Formel \(A\) mit Variablen in \(\{x_1, \ldots, x_n\}\) wird konstruiert durch:
+\begin{itemize}
+  \item Bestimmen aller Belegungen \(\vec{b} \in \{0,1\}^n\), für \(\llbracket A \rrbracket_n(\vec{b}) = 1\).
+  \item Für jede solche Belegung \(\vec{b} = (b_1, \ldots, b_n)\) wird ein Konjunktionsglied \(K_{\vec{b}}\) gebildet:
+  \[K_{\vec{b}} = \bigwedge_{i=1}^{n} \begin{cases} x_i & \text{wenn } b_i = 1 \\ \lnot x_i & \text{wenn } b_i = 0 \end{cases}\]
+  \item Die DNF von \(A\) ist dann die Disjunktion aller Konjunktionsglieder:
+  \[\text{DNF}(A) = \bigvee_{\vec{b} \text{ mit } \llbracket A \rrbracket_n(\vec{b}) = 1} K_{\vec{b}}\]
+\end{itemize}
+
+\subsubsection{Konstruktion der KNF}
+Die konjunktive Normalform (KNF) einer Formel \(A\) mit Variablen in \(\{x_1, \ldots, x_n\}\) wird konstruiert durch:
+\begin{itemize}
+  \item Bestimmen aller Belegungen \(\vec{b} \in \{0,1\}^n\), für \(\llbracket A \rrbracket_n(\vec{b}) = 0\).
+  \item Für jede solche Belegung \(\vec{b} = (b_1, \ldots, b_n)\) wird ein Disjunktionsglied \(D_{\vec{b}}\) gebildet:
+  \[D_{\vec{b}} = \bigvee_{i=1}^{n} \begin{cases} \lnot x_i & \text{wenn } b_i = 1 \\ x_i & \text{wenn } b_i = 0 \end{cases}\]
+  \item Die KNF von \(A\) ist dann die Konjunktion aller Disjunktionsglieder:
+  \[\text{KNF}(A) = \bigwedge_{\vec{b} \text{ mit } \llbracket A \rrbracket_n(\vec{b}) = 0} D_{\vec{b}}\]
+\end{itemize}
