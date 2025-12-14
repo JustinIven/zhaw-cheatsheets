@@ -1,0 +1,78 @@
+\section{Elementare Zahlentheorie}
+\subsection{Teilbarkeitsrelation}
+Für ganze Zahlen \(x,y \in \mathbb{Z}\) heisst \(y\) ein Vielfaches von \(x\), wenn es ein \(t \in \mathbb{Z}\) mit \(y = tx\) gibt. In diesem Fall heisst \(x\) ein Teiler von \(y\) und man schreibt \(x | y\).
+Die Menge der natürlichen Teiler einer Zahl \(x\) ist
+\[
+T(x) := \{ n \in \mathbb{N} \mid n | x \}.
+\]
+
+\subsection{Teilen mit Rest}
+Für \(a,b \in \mathbb{Z}\) mit \(b \neq 0\) existieren eindeutig bestimmte ganze Zahlen \(m,r \in \mathbb{Z}\) mit
+\[
+a = mb + r, \qquad 0 \le r < |b|.
+\]
+Für natürliche Zahlen \(a,b \in \mathbb{N}\) mit \(b \neq 0\) gilt entsprechend mit \(m,r \in \mathbb{N}\)
+\[
+a = mb + r, \qquad r < b.
+\]
+
+
+\subsection{Ganzzahlige Division und Modulo}
+Für \(a,b \in \mathbb{Z}\) mit \(b \neq 0\) werden die Funktionen
+\begin{align*}
+    \operatorname{div}: \mathbb{N} \times \mathbb{N} \setminus \{0\} &\to \mathbb{Z}, \\
+    \operatorname{mod}: \mathbb{N} \times \mathbb{N} \setminus \{0\} &\to \mathbb{N}.
+\end{align*}
+durch
+\[
+a = \operatorname{div}(a,b)\cdot b + \operatorname{mod}(a,b), 
+\qquad 0 \le \operatorname{mod}(a,b) < |b|
+\]
+definiert. Dabei entspricht \(\operatorname{div}\) der ganzzahligen Division und
+\(\operatorname{mod}\) dem Rest.
+
+
+\subsection{Grösster gemeinsamer Teiler}
+Für ganze Zahlen \(a_1,\dots,a_n\) ist die Menge der gemeinsamen Teiler
+\[
+T(a_1,\dots,a_n) := T(a_1) \cap \dots \cap T(a_n).
+\]
+Der grösste gemeinsame Teiler ist definiert als
+\[
+\operatorname{ggT}(a_1,\dots,a_n) := \max T(a_1,\dots,a_n),
+\]
+sofern nicht alle Zahlen Null sind. Zwei Zahlen heissen \emph{teilerfremd}, wenn ihr
+grösster gemeinsamer Teiler gleich \(1\) ist.
+
+
+\subsection{Euklidischer Algorithmus}
+Für beliebige ganze Zahlen \(a,b\) gilt
+\[
+\operatorname{T}(a,b) = \operatorname{T}(a,b-a).
+\]
+Für ganze Zahlen \(a, b\) die nicht beide Null sind, gilt
+\[
+\operatorname{ggT}(a,b) = \operatorname{ggT}(a,b-a).
+\]
+
+Daraus folgt allgemein die rekursive Definition des ggT. Für \((a,b) \in \mathbb{N}^2 \setminus \{(0,0)\}\) gilt:
+\[
+\operatorname{ggT}(a,b) = \begin{cases}
+    \operatorname{max}(a,b) & \text{falls } a = 0 \lor b = 0 \\
+    \operatorname{ggT}(\operatorname{mod}(a,b),b) & \text{falls } a \geq b \\
+    \operatorname{ggT}(a,\operatorname{mod}(b,a)) & \text{sonst}
+\end{cases}
+\]
+Durch Festlegung von \(\operatorname{ggT}(a,b) := \operatorname{ggT}(|a|,|b|)\) für
+\(a,b \in \mathbb{Z}\) wird der euklidische Algorithmus auf alle ganzen Zahlen erweitert.
+
+
+\subsection{Lemma von Bézout}
+Für \(x,y \in \mathbb{Z}\), die nicht beide Null sind, existieren ganze Zahlen
+\(a,b\) mit
+\[
+\operatorname{ggT}(x,y) = ax + by.
+\]
+Die Zahlen \(a\) und \(b\) heissen Bézout-Koeffizienten. Sie lassen sich mit dem
+erweiterten euklidischen Algorithmus bestimmen.
+
