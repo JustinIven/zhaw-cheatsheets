@@ -1,0 +1,28 @@
+\section{Primzahlen}
+Eine Zahl \(p\in\mathbb{N}\) heisst Primzahl, wenn \(|T(p)|=2\); äquivalent dazu ist \(p>1\) und \(T(p)=\{1,p\}\). Die Menge aller Primzahlen wird mit \(\mathbb{P}\) bezeichnet.
+
+\begin{itemize}
+    \item \textbf{Existenz von Primfaktoren.} Zu jeder natürlichen Zahl \(n>1\) existiert eine Primzahl \(p\) mit \(p\mid n\). Daher lässt sich jede \(n>1\) als Produkt endlich vieler Primzahlen darstellen.
+    \item \textbf{Unendlichkeit der Primzahlen.} Es existieren unendlich viele Primzahlen (klassisches Argument nach Euklid).
+    \item \textbf{Euklidsches Lemma.} Für \(p\in\mathbb{N}\) sind äquivalent:
+        \begin{enumerate}
+            \item \(p\) ist eine Primzahl.
+            \item \(\forall a,b\in\mathbb{N} (p|ab \Rightarrow p|a \vee p|b)\).
+        \end{enumerate}
+    \item \textbf{Eindeutigkeit der Primfaktorzerlegung (Fundamentalsatz der Arithmetik).} Jede \(n>1\) besitzt eine Darstellung
+        \[
+            n=\prod_{i=1}^k p_i^{\alpha_i},
+        \]
+        mit Primzahlen \(p_1<\dots<p_k\) und Exponenten \(\alpha_i\in\mathbb{N}\). Diese Darstellung ist bis auf die Reihenfolge eindeutig.
+
+    \item \textbf{Primfaktorzerlegung und ggT.} Für zwei Zahlen
+        \[
+            a=\prod_{i=1}^n p_i^{\alpha_i},\qquad b=\prod_{i=1}^m p_i^{\beta_i},
+        \]
+        gilt insbesondere
+        \[
+            \operatorname{ggT}(a,b)=\prod_{i=1}^{\min(n,m)} p_i^{\min(\alpha_i,\beta_i)}.
+        \]
+        Beispiel: 
+        \(\operatorname{ggT}(20,25)=\operatorname{ggT}(2^2\cdot 3^0\cdot 5^1, 2^0\cdot 3^0\cdot 5^2) \Rightarrow 2^0\cdot 3^0\cdot 5^1=5\).
+\end{itemize}
