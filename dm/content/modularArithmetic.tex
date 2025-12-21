@@ -1,0 +1,83 @@
+\section{Modulare Arithmetik}
+
+\subsection{Kongruenzrelation und Restklassen}
+Für $n \in \mathbb{N}$ definiert man auf $\mathbb{Z}$ die Kongruenzrelation
+\[
+r \equiv_n s \;\Longleftrightarrow\; n \mid (r-s).
+\]
+Die Äquivalenzklasse von $z \in \mathbb{Z}$ heisst \emph{Restklasse} und wird mit
+\[
+[z]_n = \{z + kn \mid k \in \mathbb{Z}\}
+\]
+bezeichnet.
+\begin{itemize}
+    \item Abkürzend bezeichnet man \([z]_n\) mit \([z]\) oder \(\bar{z}\), wenn \(n\) aus dem Kontext klar ist.
+    \item Jede ganze Zahl ist modulo $n$ eindeutig zu einer Zahl aus $\{0,\dots,n-1\}$ kongruent.
+    \item Der Kleinste nicht negative Vertreter einer Restklasse $[z]_n$ wird als \emph{Kanonischer Vertreter} bezeichnet und ist gegeben durch $\operatorname{mod}(z,n)$.
+\end{itemize}
+
+\subsection{Rechnen mit Restklassen}
+Die Menge der Restklassen modulo $n$ ist
+\[
+\mathbb{Z}/n = \{[0]_n,[1]_n,\dots,[n-1]_n\}.
+\]
+Addition und Multiplikation sind wohldefiniert durch
+\[
+[x]_n + [y]_n := [x+y]_n, 
+\qquad
+[x]_n \cdot [y]_n := [xy]_n.
+\]
+
+\subsection{Additive Inverse und lineare Gleichungen}
+Jedes Element $[x]_n \in \mathbb{Z}/n$ besitzt ein additives Inverses $[-x]_n$
+mit
+\[
+[x]_n + [-x]_n = [0]_n.
+\]
+Daher sind Gleichungen der Form
+\[
+a + x = b
+\]
+in $\mathbb{Z}/n$ für alle $a,b$ stets lösbar.
+
+\subsection{Multiplikative Inverse}
+Ein Element $[x]_n \in \mathbb{Z}/n$ besitzt genau dann ein multiplikatives
+Inverses, wenn
+\[
+\operatorname{ggT}(n,x) = 1
+\]
+gilt. Insbesondere besitzt jedes Element ausser $[0]_n$ ein multiplikatives Inverses genau dann, wenn $n$ eine Primzahl ist.
+
+\subsubsection{Multiplikatives Inverses berechnen}
+Das multiplikative Inverse von $[a]_n$ kann mit dem erweiterten Euklidischen Algorithmus
+berechnet werden,
+indem man Zahlen $x,y \in \mathbb{Z}$ mit
+\[ax + ny = 1
+\]findet. Dann ist $[x]_n$ das gesuchte Inverse.
+
+\subsection{Chinesischer Restsatz}
+Sind $n_1,\dots,n_k \in \mathbb{N}_{>1}$ paarweise teilerfremd, so besitzt das Gleichungssystem simultaner
+Kongruenzen
+\begin{align*}
+    x &\equiv_{n_1} y_1 \\
+    x &\equiv_{n_2} y_2 \\
+    &\vdots \\
+    x &\equiv_{n_k} y_k
+\end{align*}
+eine eindeutige Lösung in $\mathbb{Z}/(n_1 \cdots n_k)$.
+
+\subsubsection{Lösen simultaner Kongruenzen}
+Die Lösung kann konstruiert werden, indem man die einzelnen Kongruenzen löst und die Lösungen dann kombiniert.
+Man definiert
+\[N = n_1 \cdots n_k,
+\quad N_i = \frac{N}{n_i},
+\]
+und bestimmt die multiplikativen Inversen $M_i$ von $N_i$ modulo $n_i$.
+Die Lösung des Gleichungssystems ist dann gegeben durch
+\[x \equiv_N \sum_{i=1}^k y_i N_i M_i.\]
+
+\subsection{Kleiner Satz von Fermat}
+Ist $p$ eine Primzahl und $p \nmid a$, so gilt
+\[
+a^{p-1} \equiv_p 1.
+\]

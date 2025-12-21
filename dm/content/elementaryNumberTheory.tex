@@ -68,11 +68,38 @@ Durch Festlegung von \(\operatorname{ggT}(a,b) := \operatorname{ggT}(|a|,|b|)\) 
 
 
 \subsection{Lemma von Bézout}
-Für \(x,y \in \mathbb{Z}\), die nicht beide Null sind, existieren ganze Zahlen
-\(a,b\) mit
+Für \(a,b \in \mathbb{Z}\), die nicht beide Null sind, existieren ganze Zahlen
+\(x,y\) mit
 \[
-\operatorname{ggT}(x,y) = ax + by.
+\operatorname{ggT}(a,b) = as + bt.
 \]
-Die Zahlen \(a\) und \(b\) heissen Bézout-Koeffizienten. Sie lassen sich mit dem
-erweiterten euklidischen Algorithmus bestimmen.
+Die Zahlen \(s\) und \(t\) heissen Bézout-Koeffizienten. Sie lassen sich mit dem erweiterten euklidischen Algorithmus bestimmen.
 
+\subsection{Erweiterter euklidischer Algorithmus}
+Der erweiterte euklidische Algorithmus berechnet für \(a,b \in \mathbb{N}\), die nicht beide Null sind, die Bézout-Koeffizienten \(s,t \in \mathbb{Z}\) mit
+\[\operatorname{ggT}(a,b) = as + bt.
+\]
+\textbf{Initialisierung:}
+\[
+\begin{aligned}
+r_0 &= a, & r_1 &= b, \\
+s_0 &= 1, & s_1 &= 0, \\
+t_0 &= 0, & t_1 &= 1.
+\end{aligned}
+\]
+
+\textbf{Iteration:} Für \(i = 1,2,\dots\) solange \(r_i \neq 0\):
+\[
+\begin{aligned}
+q_i &= \left\lfloor \frac{r_{i-1}}{r_i} \right\rfloor, \\
+r_{i+1} &= r_{i-1} - q_i r_i, \\
+s_{i+1} &= s_{i-1} - q_i s_i, \\
+t_{i+1} &= t_{i-1} - q_i t_i.
+\end{aligned}
+\]
+
+\textbf{Ergebnis:} Der Algorithmus terminiert, wenn \(r_{k+1} = 0\). Dann gilt:
+\[
+\operatorname{ggT}(a,b) = r_k = as_k + bt_k.
+\]
+Die Bézout-Koeffizienten sind somit \(s = s_k\) und \(t = t_k\).
