@@ -5,6 +5,7 @@ A collection of cheatsheets for my Bachelor's degree in Computer Science at ZHAW
 - [**AN1 (Analysis 1)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/an1/out/cheatsheet.pdf)
 - [**DM (Discrete Mathematics)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/dm/out/cheatsheet.pdf)
 - [**INCO (Information und Codierung)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/inco/out/cheatsheet.pdf)
+- [**WING (Wirtschaft für Ingenieure)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/wing/out/cheatsheet.pdf)
 
 
 ## Usage
