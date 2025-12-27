@@ -1,0 +1,46 @@
+\section{Polynomfunktionen}
+Ein Polynom ist eine Funktion der Form
+\[
+    f(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0
+\]
+mit $a_n, a_{n-1}, \ldots, a_1, a_0 \in \mathbb{R}$ und $a_n \neq 0$.
+Der höchste Exponent $n$ heisst \emph{Grad} des Polynoms.
+
+\subsection{Horner-Schema}
+Das Horner-Schema ist eine effiziente Methode zur Auswertung von Polynomen. Es hat die Form:
+\[
+    f(x) = (((a_n x + a_{n-1}) x + a_{n-2}) x + \ldots + a_1) x + a_0
+\]
+
+Linearfaktorisierung eines Polynoms nach dem Horner-Schema:
+\[
+    f(x) = 2x^3-12x^2+22x-12
+\]
+
+\begin{center}
+  \polyhornerscheme[x=2, showvar=true, stage=8, tutor=true, tutorlimit=8, tutorstyle=\color{lightgray}]{2x^3-12x^2+22x-12}
+\end{center}
+\[
+    f(x) = (2x^2 - 8x + 6)(x - 2)
+\]
+
+\subsection{Nullstellen von Polynomen}
+Ein Polynom von Grad \(n\) hat höchstens \(n\) reelle Nullstellen.
+
+\subsection{\(m\)-fache Nullstelle}
+\(x_0\) ist eine \(m\)-fache Nullstelle des Polynoms \(f(x)\), wenn \(f(x)\) in der Form
+\[
+    f(x) = (x - x_0)^m \cdot g(x)
+\]
+geschrieben werden kann, wobei \(g(x)\) ein Polynom ist, das \(x_0\) nicht als Nullstelle hat.
+
+\subsection{Polynomdivision}
+Mit dem Horner-Schema können nur Linearfaktoren \((x - x_0)\) abgeteilt werden. Für die Division durch Polynome höheren Grades wird die Polynomdivision verwendet:
+\[
+    f(x) = g(x) \cdot Q(x) + R(x)
+\]
+wobei \(Q(x)\) der Quotient und \(R(x)\) der Rest ist. Der Grad des Rests ist kleiner als der Grad des Divisors \(g(x)\).
+\begin{center}
+    \tiny
+    \polylongdiv[style=C, div=:]{x^3-6x^2+11x-6}{x^2+x-4}
+\end{center}

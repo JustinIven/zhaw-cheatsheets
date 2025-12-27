@@ -2,18 +2,18 @@
 \section{Funktionen}
 Eine Funktion $f$ ordnet jedem Element $x$ aus einem Definitionsbereich $D$ genau einen Wert $f(x)$ zu.
 
-\subsection*{Grundbegriffe}
+\subsection{Grundbegriffe}
 \begin{itemize}
 \item \textbf{Definitionsbereich $D$}: alle $x$, für die $f(x)$ definiert ist.
 \item \textbf{Wertebereich $W$}: alle Werte $f(x)$, die tatsächlich auftreten.
 \item \textbf{Graph}: Menge aller Punkte $(x,f(x))$ im Koordinatensystem.
 \end{itemize}
 
-\subsection*{Wichtige Eigenschaften}
+\subsection{Wichtige Eigenschaften}
 \textbf{Gerade Funktion}: $f(-x)=f(x)$. Graph ist symmetrisch zur $y$-Achse.  
 \textbf{Ungerade Funktion}: $f(-x)=-f(x)$. Graph ist punktsymmetrisch zum Ursprung.
 
-\subsection*{Umkehrfunktionen}
+\subsection{Umkehrfunktionen}
 $f$ besitzt eine Umkehrfunktion $f^{-1}$ genau dann, wenn $f$ \textbf{injektiv} ist.  
 \[
 (f^{-1})'(y)=\frac{1}{f'(x)}\quad\text{mit }y=f(x).
@@ -23,16 +23,16 @@ $f$ besitzt eine Umkehrfunktion $f^{-1}$ genau dann, wenn $f$ \textbf{injektiv} 
 \section{Polynome und Algebraische Werkzeuge}
 Ein Polynom vom Grad $n$ hat höchstens $n$ Nullstellen.
 
-\subsection*{Horner-Schema}
+\subsection{Horner-Schema}
 Effiziente Berechnung von $f(x_0)$ und Polynomdivision durch $(x-x_0)$.
 
-\subsection*{Zerlegungssatz}
+\subsection{Zerlegungssatz}
 Hat $f(x_0)=0$, so lässt sich schreiben:
 \[
 f(x) = (x-x_0)\cdot q(x).
 \]
 
-\subsection*{Wichtige Summenformeln}
+\subsection{Wichtige Summenformeln}
 \[
 \sum_{k=1}^n k = \frac{n(n+1)}{2},\qquad
 \sum_{k=1}^n k^2 = \frac{n(n+1)(2n+1)}{6}.
@@ -41,14 +41,14 @@ f(x) = (x-x_0)\cdot q(x).
 \textit{Erklärung: Diese Formeln ermöglichen es, Summen geschlossener auszudrücken.}
 
 \section{Differentialrechnung}
-\subsection*{Definition der Ableitung}
+\subsection{Definition der Ableitung}
 \[
 f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}{h}.
 \]
 
 \textit{Interpretation: $f'(x)$ beschreibt die Steigung der Tangente an den Graphen an der Stelle $x$.}
 
-\subsection*{Ableitungsregeln}
+\subsection{Ableitungsregeln}
 Linearität:
 \[
 (c\cdot f)' = c\cdot f', \quad (f+g)' = f'+g'
@@ -69,14 +69,14 @@ Kettenregel (Zusammensetzung $F(u(x))$):
 (F\circ u)' = F'(u(x)) \cdot u'(x)
 \]
 
-\subsection*{Tangente}
+\subsection{Tangente}
 \[
 T(x)=f(x_0)+f'(x_0)(x-x_0).
 \]
 
 \textit{Bedeutung: Lokale lineare Annäherung an den Graphen.}
 
-\subsection*{Extremstellen (Hoch-/Tiefpunkte)}
+\subsection{Extremstellen (Hoch-/Tiefpunkte)}
 \[
 f'(x_0)=0.
 \]
@@ -90,20 +90,20 @@ f''(x_0) = 0 & \text{keine eindeutige Aussage}
 \]
 
 \section{Integralrechnung}
-\subsection*{Definition als Grenzwert}
+\subsection{Definition als Grenzwert}
 \[
 \int_a^b f(x)\,dx = \lim_{n\to\infty}\sum_{k=1}^n f(x_k)\Delta x.
 \]
 
 \textit{Interpretation: Fläche unter dem Graphen zwischen $a$ und $b$.}
 
-\subsection*{Hauptsatz der Differential- und Integralrechnung}
+\subsection{Hauptsatz der Differential- und Integralrechnung}
 Ist $F$ eine Stammfunktion von $f$, dann:
 \[
 \int_a^b f(x)\,dx = F(b)-F(a).
 \]
 
-\subsection*{Wichtige Integrationsregeln}
+\subsection{Wichtige Integrationsregeln}
 Lineare Operationen:
 \[
 \int(c\cdot f)dx=c\cdot\int f dx,\qquad \int(f+g)dx=\int f dx + \int g dx.
@@ -120,7 +120,7 @@ Substitution:
 \]
 
 \section{Folgen und Reihen}
-\subsection*{Grenzwert einer Folge}
+\subsection{Grenzwert einer Folge}
 Eine Folge $(a_n)$ konvergiert gegen $L$, wenn:
 \[
 \lim_{n\to\infty} a_n = L.
@@ -128,7 +128,7 @@ Eine Folge $(a_n)$ konvergiert gegen $L$, wenn:
 
 \textit{Bedeutung: Für grosse $n$ wird $a_n$ beliebig nahe an $L$.}
 
-\subsection*{Reihen}
+\subsection{Reihen}
 Eine Reihe ist die Summe einer Folge:
 \[
 \sum_{n=1}^{\infty} a_n.
