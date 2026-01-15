@@ -29,6 +29,27 @@ mit \(j_p, j_q \in \mathbb{N}\) und \(j_q > 1\).
         \item Ordnung gerade: Polstelle ohne Vorzeichenwechsel.
         \item Ordnung ungerade: Polstelle mit Vorzeichenwechsel.
     \end{itemize}
+    \begin{tikzpicture}[scale=.45]
+        \begin{axis}[axis lines=middle, xmin=-2, xmax=2, ymin=-2, ymax=2, width=5cm, height=5cm, yticklabel={\empty}, xticklabel={\empty}]
+            \addplot[domain=-2:2, samples=100, red!50] {1/(20*x)^2};
+        \end{axis}
+      \node[anchor=south] at (current bounding box.north) {\tiny{Gerade}};
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=.45]
+        \begin{axis}[axis lines=middle, xmin=-2, xmax=2, ymin=-2, ymax=2, width=5cm, height=5cm, yticklabel={\empty}, xticklabel={\empty}]
+            \addplot[domain=-2:0, samples=100, red!50] {1/(20*x)};
+            \addplot[domain=0:2, samples=100, red!50] {1/(20*x)};
+        \end{axis}
+      \node[anchor=south] at (current bounding box.north) {\tiny{Ungerade}};
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=.45]
+        \begin{axis}[axis lines=middle, xmin=-2, xmax=2, ymin=-2, ymax=2, width=5cm, height=5cm, yticklabel={\empty}, xticklabel={\empty}]
+            \addplot[domain=-2:0.2, samples=100, red!50] {x/(20*x*(x-0.2))};
+            \addplot[domain=0.2:2, samples=100, red!50] {x/(20*x*(x-0.2))};
+                \node at (axis cs:0,-0.25) [circle, draw=black, fill=white, inner sep=1.2pt] {};
+        \end{axis}
+      \node[anchor=south] at (current bounding box.north) {\tiny{Hebbar}};
+    \end{tikzpicture}
 \end{itemize}
 
 \subsection{Asymptoten}
@@ -36,6 +57,7 @@ Rationale Funktionen können folgende Asymptoten haben:
 \begin{itemize}
     \item \emph{Vertikale Asymptoten}: Treten auf, wenn \(q(x) = 0\) und \(p(x) \neq 0\).
     \item \emph{Horizontale Asymptoten}: Bestimmen das Verhalten von \(f(x)\) für \(x \to \pm \infty\).
+    \item \emph{Polynomiale Asymptoten}: Treten auf, wenn der Grad des Zählers grösser ist als der Grad des Nenners. Sie können durch Polynomdivision gefunden werden.
 \end{itemize}
 
 \subsection{Graphen}
