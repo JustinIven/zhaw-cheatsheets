@@ -81,3 +81,19 @@ Ist $p$ eine Primzahl und $p \nmid a$, so gilt
 \[
 a^{p-1} \equiv_p 1.
 \]
+
+\subsection{Eulersche Phi-Funktion}
+Für $n \in \mathbb{N}$ ist die Eulersche Phi-Funktion
+\[\varphi(n) = |\{k \in \mathbb{N} \mid 1 \le k \le n, \operatorname{ggT}(k,n) = 1\}|
+\]die Anzahl der positiven ganzen Zahlen bis $n$, die zu $n$ teilerfremd sind.
+\begin{itemize}
+    \item Ist $p$ eine Primzahl, so gilt $\varphi(p) = p-1$.
+    \item Für $k \ge 1$ gilt $\varphi(p^k) = p^k - p^{k-1} = p^{k-1}(p-1)$.
+    \item Ist $m,n \in \mathbb{N}$ mit $\operatorname{ggT}(m,n) = 1$, so gilt
+\[
+\varphi(mn) = \varphi(m) \cdot \varphi(n).
+\]
+    \item Für die Primfaktorzerlegung $n = p_1^{k_1} \cdots p_r^{k_r}$ gilt
+\[\varphi(n) = n \left(1 - \frac{1}{p_1}\right) \cdots \left(1 - \frac{1}{p_r}\right).
+\]
+\end{itemize}
