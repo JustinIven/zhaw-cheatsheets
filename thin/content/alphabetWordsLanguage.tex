@@ -1,0 +1,121 @@
+\section*{Alphabete, Wörter und Sprachen}
+
+\subsection{Alphabet}
+Ein Alphabet ist eine endliche, nichtleere Menge von Symbolen. Bsp.:
+\[
+    \Sigma = \{a,b,c\}, \quad
+    \Sigma_\text{bool} = \{0,1\}, \quad
+    \Sigma_\text{lat} = \{a,b,c \cdots ,z\}
+\]
+
+\subsection{Wörter}
+Ein Wort über einem Alphabet ist eine endliche Folge von Symbolen aus diesem Alphabet. Das leere Wort wird mit $\varepsilon$ bezeichnet.
+\[
+    w = (x_1, x_2, \dots, x_n), \quad x_i \in \Sigma, \quad n \in \mathbb{N}
+\]
+
+Die Länge eines Wortes $w$ ist die Anzahl der Symbole, also $|w| = n$. Die absolute Häufigkeit eines Symbols $a$ in einem Wort $w$ wird mit $|w|_a$ bezeichnet. Zusätzlich gilt:
+\[
+    |\varepsilon| = |\varepsilon|_a = 0, \quad a \in \Sigma
+\]
+
+\subsubsection{Spiegelung und Palindrome}
+Mit \(w^R\) wird das Spiegelwort von \(w\) bezeichnet, also die Umkehrung der Symbolfolge.
+\[
+    w^R = (x_1, x_2, \dots, x_n)^R = (x_n, x_{n-1}, \dots, x_1)
+\]
+Wenn \(w=w^R\) gilt, dann ist \(w\) ein Palindrom.
+
+\subsubsection{Wörter der Länge \(k\)}
+Die Menge aller Wörter der Länge \(k\) über einem Alphabet \(\Sigma\) wird mit \(\Sigma^k\) bezeichnet:
+\[
+    \Sigma^k = \{ w \in \Sigma^* \mid |w| = k \}
+\]
+Unabhängig von \(\Sigma\) gilt stets \(\Sigma^0 = \{\varepsilon\}\).
+
+\subsubsection{Kleenesche Hülle}
+Die Menge aller Wörter über einem Alphabet \(\Sigma\) wird mit \(\Sigma^*\) bezeichnet:
+\[
+    \Sigma^* = \bigcup_{k \ge 0} \Sigma^k
+\]
+Die Menge aller nichtleeren Wörter über \(\Sigma\) wird mit \(\Sigma^+\) bezeichnet:
+\[
+    \Sigma^+ = \Sigma^* \setminus \{\varepsilon\}
+\]
+
+\subsubsection{Teilwortrelationen}
+\begin{description}
+    \item[Infix] \(v\) ist Infix von \(w\) \(\iff\) Es existieren \(x,y \in \Sigma^*\) mit \(w = xvy\).
+    \item[Präfix] \(v\) ist Präfix von \(w\) \(\iff\) Es existiert \(y \in \Sigma^*\) mit \(w = vy\).
+    \item[Suffix] \(v\) ist Suffix von \(w\) \(\iff\) Es existiert \(x \in \Sigma^*\) mit \(w = xv\).
+\end{description}
+Man spricht von einem \emph{echten} Infix/Präfix/Suffix, wenn \(v \neq w\) gilt.
+
+
+\subsubsection{Konkatination}
+Die Konkatenation von zwei Wörtern \(x\) und \(y\) ist die Aneinanderreihung der Symbole von \(x\) gefolgt von den Symbolen von \(y\):
+\[
+    x \circ y = xy = (x_1, x_2, \dots, x_n, y_1, y_2, \dots, y_m)
+\]
+Die Länge der Konkatenation ist die Summe der Längen der beiden Wörter:
+\[
+    |xy| = |x| + |y|
+\]
+Die Konkatenation mit dem leeren Wort \(\varepsilon\) hat keine Auswirkung auf das Wort:
+\[
+    w\varepsilon = \varepsilon w = w
+\]
+
+\subsubsection{Wortpotenzen}
+Die \(n\)-te Potenz eines Wortes \(x\) wird für alle \(n \in \mathbb{N}\) definiert als
+\begin{align*}
+    x^0 &:= \varepsilon \\
+    x^{n+1} &:= x^n x
+\end{align*}
+Die Potenzierung mit der Kleeneschen Hülle ergibt die gleiche Menge:
+\[
+    (A^*)^* = A^*
+\]
+
+
+\subsection{Sprache}
+Eine Teilmenge \(L \subseteq \Sigma^*\) von Wörtern heisst Sprache über dem Alphabet \(\Sigma\).
+Es gelten die folgenden Eigenschaften:
+\begin{itemize}
+    \item \(\{\} = \emptyset\) ist die leere Sprache für jedes Alphabet \(\Sigma\).
+    \item \(\{\varepsilon\}\) ist die Sprache, die nur das leere Wort enthält, für jedes Alphabet \(\Sigma\).
+    \item \(\Sigma^*\) ist die Sprache aller Wörter über \(\Sigma\).
+\end{itemize}
+
+\subsubsection{Konkatenation}
+Die Konkatenation von Sprachen \(A\) und \(B\) ist definiert als die Menge aller Konkatenationen von Wörtern aus \(A\) mit Wörtern aus \(B\):
+\[
+    AB = \{ uv \mid u \in A, v \in B \}
+\]
+Die Konkatenation von Sprachen ist assoziativ, aber im Allgemeinen nicht kommutativ:
+\[
+    (AB)C = A(BC), \quad AB \neq BA
+\]
+Ist \(A\) eine Sprache über \(\Sigma\) und \(B\) eine Sprache über \(\Gamma\), so ist \(AB\) eine Sprache über \(\Sigma \cup \Gamma\).
+
+\subsubsection{Kleenesche Hülle}
+Die Kleenesche Hülle \(A^*\) einer Sprache \(A\) ist definiert als die Vereinigung aller Potenzen von \(A\):
+\[
+    A^* = \bigcup_{k \ge 0} A^k
+\]
+Dabei ist \(A^0 = \{\varepsilon\}\) und \(A^{k+1} = A^k A\).
+Die Kleenesche Hülle erfüllt die Eigenschaft:
+\[
+    (A^*)^* = A^*
+\]
+
+
+\subsection{Entscheidungsproblem}
+Sei eine Sprache \(L \subseteq \Sigma^*\) gegeben. Das Entscheidungsproblem für \(L\) besteht darin, für ein beliebiges Wort \(x \in \Sigma^*\) zu entscheiden, ob \(x\) in \(L\) enthalten ist oder nicht:
+\[
+    x \in \Sigma^* \mapsto
+    \begin{cases}
+        \text{JA} & \text{wenn } x \in L, \\
+        \text{NEIN} & \text{wenn } x \notin L.
+    \end{cases}
+\]

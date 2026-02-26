@@ -1,16 +1,16 @@
-\section{Gauss- und Gauss-Jordan-Algorithmus}
+\section{Gauss-(Jordan-)Algorithmus}
 
 \subsection{Erweiterte Koeffizientenmatrix}
 LGS $A\vec{x} = \vec{b}$ mit $m$ Gleichungen, $n$ Unbekannten als erweiterte Matrix:
 \begin{equation*}
     (A \ | \ \vec{b} \ ) = \left[
-    \begin{array}{cccc|c}
-        a_{11} & a_{12} & \dots  & a_{1n} & b_1 \\
-        a_{21} & a_{22} & \dots  & a_{2n} & b_2 \\
-        \vdots & \vdots & \ddots & \vdots & \vdots \\
-        a_{m1} & a_{m2} & \dots  & a_{mn} & b_m
-    \end{array}
-    \right]
+        \begin{array}{cccc|c}
+            a_{11} & a_{12} & \dots  & a_{1n} & b_1    \\
+            a_{21} & a_{22} & \dots  & a_{2n} & b_2    \\
+            \vdots & \vdots & \ddots & \vdots & \vdots \\
+            a_{m1} & a_{m2} & \dots  & a_{mn} & b_m
+        \end{array}
+        \right]
 \end{equation*}
 
 \subsection{Elementare Zeilenoperationen}
@@ -32,21 +32,21 @@ Bedingungen für ZSF:
 
 \begin{equation*}
     \underbrace{\left[
-    \begin{array}{cccc|c}
-        1 & * & * & * & * \\
-        0 & 1 & * & * & * \\
-        0 & 0 & 1 & * & * \\
-        0 & 0 & 0 & 0 & 0
-    \end{array}
-    \right]}_{\text{ZSF}}
+            \begin{array}{cccc|c}
+                1 & * & * & * & * \\
+                0 & 1 & * & * & * \\
+                0 & 0 & 1 & * & * \\
+                0 & 0 & 0 & 0 & 0
+            \end{array}
+            \right]}_{\text{ZSF}}
     \underbrace{\left[
-    \begin{array}{cccc|c}
-        1 & 0 & 0 & * & * \\
-        0 & 1 & 0 & * & * \\
-        0 & 0 & 1 & * & * \\
-        0 & 0 & 0 & 0 & 0
-    \end{array}
-    \right]}_{\text{RZSF}}
+            \begin{array}{cccc|c}
+                1 & 0 & 0 & * & * \\
+                0 & 1 & 0 & * & * \\
+                0 & 0 & 1 & * & * \\
+                0 & 0 & 0 & 0 & 0
+            \end{array}
+            \right]}_{\text{RZSF}}
 \end{equation*}
 
 \subsection{Algorithmen}
