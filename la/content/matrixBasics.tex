@@ -1,0 +1,50 @@
+\section{Matrix Basics}
+Ein Matrix (\(n \times m\)) ist eine rechteckige Anordnung von Elementen, die in \(n\) Zeilen und \(m\) Spalten organisiert ist.
+\begin{equation*}
+A = \begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1m} \\
+a_{21} & a_{22} & \cdots & a_{2m} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nm} \end{bmatrix}
+\end{equation*}
+
+Die Matrix (\(n \times 1\)) wird als Spaltenvektor bezeichnet, während die Matrix (\(1 \times m\)) als Zeilenvektor bezeichnet wird.
+
+\subsection{Matrixoperationen}
+\subsubsection{Addition und Subtraktion}
+Zwei Matrizen \(A\) und \(B\) der gleichen Dimension (\(n \times m\)) können addiert werden:
+\begin{equation*}
+C = A + B \quad \text{mit} \quad c_{ij} = a_{ij} + b_{ij}
+\end{equation*}
+Subtraktion erfolgt analog:
+\begin{equation*}
+C = A - B \quad \text{mit} \quad c_{ij} = a_{ij} - b_{ij}
+\end{equation*}
+
+\subsubsection{Skalare Multiplikation}
+Ein Matrix \(A\) kann mit einem Skalar \(k\) multipliziert werden:
+\begin{equation*}
+B = kA \quad \text{mit} \quad b_{ij} = k \cdot a_{ij}
+\end{equation*}
+
+\subsubsection{Matrixmultiplikation}
+Zwei Matrizen \(A\) (\(n \times m\)) und \(B\) (\(m \times p\)) können multipliziert werden:
+\begin{equation*}
+C = AB \quad \text{mit} \quad c_{ij} = \sum_{k=1}^{m} a_{ik} b_{kj}
+\end{equation*}
+Die Matrixmultiplikation ist nicht kommutativ, d.h. \(AB \neq BA\) im Allgemeinen.
+
+\subsubsection{Transponieren}
+Die Transponierte einer Matrix \(A\) (\(n \times m\)) ist eine neue Matrix \(A^T\) (\(m \times n\)), bei der die Zeilen und Spalten vertauscht werden:
+\begin{equation*}
+A^T = \begin{bmatrix}a_{11} & a_{21} & \cdots & a_{n1} \\
+a_{12} & a_{22} & \cdots & a_{n2} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{1m} & a_{2m} & \cdots & a_{nm} \end{bmatrix}
+\end{equation*}
+Die Transponierte hat folgende Eigenschaften:
+\begin{itemize}
+    \item \((A^T)^T = A\)
+    \item \((A + B)^T = A^T + B^T\)
+    \item \((kA)^T = kA^T\)
+    \item \((AB)^T = B^T A^T\)
+\end{itemize}

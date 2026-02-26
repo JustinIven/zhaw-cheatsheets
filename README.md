@@ -11,7 +11,7 @@ A collection of cheatsheets for my Bachelor's degree in Computer Science at ZHAW
 - [**WING (Wirtschaft für Ingenieure)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/wing/cheatsheet.pdf)
 
 ## Usage
-Each cheatsheet is written in LaTeX for easy compilation and printing. Navigate to the respective folder and compile the `cheatsheet.tex` file.
+Most cheatsheets are written in LaTeX for easy compilation and printing. Navigate to the respective folder and compile the `cheatsheet.tex` file.
 
 ---
 
