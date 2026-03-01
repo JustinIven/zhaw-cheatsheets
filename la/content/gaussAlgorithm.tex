@@ -3,7 +3,7 @@
 \subsection{Erweiterte Koeffizientenmatrix}
 LGS $A\vec{x} = \vec{b}$ mit $m$ Gleichungen, $n$ Unbekannten als erweiterte Matrix:
 \begin{equation*}
-    (A \ | \ \vec{b} \ ) = \left[
+    (A \mid \vec{b} \ ) = \left[
         \begin{array}{cccc|c}
             a_{11} & a_{12} & \dots  & a_{1n} & b_1    \\
             a_{21} & a_{22} & \dots  & a_{2n} & b_2    \\
@@ -58,7 +58,19 @@ Bedingungen für ZSF:
 Rang: $\text{rg}(A) = $ Anzahl Nicht-Nullzeilen in ZSF von $A$
 
 \begin{itemize}
-    \item $\text{rg}(A) < \text{rg}(A|\vec{b})$: Keine Lösung (inkonsistent)
-    \item $\text{rg}(A) = \text{rg}(A|\vec{b}) = n$: Eindeutige Lösung
-    \item $\text{rg}(A) = \text{rg}(A|\vec{b}) < n$: Unendlich viele Lösungen, Parameter: $n - \text{rg}(A)$
+    \item $\text{rg}(A) < \text{rg}(A \mid \vec{b})$: Keine Lösung (inkonsistent)
+    \item $\text{rg}(A) = \text{rg}(A \mid \vec{b}) = n$: Eindeutige Lösung
+    \item $\text{rg}(A) = \text{rg}(A \mid \vec{b}) < n$: Unendlich viele Lösungen, Parameter: $n - \text{rg}(A)$
 \end{itemize}
+
+\subsection{Parameterdarstellung der Lösung}
+Bei unendlich vielen Lösungen ($\text{rg}(A) < n$):
+
+%TODO: Beispiel einfügen
+\textbf{Vorgehen:}
+\begin{enumerate}
+    \item RZSF bestimmen
+    \item Freie Variablen (ohne Pivot) als Parameter wählen: $t_1, t_2, \dots$
+    \item Gebundene Variablen (mit Pivot) durch freie Variablen ausdrücken
+    \item Lösung: $\vec{x} = \vec{x}_0 + t_1 \vec{v}_1 + t_2 \vec{v}_2 + \dots$, mit $t_i \in \mathbb{R}$
+\end{enumerate}

@@ -1,0 +1,51 @@
+\section{Reguläre Ausdrücke}
+Reguläre Ausdrücke sind ein formale Sprache zur endlichen Beschreibung
+(möglicherweise unendlicher) Sprachen über einem Alphabet $\Sigma$.
+
+\subsection{Syntax}
+Die Menge $\text{RA}_\Sigma$ der regulären Ausdrücke über $\Sigma$ ist
+induktiv definiert durch:
+\begin{itemize}
+    \item $\varnothing, \varepsilon \in \text{RA}_\Sigma$
+    \item \(\Sigma \subset \text{RA}_\Sigma\)
+    \item \(R \in \text{RA}_\Sigma \Rightarrow (R^*) \in \text{RA}_\Sigma\)
+    \item \(R,S \in \text{RA}_\Sigma \Rightarrow (RS) \in \text{RA}_\Sigma\)
+    \item \(R,S \in \text{RA}_\Sigma \Rightarrow (R \mid S) \in \text{RA}_\Sigma\)
+\end{itemize}
+
+Die Menge \(\text{RA}_\Sigma\) der regulären Ausdrücke über dem Alphabet \(\Sigma\) ist eine Sprache über dem Alphabet \(\Sigma \cup \{\varepsilon, \varnothing, (, ), ^*, \mid\}\).
+
+\subsubsection{Abkürzungen}
+\begin{align*}
+    R^+             & := RR^*                    \\
+    R?              & := (R \mid \varepsilon)    \\
+    [R_1,\dots,R_k] & := R_1 \mid \dots \mid R_k
+\end{align*}
+
+
+\subsection{Semantik}
+Jedem regulären Ausdruck $R$ wird eine Sprache $L(R)$ zugeordnet:
+
+\begin{align*}
+    L(\varnothing) & = \emptyset                            \\
+    L(\epsilon)    & = \{\varepsilon\}                      \\
+    L(a)           & = \{a\} \quad \text{für } a \in \Sigma \\
+    L(R^*)         & = L(R)^*                               \\
+    L(RS)          & = L(R)L(S)                             \\
+    L(R \mid S)    & = L(R) \cup L(S)
+\end{align*}
+Eine Sprache $A \subseteq \Sigma^*$ heisst \emph{regulär}, falls es einen
+regulären Ausdruck $R$ mit $A = L(R)$ gibt.
+
+\subsection{Rechenregeln}
+
+Fürjedes Alphabet \(\Sigma\) und alle regulären Ausdrücke \(R,S,T \in \text{RA}_\Sigma\) gelten die folgenden Identitäten:
+
+\begin{align*}
+    L(R \mid S)          & = L(S \mid R)          \\
+    L(R \mid (S \mid T)) & = L((R \mid S) \mid T) \\
+    L(R(S \mid T))       & = L(RS \mid RT)        \\
+    L(R \mid R)          & = L(R)                 \\
+    L(R(ST))             & = L((RS)T)             \\
+    L((R^*)^*)           & = L(R^*)
+\end{align*}
