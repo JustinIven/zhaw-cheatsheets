@@ -1,0 +1,81 @@
+\section*{Endliche Automaten}
+
+\subsection*{Grundidee}
+Endliche Automaten (EA) sind speicherbeschränkte Berechnungsmodelle zur Erkennung formaler Sprachen.
+Der einzige interne Speicher ist der aktuelle Zustand.
+Ein Eingabewort wird sequenziell gelesen; Akzeptanz wird über Endzusände entschieden.
+
+\subsection*{Deterministische endliche Automaten}
+Ein deterministischer endlicher Automat (DEA) ist ein Tupel
+\[
+    M = (Q, \Sigma, \delta, q_0, F)
+\]
+mit
+\begin{itemize}
+    \item endlicher Zustandsmenge \(Q\),
+    \item Alphabet \(\Sigma\),
+    \item totaler Übergangsfunktion \(\delta : Q \times \Sigma \to Q\),
+    \item Startzustand \(q_0 \in Q\),
+    \item Endzustandsmenge \(F \subseteq Q\).
+\end{itemize}
+
+\subsection*{Konfigurationen}
+Eine Konfiguration ist ein Paar
+\[
+    (q,w) \in Q \times \Sigma^*
+\]
+mit aktuellem Zustand \(q\) und Restwort \(w\).
+
+\subsection*{Berechnungsschritte}
+Die Ein-Schritt-Relation ist definiert durch
+\[
+    (q,w) \vdash_M (p,x)
+\]
+genau dann, wenn \(w=ax\) mit \(a\in\Sigma\) und \(\delta(q,a)=p\).
+
+Die reflexiv-transitive Hülle wird mit
+\[
+    (q,w) \vdash_M^* (p,x)
+\]
+bezeichnet.
+
+\subsection*{Akzeptanz und Sprache}
+Für \(w\in\Sigma^*\) startet die Berechnung in \((q_0,w)\).
+\(w\) wird akzeptiert, falls
+\[
+    (q_0,w) \vdash_M^* (q_f,\varepsilon) \quad\text{für ein } q_f\in F.
+\]
+
+Die erkannte Sprache ist
+\[
+    L(M)=\{\,w\in\Sigma^* \mid (q_0,w)\vdash_M^*(q_f,\varepsilon) \text{ für ein } q_f\in F\,\}.
+\]
+
+\subsection*{Nichtdeterministische endliche Automaten}
+Ein nichtdeterministischer endlicher Automat (NEA) hat dieselbe Struktur
+\[
+    M = (Q,\Sigma,\delta,q_0,F)
+\]
+wobei
+\[
+    \delta : Q \times \Sigma \to \mathcal{P}(Q)
+\]
+gilt. Damit sind mehrere Folgezustände pro Symbol möglich.
+
+Akzeptanz: Es existiert mindestens ein Lauf, der in einem Zustand aus \(F\) endet.
+
+\subsection*{Äquivalenz von DEA und NEA}
+Sein NEA \(N=(Q_N,\Sigma,\delta_N,q_{0N},F_N)\) kann in einen equivalenten DEA \(D=(Q_D,\Sigma,\delta_D,q_{0D},F_D)\) überführt werden durch
+\begin{itemize}
+    \item \(Q_D = \mathcal{P}(Q_N)\) (Mengen von NEA-Zuständen),
+    \item \(F_D = \{S \subseteq Q_N \mid S \cap F_N \neq \emptyset\}\) (DEA-Endzustände sind Mengen, die mindestens einen NEA-Endzustand enthalten),
+    \item \(\delta_D(S,a) = \bigcup_{q \in S} \delta_N(q,a)\) für \(S \subseteq Q_N\) und \(a \in \Sigma\) (Menge aller Zustände, die durch \(a\) von einem Zustand in \(S\) erreichbar sind),
+\end{itemize}
+
+\subsection*{$\varepsilon$-Übergänge}
+\(\varepsilon\)-NEAs erlauben Übergänge ohne Symbolkonsum mit
+\[
+    \delta : Q \times (\Sigma \cup \{\varepsilon\}) \to \mathcal{P}(Q).
+\]
+Auch \(\varepsilon\)-NEAs sind durch Eliminierung von \(\varepsilon\)-Übergängen und anschliessende Determinisierung zu DEA äquivalent.
+

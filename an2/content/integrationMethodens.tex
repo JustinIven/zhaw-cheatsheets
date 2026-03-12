@@ -1,0 +1,20 @@
+\section{Integrationsmethoden}
+\subsection{Substitution}
+\textbf{Ziel:} Vereinfachung des Integrals durch Ersetzen von Variablen.
+\textbf{Vorgehen:}
+\begin{enumerate}
+    \item Substitutionsregel: $u = g(x)$, $du = g'(x) dx$
+    \item Integral in $u$-Form umschreiben: $\int f(g(x)) g'(x) dx = \int f(u) du$
+    \item Integral in $u$-Form lösen
+    \item Rücksubstitution: Ergebnis in $x$-Form zurückführen
+\end{enumerate}
+
+\subsection{Partielle Integration}
+\textbf{Ziel:} Vereinfachung des Integrals durch Aufteilung in zwei Funktionen.
+\textbf{Vorgehen:}
+\begin{enumerate}
+    \item Auswahl von $u$ und $dv$: $u = f(x)$, $dv = g(x) dx$
+    \item Berechnung von $du$ und $v$: $du = f'(x) dx$, $v = \int g(x) dx$
+    \item Anwendung der Formel: $\int f(x) g(x) dx = u v - \int v du$
+    \item Integral $\int v du$ lösen
+\end{enumerate}

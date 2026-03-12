@@ -1,0 +1,260 @@
+\section{Vectorgeometrie}
+Ein Vektor \(\vec{v}\) beschreibt eine Translation (Verschiebung) im Raum und wird durch seine Richtung und Länge \(|\vec{v}|\) charakterisiert.\\
+Ein Vektor von Punkt \(A\) zu Punkt \(B\) wird als \(\overrightarrow{AB}\) bezeichnet. Spezielle Vektoren:
+\begin{itemize}
+     \item \textbf{Nullvektor} \(\vec{0}\): Ein Vektor mit Länge 0, der keine Richtung hat.
+     \item \textbf{Einheitsvektor} \(\vec{e}_i\): Ein Vektor, der in der Richtung der \(i\)-ten Achse liegt und die Länge 1 hat.
+     \item \textbf{Gegenvektor} \(-\vec{v}\): Ein Vektor, der die gleiche Länge wie \(\vec{v}\) hat, aber in die entgegengesetzte Richtung zeigt.
+\end{itemize}
+
+\subsection{Vektoraddition}
+Werden zwei Verschiebungen hintereinander ausgeführt, entspricht dies der Addition der Vektoren.
+
+Rechenregeln:
+\begin{align*}
+     \vec a + \vec 0            & = \vec a                                                     \\
+     \vec a + (-\vec a)         & = \vec 0                                                     \\
+     \vec a + \vec b            & = \vec b + \vec a \quad \text{(Kommutativgesetz)}            \\
+     (\vec a + \vec b) + \vec c & = \vec a + (\vec b + \vec c) \quad \text{(Assoziativgesetz)}
+\end{align*}
+
+\subsection{Skalare Multiplikation}
+Die Multiplikation eines Vektors mit einer reellen Zahl $\lambda$ verändert seine Länge:
+
+\begin{itemize}
+     \item $|\lambda \vec a| = |\lambda| \cdot |\vec a|$
+     \item $\lambda > 0$: gleiche Richtung
+     \item $\lambda < 0$: entgegengesetzte Richtung
+     \item $\lambda = 0$: Nullvektor
+\end{itemize}
+
+Wichtige Rechenregeln:
+\begin{align*}
+     1\vec a                  & = \vec a                        \\
+     \lambda(\mu \vec a)      & = (\lambda\mu)\vec a            \\
+     (\lambda + \mu)\vec a    & = \lambda\vec a + \mu\vec a     \\
+     \lambda(\vec a + \vec b) & = \lambda\vec a + \lambda\vec b
+\end{align*}
+
+\subsection{Linearkombination}
+Eine Linearkombination von Vektoren $\vec a_1,\dots,\vec a_n$ ist ein Ausdruck der Form
+
+\[
+     \lambda_1 \vec a_1 + \lambda_2 \vec a_2 + \dots + \lambda_n \vec a_n \quad \text{mit} \quad \lambda_i \in \mathbb{R}
+\]
+
+
+
+\subsection{Kollinearität und Komplanarität}
+
+\textbf{Kollinear:}
+Zwei Vektoren sind kollinear, wenn einer ein Vielfaches des anderen ist:
+
+\[
+     \vec a = \lambda \vec b
+\]
+
+\textbf{Komplanar:}
+Drei Vektoren sind komplanar, wenn sie in derselben Ebene liegen.
+Ist $\vec a$ und $\vec b$ nicht kollinear, kann jeder dritte Vektor dargestellt werden als:
+
+\[
+     \vec c = \lambda \vec a + \mu \vec b
+\]
+
+Sind drei Vektoren im $\mathbb{R}^3$ nicht komplanar, kann jeder Vektor geschrieben werden als
+
+\[
+     \vec d = \lambda \vec a + \mu \vec b + \nu \vec c
+\]
+
+\subsection{Koordinatendarstellung}
+
+Mit Einheitsvektoren $\vec e_1, \vec e_2, \dots, \vec e_n$ in $\mathbb{R}^n$ gilt:
+
+\[
+     \vec a = a_1 \vec e_1 + a_2 \vec e_2 + \dots + a_n \vec e_n = \sum_{i=1}^{n} a_i \vec e_i
+\]
+
+Komponentenschreibweise:
+
+\[
+     \vec a =
+     \begin{pmatrix}
+          a_1    \\
+          a_2    \\
+          \vdots \\
+          a_n
+     \end{pmatrix}
+\]
+
+Ein Punkt $P(x_1, x_2, \dots, x_n)$ hat den Ortsvektor
+
+\[
+     \vec r(P) =
+     \begin{pmatrix}
+          x_1    \\
+          x_2    \\
+          \vdots \\
+          x_n
+     \end{pmatrix}
+\]
+
+\subsection{Betrag eines Vektors}
+
+In $\mathbb{R}^n$:
+
+\[
+     |\vec a| = \sqrt{a_1^2 + a_2^2 + \dots + a_n^2} = \sqrt{\sum_{i=1}^{n} a_i^2}
+\]
+
+\subsection{Vektor zwischen zwei Punkten}
+
+Für Punkte $P(x_{P,1}, x_{P,2}, \dots, x_{P,n})$ und $Q(x_{Q,1}, x_{Q,2}, \dots, x_{Q,n})$ in $\mathbb{R}^n$ gilt:
+
+\[
+     \overrightarrow{PQ} = r(Q) - r(P) =
+     \begin{pmatrix}
+          x_{Q,1} - x_{P,1} \\
+          x_{Q,2} - x_{P,2} \\
+          \vdots            \\
+          x_{Q,n} - x_{P,n}
+     \end{pmatrix}
+\]
+
+Der Abstand der Punkte ist:
+
+\[
+     |PQ| = \sqrt{\sum_{i=1}^{n} (x_{Q,i}-x_{P,i})^2}
+\]
+
+
+
+\subsection{Skalarprodukt}
+
+Das Skalarprodukt zweier Vektoren $\vec a$ und $\vec b$ ist
+\[
+     \vec a \cdot \vec b = |\vec a|\,|\vec b|\cos(\varphi),
+\]
+mit $0 \le \varphi \le \pi$. Das Ergebnis ist eine reelle Zahl.
+
+\subsubsection{Eigenschaften}
+Für $\vec a,\vec b,\vec c \in \mathbb{R}^n$ und $\lambda \in \mathbb{R}$:
+
+\begin{itemize}
+     \item $\vec a \cdot \vec b = 0 \iff \vec a$ und $\vec b$ sind orthogonal.
+     \item $\vec a \cdot \vec a = |\vec a|^2$
+     \item $\vec a \cdot \vec b = \vec b \cdot \vec a$
+     \item Distributiv in beiden Argumenten:
+           \[
+                \vec a \cdot (\vec b + \vec c) = \vec a \cdot \vec b + \vec a \cdot \vec c
+           \]
+     \item Verträglich mit Skalaren:
+           \[
+                \lambda (\vec a \cdot \vec b) = (\lambda \vec a) \cdot \vec b = \vec a \cdot (\lambda \vec b)
+           \]
+\end{itemize}
+
+\subsubsection{Berechnung über Komponenten}
+
+In $\mathbb{R}^2$:
+\[
+     (a_1,a_2)\cdot(b_1,b_2)=a_1b_1+a_2b_2
+\]
+
+In $\mathbb{R}^3$:
+\[
+     (a_1,a_2,a_3)\cdot(b_1,b_2,b_3)=a_1b_1+a_2b_2+a_3b_3
+\]
+
+\subsubsection{Winkel zwischen zwei Vektoren}
+% TODO: Grafik einfügen: Zwei Vektoren mit Zwischenwinkel phi und Projektion auf die Achse.
+
+\[
+     \varphi = \arccos\left(\frac{\vec a \cdot \vec b}{|\vec a|\,|\vec b|}\right)
+\]
+
+\subsubsection{Orthogonale Projektion}
+
+Die Projektion von $\vec b$ auf $\vec a$:
+
+\[
+     \vec b_a = \frac{\vec a \cdot \vec b}{|\vec a|^2}\,\vec a
+\]
+
+und ihre Länge:
+
+\[
+     |\vec b_a|=\frac{|\vec a \cdot \vec b|}{|\vec a|}
+\]
+
+% TODO: Grafik einfügen: Zerlegung von b in parallelen und orthogonalen Anteil zu a.
+
+\subsection{Vektorprodukt}
+
+Das Vektorprodukt im $\mathbb{R}^3$ liefert einen Vektor $\vec a \times \vec b$.
+
+\begin{itemize}
+     \item Betrag:
+           \[
+                |\vec a \times \vec b| = |\vec a|\,|\vec b|\sin(\varphi)
+           \]
+     \item $\vec a \times \vec b$ ist orthogonal zu $\vec a$ und $\vec b$
+     \item Richtung nach der Rechte-Hand-Regel
+\end{itemize}
+
+% TODO: Grafik einfügen: Rechte-Hand-Regel für a x b.
+
+\subsubsection{Eigenschaften}
+
+\begin{itemize}
+     \item $\vec a \times \vec b = \vec 0 \iff \vec a$ und $\vec b$ sind kollinear
+     \item $\vec a \times \vec a = \vec 0$
+     \item Antikommutativ:
+           \[
+                \vec a \times \vec b = -(\vec b \times \vec a)
+           \]
+     \item Distributiv in beiden Argumenten:
+           \[
+                \vec a \times (\vec b+\vec c)=\vec a \times \vec b + \vec a \times \vec c
+           \]
+     \item Verträglich mit Skalaren:
+           \[
+                \lambda(\vec a\times\vec b)=(\lambda\vec a)\times\vec b=\vec a\times(\lambda\vec b)
+           \]
+     \item Nicht assoziativ:
+           \[
+                \vec a\times(\vec b\times\vec c)\neq(\vec a\times\vec b)\times\vec c
+           \]
+\end{itemize}
+
+\subsubsection{Berechnung über Komponenten}
+\[
+     \vec a \times \vec b =
+     \begin{pmatrix}
+          a_1 \\
+          a_2 \\
+          a_3
+     \end{pmatrix} \times
+     \begin{pmatrix}
+          b_1 \\
+          b_2 \\
+          b_3
+     \end{pmatrix}
+     =
+     \begin{pmatrix}
+          a_2b_3-a_3b_2 \\
+          a_3b_1-a_1b_3 \\
+          a_1b_2-a_2b_1
+     \end{pmatrix}
+\]
+
+\subsubsection{Geometrische Bedeutung}
+
+Der Betrag des Vektorproduktes entspricht dem Flächeninhalt des von $\vec a$ und $\vec b$ aufgespannten Parallelogramms:
+
+\[
+     A = |\vec a \times \vec b|
+\]
+
+% TODO: Grafik einfügen: Parallelogramm mit Seiten a,b und Fläche |a x b|.
