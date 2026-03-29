@@ -1,0 +1,75 @@
+\section{Kellerautomaten}
+
+\subsection{Grundidee}
+Kellerautomaten (KA) erweitern endliche Automaten um einen Stack (Keller) als Speicherstruktur mit LIFO-Zugriff.
+Sie erkennen genau die Klasse der kontextfreien Sprachen.
+
+\subsection{Deterministischer Kellerautomat }
+Ein deterministischer Kellerautomat ist ein Tupel
+\[
+    M = (Q, \Sigma, \Gamma, \delta, q_0, \$, F)
+\]
+wobei
+\begin{itemize}
+    \item \(Q\) eine endliche Menge von Zuständen,
+    \item \(\Sigma\) ein endliches Eingabealphabet,
+    \item \(\Gamma\) ein endliches Kelleralphabet,
+    \item \(\delta : Q \times \Sigma \times \Gamma \to Q \times \Gamma^*\) eine Übergangsfunktion,
+    \item \(q_0 \in Q\) der Startzustand,
+    \item \(\$ \in \Gamma\) das Startkellersymbol,
+    \item \(F \subseteq Q\) die Menge der akzeptierenden Zustände.
+\end{itemize}
+
+Damit der Determinismus gewährleistet ist, gilt für jeden Zustand \(q\) und alle Symbole \(a \in \Sigma\) und \(x \in \Gamma\), wenn \(\delta(q, a, x)\) definiert ist, dann ist \(\delta(q, \varepsilon, x)\) nicht definiert und umgekehrt.
+
+\subsection{Graphische Darstellung}
+Der Übergang \(\delta(q_0, a, x) = (q_1, w)\) wird grafisch dargestellt als\\
+\begin{center}
+
+    \begin{tikzpicture}[main/.style = {draw, circle}]
+        \node[main] (q) {$q_0$};
+        \node[main] (p) [right=1.5cm of q] {$q_1$};
+        \draw[->] (q) to node[above] {\(a, x/w\)} (p);
+    \end{tikzpicture}
+\end{center}
+
+\subsection{Nichtdeterministischer Kellerautomat}
+Ein nichtdeterministischer Kellerautomat wird durch den selben Tupel wie der deterministische definiert, jedoch ist die Übergangsfunktion
+\[
+    \delta : Q \times (\Sigma \cup \{\varepsilon\}) \times \Gamma \to \mathcal{P}(Q \times \Gamma^*),
+\]
+
+\subsection{Konfigurationen}
+Eine Konfiguration ist ein Tripel
+\[
+    (q,w,\gamma) \in Q \times \Sigma^* \times \Gamma^*
+\]
+mit aktuellem Zustand \(q\), Restwort \(w\) und Kellerinhalt \(\gamma\) (oberstes Symbol links).
+\begin{itemize}
+    \item \((q_0,w,\$)\) ist die Startkonfiguration.
+    \item \((q,\varepsilon,\gamma)\) ist eine Endkonfiguration.
+\end{itemize}
+
+\subsection{Berechnungsschritt}
+Ein Schritt
+\[
+    (q,aw,X\beta) \vdash_M (p,w,\gamma\beta)
+\]
+ist möglich, falls \((p,\gamma) \in \delta(q,a,X)\) für \(a \in \Sigma\).
+
+Ein \(\varepsilon\)-Schritt
+\[
+    (q,w,X\beta) \vdash_M (p,w,\gamma\beta)
+\]
+ist möglich, falls \((p,\gamma) \in \delta(q,\varepsilon,X)\).
+
+Die reflexiv-transitive Hülle wird mit \(\vdash_M^*\) bezeichnet.
+
+\subsection{Akzeptanz}
+Ein Wort \(w\) wird von \(M\) akzeptiert, wenn es eine Berechnung gibt, die von der Startkonfiguration \((q_0,w,\$)\) zu einer Endkonfiguration \((q_f,\varepsilon,\gamma)\) mit \(q_f \in F\) und \(\gamma \in \Gamma^*\) führt:
+\[
+    w \in L(M) \iff (q_0,w,\$) \vdash_M^* (q_f,\varepsilon,\gamma)
+\]
+
+\subsection{Beziehung zu Grammatiken}
+Eine Sprache ist kontextfrei genau dann, wenn es einen nichtdeterministischen Kellerautomaten gibt, der sie akzeptiert.

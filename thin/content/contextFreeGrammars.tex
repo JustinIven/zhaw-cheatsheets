@@ -1,0 +1,56 @@
+\section{Kontextfreie Grammatiken}
+
+\subsection{Definition}
+Eine kontextfreie Grammatik (KFG) ist ein Tupel
+\[
+	G = (N, \Sigma, P, S)
+\]
+mit
+\begin{itemize}
+	\item Alphabet der \textbf{Nichtterminalen} $N$,
+	\item Alphabet der \textbf{Terminalen} $\Sigma$ mit $N \cap \Sigma = \emptyset$,
+	\item Endliche Menge \textbf{Produktionen} $P \subseteq N \times (N \cup \Sigma)^*$,
+	\item \textbf{Startsymbol} $S \in N$.
+\end{itemize}
+
+Eine Produktion hat die Form
+\[
+	A \to \alpha \quad \text{mit } A \in N,\; \alpha \in (N \cup \Sigma)^*.
+\]
+\(\alpha \in (N \cup \Sigma)^*\) wird auch als \textbf{Satzformel} bezeichnet.
+
+\subsection{Ableitung}
+Der Ableitungsschritt ist definiert durch
+\[
+	uAv \Rightarrow_G u\alpha v
+\]
+genau dann, wenn $A \to \alpha \in P$ und $u,v \in (N \cup \Sigma)^*$.
+
+Die reflexiv-transitive Hülle wird mit $\Rightarrow_G^*$ bezeichnet.
+
+\subsection{Erzeugte Sprache}
+Die von $G$ erzeugte Sprache ist
+\[
+	L(G) = \{\,w \in \Sigma^* \mid S \Rightarrow_G^* w\,\}.
+\]
+Eine Sprache $L \subseteq \Sigma^*$ heisst kontextfrei, falls es eine KFG $G$ mit $L=L(G)$ gibt.
+
+\subsection{Links- und Rechtsableitung}
+\begin{itemize}
+	\item \textbf{Linksableitung:} In jedem Schritt wird das linkeste Nichtterminal ersetzt.
+	\item \textbf{Rechtsableitung:} In jedem Schritt wird das rechteste Nichtterminal ersetzt.
+\end{itemize}
+Beide beschreiben dieselbe erzeugte Sprache.
+
+\subsection{Ableitungsbaum}
+Ein Ableitungsbaum repräsentiert die hierarchische Struktur einer Ableitung:
+\begin{itemize}
+	\item Wurzel ist $S$.
+	\item Innere Knoten sind Nichtterminale.
+	\item Blätter sind Terminalsymbole.
+\end{itemize}
+Die von links nach rechts gelesenen Blätter ergeben das erzeugte Wort.
+
+\subsection{Mehrdeutigkeit}
+Eine Grammatik ist mehrdeutig, wenn es ein Wort $w \in L(G)$ mit mindestens zwei verschiedenen Ableitungsbäumen gibt.
+Eine Sprache heisst inherent mehrdeutig, wenn jede Grammatik, die sie erzeugt, mehrdeutig ist.

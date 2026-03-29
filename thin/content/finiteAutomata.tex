@@ -1,11 +1,11 @@
-\section*{Endliche Automaten}
+\section{Endliche Automaten}
 
-\subsection*{Grundidee}
+\subsection{Grundidee}
 Endliche Automaten (EA) sind speicherbeschränkte Berechnungsmodelle zur Erkennung formaler Sprachen.
 Der einzige interne Speicher ist der aktuelle Zustand.
 Ein Eingabewort wird sequenziell gelesen; Akzeptanz wird über Endzusände entschieden.
 
-\subsection*{Deterministische endliche Automaten}
+\subsection{Deterministische endliche Automaten}
 Ein deterministischer endlicher Automat (DEA) ist ein Tupel
 \[
     M = (Q, \Sigma, \delta, q_0, F)
@@ -19,14 +19,14 @@ mit
     \item Endzustandsmenge \(F \subseteq Q\).
 \end{itemize}
 
-\subsection*{Konfigurationen}
+\subsection{Konfigurationen}
 Eine Konfiguration ist ein Paar
 \[
     (q,w) \in Q \times \Sigma^*
 \]
 mit aktuellem Zustand \(q\) und Restwort \(w\).
 
-\subsection*{Berechnungsschritte}
+\subsection{Berechnungsschritte}
 Die Ein-Schritt-Relation ist definiert durch
 \[
     (q,w) \vdash_M (p,x)
@@ -39,7 +39,7 @@ Die reflexiv-transitive Hülle wird mit
 \]
 bezeichnet.
 
-\subsection*{Akzeptanz und Sprache}
+\subsection{Akzeptanz und Sprache}
 Für \(w\in\Sigma^*\) startet die Berechnung in \((q_0,w)\).
 \(w\) wird akzeptiert, falls
 \[
@@ -51,7 +51,7 @@ Die erkannte Sprache ist
     L(M)=\{\,w\in\Sigma^* \mid (q_0,w)\vdash_M^*(q_f,\varepsilon) \text{ für ein } q_f\in F\,\}.
 \]
 
-\subsection*{Nichtdeterministische endliche Automaten}
+\subsection{Nichtdeterministische endliche Automaten}
 Ein nichtdeterministischer endlicher Automat (NEA) hat dieselbe Struktur
 \[
     M = (Q,\Sigma,\delta,q_0,F)
@@ -64,7 +64,7 @@ gilt. Damit sind mehrere Folgezustände pro Symbol möglich.
 
 Akzeptanz: Es existiert mindestens ein Lauf, der in einem Zustand aus \(F\) endet.
 
-\subsection*{Äquivalenz von DEA und NEA}
+\subsection{Äquivalenz von DEA und NEA}
 Sein NEA \(N=(Q_N,\Sigma,\delta_N,q_{0N},F_N)\) kann in einen equivalenten DEA \(D=(Q_D,\Sigma,\delta_D,q_{0D},F_D)\) überführt werden durch
 \begin{itemize}
     \item \(Q_D = \mathcal{P}(Q_N)\) (Mengen von NEA-Zuständen),
@@ -72,10 +72,64 @@ Sein NEA \(N=(Q_N,\Sigma,\delta_N,q_{0N},F_N)\) kann in einen equivalenten DEA \
     \item \(\delta_D(S,a) = \bigcup_{q \in S} \delta_N(q,a)\) für \(S \subseteq Q_N\) und \(a \in \Sigma\) (Menge aller Zustände, die durch \(a\) von einem Zustand in \(S\) erreichbar sind),
 \end{itemize}
 
-\subsection*{$\varepsilon$-Übergänge}
+\subsection{$\varepsilon$-Übergänge}
 \(\varepsilon\)-NEAs erlauben Übergänge ohne Symbolkonsum mit
 \[
     \delta : Q \times (\Sigma \cup \{\varepsilon\}) \to \mathcal{P}(Q).
 \]
 Auch \(\varepsilon\)-NEAs sind durch Eliminierung von \(\varepsilon\)-Übergängen und anschliessende Determinisierung zu DEA äquivalent.
 
+
+\subsection{Äquivalenz DEA und RA}
+Jede von einem DEA erkannte Sprache kann durch einen regulären Ausdruck beschrieben werden, und umgekehrt. Diese Sprachen werden als reguläre bezeichnet.
+Reguläre Sprachen sind durch verschiedene Formalismen äquivalent beschreibbar, darunter DEA, NEA, \(\varepsilon\)-NEA und reguläre Ausdrücke.
+\begin{itemize}
+    \item \textbf{Akzeptierende Mech.:} DEA, NEA, \(\varepsilon\)-NEA
+    \item \textbf{Beschreibungsform:} reguläre Ausdrücke
+\end{itemize}
+
+\subsection*{Abschlusseigenschaften regulärer Sprachen}
+Die Klasse der regulären Sprachen ist unter verschiedenen Operationen abgeschlossen.
+
+Seien $L, L_1, L_2 \subseteq \Sigma^*$ reguläre Sprachen. Dann sind ebenfalls regulär:
+\begin{itemize}
+    \item Vereinigung: \(L_1 \cup L_2\)
+    \item Konkatenation: \(L_1 L_2\)
+    \item Kleenesche Hülle: \(L^*\)
+    \item Komplement: \(\overline{L} = \Sigma^* \setminus L\)
+    \item Schnitt: \(L_1 \cap L_2\)
+    \item Mengendifferenz: \(L_1 \setminus L_2\)
+\end{itemize}
+
+\subsection*{Zustandsklassen}
+Zu jedem Zustand $p$ eines Automaten $M$ gehört die Zustandsklasse
+\[
+[p] = \{ w \in \Sigma^* \mid M \text{ endet nach dem Lesen von } w \text{ in } p \}.
+\]
+
+Die Zustandsklassen besitzen folgende Eigenschaften:
+\begin{itemize}
+    \item Die Menge aller Wörter wird durch die Klassen partitioniert:
+    \[
+    \Sigma^* = \bigcup_{p \in Q} [p]
+    \]
+    \item Für verschiedene Zustände sind die Klassen disjunkt:
+    \[
+    [p] \cap [q] = \emptyset \quad \text{für } p \ne q
+    \]
+    \item Die von $M$ akzeptierte Sprache ergibt sich als Vereinigung der Klassen akzeptierender Zustände:
+    \[
+    L(M) = \bigcup_{p \in F} [p]
+    \]
+\end{itemize}
+
+\subsection*{Grenzen endlicher Automaten}
+Ein endlicher Automat hat nur endlich viele Zustände und deshalb nur begrenzten Speicher.
+
+Landen zwei Wörter $x$ und $y$ im selben Zustand, kann der Automat sie nicht mehr unterscheiden. Daher gilt für jedes Fortsetzungswort $z \in \Sigma^*$:
+\[
+xz \in L(M) \iff yz \in L(M).
+\]
+
+Wörter derselben Zustandsklasse verhalten sich also bei jeder Fortsetzung gleich.
+Damit kann man Mindestzahlen für die benötigten Zustände eines Automaten ableiten.
