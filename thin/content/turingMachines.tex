@@ -1,1 +1,102 @@
 \section{Turingmaschinen}
+
+\subsection{Grundidee}
+Eine Turing-Maschine (TM) ist ein endlicher Automat, ergänzt um einen Lese-/Schreibkopf und ein beidseitig unendliches Band von Zellen.
+Die Eingabe steht zu Beginn auf dem Band; alle übrigen Zellen enthalten das Leerzeichen \(\shortsqcup\).
+
+\subsection{Deterministische Turing-Maschine}
+Eine deterministische TM ist ein 7-Tupel
+\[
+    M = (Q, \Sigma, \Gamma, \delta, q_0, \shortsqcup, F)
+\]
+mit
+\begin{itemize}
+    \item endlicher Zustandsmenge \(Q\),
+    \item Eingabealphabet \(\Sigma\) mit \(\Sigma \subset \Gamma\),
+    \item Bandalphabet \(\Gamma\) (endliche Menge von Symbolen),
+    \item Übergangsfunktion \(\delta : Q \times \Gamma \to Q \times \Gamma \times \{L, R\}\),
+    \item Startzustand \(q_0 \in Q\),
+    \item Leerzeichen \(\shortsqcup \in \Gamma \setminus \Sigma\),
+    \item Menge akzeptierender Zustände \(F \subseteq Q\).
+\end{itemize}
+
+\subsection{Graphische Darstellung}
+Der Übergang \(\delta(q_0, X) = (q_1, Y, D)\) wird dargestellt als\\
+\begin{center}
+    \begin{tikzpicture}[main/.style = {draw, circle}]
+        \node[main] (q) {$q_0$};
+        \node[main] (p) [right=1.5cm of q] {$q_1$};
+        \draw[->] (q) to node[above] {\(X/Y, D\)} (p);
+    \end{tikzpicture}
+\end{center}
+wobei \(D \in \{L, R\}\) die Bewegungsrichtung des Kopfes angibt.
+
+\subsection{Konfiguration}
+Eine Zeichenreihe
+\[
+    K = X_1 X_2 \ldots X_{i-1}\, q\, X_i X_{i+1} \ldots X_n
+\]
+heisst Konfiguration von \(M\), wobei \(q \in Q\) der aktuelle Zustand ist und der Kopf über \(X_i\) steht. \\
+\textbf{Startkonfiguration:} \(K_0 = q_0 X_1 X_2 \ldots X_n\) (Kopf auf erstem Zeichen).
+
+\subsection{Berechnungsschritte}
+Für \(\delta(q, X_i) = (p, Y, R)\) (Bewegung nach rechts):
+\[
+    \ldots X_{i-1}\, q\, X_i \ldots \vdash \ldots X_{i-1}\, Y\, p\, X_{i+1} \ldots
+\]
+Für \(\delta(q, X_i) = (p, Y, L)\) (Bewegung nach links):
+\[
+    \ldots X_{i-1}\, q\, X_i \ldots \vdash \ldots X_{i-2}\, p\, X_{i-1}\, Y\, X_{i+1} \ldots
+\]
+
+\subsection{Berechnung}
+Eine Berechnung auf Eingabe \(w \in \Sigma^*\) ist eine endliche Folge
+\[
+    K_0 \vdash K_1 \vdash \cdots \vdash K_n
+\]
+wobei \(K_0\) die Startkonfiguration ist und aus \(K_n\) keine Bewegung mehr möglich ist. Kurzschreibweise: \(K_0 \vdash^* K_n\).
+
+\subsection{Sprache einer TM}
+Die von \(M\) akzeptierte Sprache ist
+\[
+    L(M) = \{ w \mid q_0 w \vdash^* \alpha p \beta,\; p \in F \text{ und } \alpha, \beta \in \Gamma^* \}.
+\]
+Eine Sprache, die von einer TM akzeptiert wird, heisst \textbf{rekursiv aufzählbar}. Die Klasse der rekursiv aufzählbaren Sprachen umfasst u.\,a.\ alle kontextfreien Sprachen.
+
+\subsection{Erweiterungen von TM}
+
+\subsubsection{TM mit Speichern}
+In der Zustandssteuerung werden zusätzlich endlich viele Datenzustände gespeichert.
+Ist nur eine Vereinfachung: \(Q_{\text{neu}} = Q \times \Gamma^k\) für \(k\) Speicher.
+
+\subsubsection{TM mit mehreren Spuren}
+Das Band hat \(n\) Spuren; jede Zelle speichert ein \(n\)-Tupel. Simulation durch
+\(\Gamma_{\text{neu}} = \Gamma^n\).
+
+\subsubsection{TM mit mehreren Bändern}
+Die TM besitzt \(k\) Bänder mit je einem unabhängigen Lese-/Schreibkopf.
+Übergangsfunktion:
+\[
+    \delta : Q \times \Gamma^k \to Q \times \Gamma^k \times \{R, L, S\}^k
+\]
+\textbf{Satz:} Jede Sprache, die von einer mehrbändigen TM akzeptiert wird, wird auch von einer TM mit nur einem Band akzeptiert (Simulation mit \(2k\) Spuren).
+
+\subsubsection{Nichtdeterministische TM (NTM)}
+Eine NTM hat die Übergangsfunktion
+\[
+    \delta : Q \times \Gamma \to \mathcal{P}(Q \times \Gamma \times D).
+\]
+\textbf{Satz:} Jede Sprache, die von einer NTM akzeptiert wird, wird auch von einer deterministischen TM akzeptiert (Simulation über Breitensuche aller Konfigurationen).
+
+\subsection{Beschränkungen von TM}
+
+\subsubsection{TM mit semi-unendlichem Band}
+Das Band ist nur in eine Richtung unendlich. \\
+\textbf{Satz:} Jede TM kann durch eine TM mit semi-unendlichem Band und zwei Spuren simuliert werden.
+
+\subsubsection{Maschine mit mehreren Stacks}
+Eine \(k\)-Stack-Maschine ist ein DKA mit \(k\) Stacks.
+\[
+    \delta : Q \times \Gamma_1 \times \cdots \times \Gamma_k \to Q \times \Gamma_1^* \times \cdots \times \Gamma_k^*
+\]
+\textbf{Satz:} Jede TM kann durch eine 2-Stack-Maschine simuliert werden (Nachbildung des Bandes durch zwei Stacks).

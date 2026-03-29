@@ -32,3 +32,7 @@
 % Set column separation
 % \setlength{\columnseprule}{1pt}
 % \def\columnseprulecolor{\color{blue}}
+
+% define a smaller version of the \sqcup symbol for Turing machines white space
+\newcommand{\shortsqcup}{\mathbin{\mathpalette\shortsqcupaux\sqcup}}
+\newcommand{\shortsqcupaux}[2]{\scalebox{1}[0.5]{$#1#2$}}
