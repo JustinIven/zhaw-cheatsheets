@@ -1,0 +1,54 @@
+\section{Geraden}
+
+Eine \emph{Gerade} $g$ im $\mathbb{R}^n$ ist die Menge aller Punkte, die sich von einem \emph{Aufpunkt} $P$ aus in Richtung eines festen \emph{Richtungsvektors} $\vec{a} \neq \vec{0}$ erreichen lassen.
+
+\subsection{Parameterdarstellung}
+Eine Gerade $g$ lässt sich durch einen Aufpunkt $P$ und einen Richtungsvektor $\vec{a}$ mittels der folgenden Parameterdarstellung beschreiben:
+\[
+    g\colon \vec r(P) + \lambda \vec a, \quad \lambda \in \mathbb{R}
+\]
+
+
+Ein Punkt $A$ liegt auf der Geraden $g$, wenn folgendes gilt:
+\[
+    A \in g \;\Leftrightarrow\; \exists\,\lambda_A\colon \vec r(A) = \vec r(P) + \lambda_A \vec a
+\]
+
+\subsection{Gegenseitige Lage zweier Geraden}
+
+Zwei Geraden im $\mathbb{R}^n$ können vier verschiedene Lagebeziehungen haben; im $\mathbb{R}^3$ kommt zusätzlich die \emph{windschiefe} Lage hinzu.
+
+$g\colon \vec r(P) + \lambda\vec a$, \; $h\colon \vec r(Q) + \mu\vec b$:
+
+\begin{itemize}[leftmargin=*, itemsep=0pt]
+    \item $\vec a \parallel \vec b$, gemeinsamer Punkt $\Rightarrow$ \textbf{identisch}
+    \item $\vec a \parallel \vec b$, kein gemeinsamer Punkt $\Rightarrow$ \textbf{echt parallel}
+    \item $\vec a \nparallel \vec b$, LGS $\vec r(P)+\lambda\vec a = \vec r(Q)+\mu\vec b$ lösbar $\Rightarrow$ \textbf{schneidend}
+    \item $\vec a \nparallel \vec b$, LGS unlösbar $\Rightarrow$ \textbf{windschief} (nur $\mathbb{R}^3$)
+\end{itemize}
+
+\subsection{Abstand Punkt–Gerade}
+
+Der \emph{Abstand} eines Punktes $A$ von einer Geraden $g$ ist die Länge des kürzesten Verbindungsvektors, also die Länge des Lotes von $A$ auf $g$.
+
+Gerade $g\colon \vec r(P) + \lambda\vec a$, Punkt $A$:
+
+\textbf{Via Vektorprodukt} ($\mathbb{R}^3$):
+
+\[
+    l = \dfrac{|\overrightarrow{PA} \times \vec a|}{|\vec a|}
+\]
+\textbf{Via Projektion} ($\mathbb{R}^2$, $\mathbb{R}^3$):
+\[
+    l = \sqrt{|\overrightarrow{PA}|^2 - \left(\dfrac{\overrightarrow{PA}\cdot\vec a}{|\vec a|}\right)^{\!2}}
+\]
+
+\subsection{Koordinatendarstellung (nur $\mathbb{R}^2$)}
+Eine Gerade $g$ im $\mathbb{R}^2$ kann auch durch eine Koordinatengleichung beschrieben werden, die einen Normalenvektor $\vec n$ enthält, der senkrecht auf der Geraden steht.
+\[
+    g\colon ax + by + c = 0, \qquad \vec n = \begin{pmatrix} a \\ b \end{pmatrix} \perp g
+\]
+
+\textbf{Parameter $\to$ Koordinaten:} $\lambda$ aus Komponentengleichungen eliminieren.
+
+\textbf{Koordinaten $\to$ Parameter:} Zwei Punkte bestimmen $\to$ Aufpunkt \& Richtungsvektor.

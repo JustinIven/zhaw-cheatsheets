@@ -1,0 +1,69 @@
+\section{Ebenen}
+
+Eine \emph{Ebene} $E$ im $\mathbb{R}^3$ ist die Menge aller Punkte, die sich von einem \emph{Aufpunkt} $P$ aus als Linearkombination zweier nicht-kollinearer \emph{Richtungsvektoren} $\vec{a}, \vec{b}$ erreichen lassen.
+
+\subsection{Parameterdarstellung}
+Eine Ebene $E$ lässt sich einen Aufpunkt $P$ und zwei nicht-kollineare Richtungsvektoren $\vec{a}, \vec{b}$ durch die folgende Parameterdarstellung beschreiben:
+\[
+     E\colon \vec{r}(P) + \lambda\vec{a} + \mu\vec{b}, \quad \lambda, \mu \in \mathbb{R}
+\]
+
+Ein Punkt $A$ liegt auf der Ebene $E$, wenn folgendes gilt:
+\[
+     A \in E \;\Leftrightarrow\; \exists\,\lambda_A, \mu_A\colon \vec{r}(A) = \vec{r}(P) + \lambda_A\vec{a} + \mu_A\vec{b}
+\]
+
+\subsection{Koordinatendarstellung}
+Eine Ebene $E$ kann auch durch eine Koordinatengleichung beschrieben werden, die einen Normalenvektor $\vec{n}$ enthält, der senkrecht auf der Ebene steht.
+\[
+     E\colon ax + by + cz + d = 0, \qquad \vec{n} = \begin{pmatrix} a \\ b \\ c \end{pmatrix} \perp E
+\]
+Nicht eindeutig (Skalierung mit $k \neq 0$). \textbf{Normiert:} $|\vec{n}| = 1$.
+
+\textbf{Parameter $\to$ Koordinaten:} $\vec{n} = \vec{a} \times \vec{b}$ liefert $a,b,c$; \; $d$ durch Einsetzen von $P$.
+
+\textbf{Koordinaten $\to$ Parameter:} Drei Punkte bestimmen ($x,y$ wählen, $z$ berechnen) $\to$ Parameterdarstellung.
+
+\subsection{Gegenseitige Lage zweier Ebenen}
+
+Zwei Ebenen im $\mathbb{R}^3$ sind entweder identisch, echt parallel oder schneiden sich in einer Geraden. Das Kriterium hängt von der Parallelität der Normalenvektoren ab.
+
+$E_i\colon \vec{n}_i \cdot \vec{x} + d_i = 0$ \; ($i=1,2$):
+\begin{itemize}[leftmargin=*, itemsep=0pt]
+     \item $\vec{n}_1 \parallel \vec{n}_2$ und $\exists\,p\neq 0\colon (a_1,b_1,c_1,d_1)=p(a_2,b_2,c_2,d_2)$ $\Rightarrow$ \textbf{identisch}
+     \item $\vec{n}_1 \parallel \vec{n}_2$, nicht identisch $\Rightarrow$ \textbf{echt parallel}
+     \item $\vec{n}_1 \nparallel \vec{n}_2$ $\Rightarrow$ \textbf{schneidend} (Schnittgerade via LGS, freie Variable $\to$ Parameter)
+\end{itemize}
+
+\subsection{Spezielle Lagen}
+
+$E\colon ax+by+cz+d=0$:
+
+\begin{center}
+\small
+\begin{tabular}{ll}
+     \hline
+     \textbf{Lage} & \textbf{Bedingung} \\
+     \hline
+     $\parallel$ $xy$-Ebene & $a=b=0$ \\
+     $\parallel$ $xz$-Ebene & $a=c=0$ \\
+     $\parallel$ $yz$-Ebene & $b=c=0$ \\
+     $\parallel$ $x$-Achse  & $a=0$ \\
+     $\parallel$ $y$-Achse  & $b=0$ \\
+     $\parallel$ $z$-Achse  & $c=0$ \\
+     \hline
+\end{tabular}
+\end{center}
+
+\subsection{Abstand Punkt–Ebene}
+
+Der \emph{Abstand} eines Punktes $A$ von einer Ebene $E$ ist die Länge des Lotes von $A$ auf $E$, gegeben durch die Hesse'sche Normalform.
+
+Punkt $A=(x_A,y_A,z_A)$, Ebene $E\colon ax+by+cz+d=0$:
+\[
+     l = \frac{|ax_A + by_A + cz_A + d|}{|\vec{n}|}
+\]
+Normiert ($|\vec{n}|=1$): $l = |ax_A + by_A + cz_A + d|$. \quad Ursprung: $l = \frac{|d|}{|\vec{n}|}$.
+
+\subsubsection{Schnittpunkt Ebene–Gerade}
+Geradengleichung in Ebenengleichung einsetzen $\to$ Parameter $\to$ $\vec{r}(S)$.

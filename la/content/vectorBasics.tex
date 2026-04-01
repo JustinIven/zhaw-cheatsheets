@@ -1,0 +1,102 @@
+\section{Vektorgeometrie}
+
+Ein \emph{Vektor} $\vec{v}$ beschreibt eine gerichtete Translation im Raum und ist durch Richtung und Betrag $|\vec{v}|$ eindeutig bestimmt. Besondere Vektoren:
+\begin{itemize}
+     \item \textbf{Nullvektor} \(\vec{0}\): Ein Vektor mit Länge 0, der keine Richtung hat.
+     \item \textbf{Einheitsvektor} \(\vec{e}_i\): Ein Vektor, der in der Richtung der \(i\)-ten Achse liegt und die Länge 1 hat.
+     \item \textbf{Gegenvektor} \(-\vec{v}\): Ein Vektor, der die gleiche Länge wie \(\vec{v}\) hat, aber in die entgegengesetzte Richtung zeigt.
+\end{itemize}
+
+
+\subsection{Rechenregeln}
+
+Vektoren lassen sich addieren und mit Skalaren $\lambda \in \mathbb{R}$ multiplizieren; beide Operationen sind komponentenweise definiert.
+
+\textbf{Addition:}
+\[
+     \vec a + \vec b = \begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix}
+\]
+
+\textbf{Skalare Multiplikation}
+\[
+     \lambda \vec a = \begin{pmatrix} \lambda a_1 \\ \vdots \\ \lambda a_n \end{pmatrix}
+\]
+
+\subsection{Linearkombination}
+Eine \emph{Linearkombination} von Vektoren $\vec a_1, \ldots, \vec a_n$ ist ein Ausdruck der Form
+\[
+     \vec v = \sum_{i=1}^{n} \lambda_i \vec a_i, \quad \lambda_i \in \mathbb{R}
+\]
+
+\subsection{Kollinearität}
+Zwei Vektoren $\vec a$ und $\vec b$ sind \emph{kollinear} (parallel), wenn einer ein Vielfaches des anderen ist:
+\[
+     \vec a \parallel \vec b \;\Leftrightarrow\; \exists\,\lambda\colon \vec a = \lambda\vec b
+\]
+
+\subsection{Komplanarität}
+Vektoren liegen in derselben Ebene, wenn sie als Linearkombination von zwei nicht-kollinearen Vektoren dargestellt werden können:
+\[
+     \vec c = \lambda\vec a + \mu\vec b, \quad \text{mit } \vec a \nparallel \vec b
+\]
+
+\subsection{Koordinaten und Betrag}
+
+Jeder Vektor im $\mathbb{R}^n$ wird durch $n$ reelle Komponenten bezüglich der Standardbasis dargestellt; sein Betrag ergibt sich aus dem Satz des Pythagoras.
+
+\[
+     \vec a = \sum_{i=1}^{n} a_i \vec e_i =
+     \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}, \qquad
+     |\vec a| = \sqrt{\sum_{i=1}^{n} a_i^2}
+\]
+Der Verbindungsvektor von Punkt $P$ zu Punkt $Q$ und dessen Länge ist gegeben durch:
+\[
+     \overrightarrow{PQ} = \vec r(Q) - \vec r(P), \qquad
+     |\overrightarrow{PQ}| = \sqrt{\sum_{i=1}^{n}(x_{Q,i}-x_{P,i})^2}
+\]
+
+
+
+\subsection{Skalarprodukt}
+
+Das \emph{Skalarprodukt} zweier Vektoren liefert eine reelle Zahl und misst den "Anteil" von $\vec{b}$ in Richtung $\vec{a}$. Es ist kommutativ und distributiv.
+
+\[
+     \vec a \cdot \vec b = |\vec a|\,|\vec b|\cos\varphi = \sum_{i=1}^{n} a_i b_i, \qquad 0 \le \varphi \le \pi
+\]
+
+\textbf{Eingenschafeten:}
+\begin{itemize}
+     \item Orthogonalitätstest: $\vec a \cdot \vec b = 0 \;\Leftrightarrow\; \vec a \perp \vec b$
+     \item $\vec a \cdot \vec a = |\vec a|^2$
+\end{itemize}
+
+
+\textbf{Winkel:}
+\[
+     \varphi = \arccos\!\left(\frac{\vec a \cdot \vec b}{|\vec a|\,|\vec b|}\right)
+\]
+
+\textbf{Orthogonale Projektion} von $\vec b$ auf $\vec a$:
+\[
+     \vec b_a = \frac{\vec a \cdot \vec b}{|\vec a|^2}\,\vec a, \qquad
+     |\vec b_a| = \frac{|\vec a \cdot \vec b|}{|\vec a|}
+\]
+
+\subsection{Vektorprodukt ($\mathbb{R}^3$)}
+
+Das \emph{Vektorprodukt} zweier Vektoren im $\mathbb{R}^3$ liefert einen neuen Vektor, der senkrecht auf beiden steht. Die Richtung folgt der Rechte-Hand-Regel.
+
+\[
+     \vec a \times \vec b =
+     \begin{pmatrix} a_2b_3-a_3b_2 \\ a_3b_1-a_1b_3 \\ a_1b_2-a_2b_1 \end{pmatrix}, \qquad
+     |\vec a \times \vec b| = |\vec a|\,|\vec b|\sin\varphi
+\]
+
+\textbf{Eigenschaften:}
+\begin{itemize}
+     \item $\vec a \times \vec b \perp \vec a, \vec b$ (Richtung via Rechte-Hand-Regel)
+     \item $|\vec a \times \vec b|$ = Fläche des aufgespannten Parallelogramms
+     \item $\vec a \times \vec b = \vec 0 \;\Leftrightarrow\; \vec a \parallel \vec b$
+     \item $\vec a \times \vec b = -(\vec b \times \vec a)$ (Antikommutativität)
+\end{itemize}
