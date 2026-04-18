@@ -1,0 +1,23 @@
+\section{Universelle Turingmaschine}
+Eine \textbf{universelle TM} (UTM) simuliert jede beliebige TM $M$, sofern deren Codierung $\text{Cod}_M$ zusammen mit der Eingabe $w$ übergeben wird.
+
+\subsection{Kodierung einer TM}
+Jede TM lässt sich als Binärzeichenreihe über $\{0, 1\}$ kodieren:
+\begin{enumerate}
+    \item \textbf{Zustände:} $q_1$ = start, $q_2$ = akzeptierend, $q_3, \ldots, q_n$ = weitere Zustände.
+    \item \textbf{Bandsymbole:} $X_1 \mathrel{\widehat{=}} 0$,\; $X_2 \mathrel{\widehat{=}} 1$,\; $X_3 \mathrel{\widehat{=}} \shortsqcup$,\; $X_4, \ldots , X_n$ = weitere Symbole.
+    \item \textbf{Richtungen:} $D_1 \mathrel{\widehat{=}} L$,\; $D_2 \mathrel{\widehat{=}} R$.
+    \item \textbf{Transition:} $\delta(q_i, X_j) = (q_k, X_l, D_m)$ wird kodiert als
+    \[
+        0^i 1\, 0^j 1\, 0^k 1\, 0^l 1\, 0^m
+    \]
+    \item \textbf{Gesamte TM:} Alle Transitionen $C_i$ werden durch \texttt{11} getrennt:
+    \[
+        C_1\, 11\, C_2\, 11\, C_3\, 11 \cdots
+    \]
+\end{enumerate}
+Durch Voranstellen einer \texttt{1} entsteht eine eindeutige Zahl (Gödelnummer).
+
+\subsection{Definition}
+Eine TM $M_1$ heisst \textbf{universelle Turingmaschine}, wenn sie die Eingabe $\text{Cod}_M 111 w$ verarbeitet und das Ergebnis von $M$ auf $w$ liefert (für alle $M$, $w$). Die Folge \texttt{111} trennt die TM-Kodierung von der Eingabe $w$.
+

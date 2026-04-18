@@ -99,4 +99,19 @@ Eine \(k\)-Stack-Maschine ist ein DKA mit \(k\) Stacks.
 \[
     \delta : Q \times \Gamma_1 \times \cdots \times \Gamma_k \to Q \times \Gamma_1^* \times \cdots \times \Gamma_k^*
 \]
-\textbf{Satz:} Jede TM kann durch eine 2-Stack-Maschine simuliert werden (Nachbildung des Bandes durch zwei Stacks).
+\textbf{Satz:} Jede TM kann durch eine 2-Stack-Maschine simuliert werden (Bewegung durch Verschieben der Inhalte zwischen den beiden Stacks).
+
+\subsubsection{Zählermaschine}
+Eine Zählermaschine (Counter Machine) mit \(k\) Zählern entspricht einer \(k\)-Stack-Maschine, bei der Stacks durch Zähler in \(\mathbb{N}\) ersetzt werden. Nur \(= 0\) / \(\neq 0\) unterscheidbar; Inkrement/Dekrement um 1.\\
+\textbf{Satz:} Jede TM kann durch eine 2-Zähler-Maschine simuliert werden. (via: TM \(\to\) 2-Stack \(\to\) 3-Zähler \(\to\) 2-Zähler).\\
+
+\textbf{Stack als Zahl (Basis \(k\)):} Der Zustand \(s=X_1X_2\ldots X_n\) eines Stacks mit \(k-1\) Stacksymbolen kann durch einen Zähler \(z\) kodiert werden.
+\begin{align*}
+    z &= \sum_{i=0}^{n-1} X_{n-i} \cdot k^{n-i-1} \\
+    \text{pop}&: z_{\text{new}} = z \div k, \quad X = z \mod k \\
+    \text{push}(X_i)&: z_{\text{new}} = z \cdot k + X_i
+\end{align*}
+Der Dritte Zähler \(k\) dient zur Berechnung.\\
+
+\textbf{3 Zähler \(\to\) 2 Zähler:} Die drei Zähler mit den Werten \(i,j,k\) werden als \(z = 2^i \cdot 3^j \cdot 5^k\) in einem Zähler kodiert. Mit dem zweiten Zähler wird gerechnet.
+
