@@ -1,0 +1,56 @@
+\section{Vektorräume}
+
+\subsection{Reeller Vektorraum}
+Ein \emph{reeller Vektorraum} ist eine Menge $V \neq \emptyset$ mit Addition $+: V \times V \to V$ und skalarer Multiplikation $\cdot: \mathbb{R} \times V \to V$, für die gilt ($\vec{a}, \vec{b}, \vec{c} \in V$, $\lambda, \mu \in \mathbb{R}$):
+
+\begin{enumerate}
+    \item $\vec{a} + \vec{b} = \vec{b} + \vec{a}$ \quad (Kommutativ)
+    \item $\vec{a} + (\vec{b} + \vec{c}) = (\vec{a} + \vec{b}) + \vec{c}$ \quad (Assoziativ)
+    \item $\exists\, \vec{0} \in V: \vec{a} + \vec{0} = \vec{a}$ \quad (Neutralelement)
+    \item $\forall\, \vec{a}\, \exists\, {-\vec{a}}: \vec{a} + (-\vec{a}) = \vec{0}$ \quad (Inverses)
+    \item $\lambda(\mu \vec{a}) = (\lambda\mu)\vec{a}$ \quad (Assoziativ)
+    \item $\lambda(\vec{a} + \vec{b}) = \lambda\vec{a} + \lambda\vec{b}$ \quad (Distributiv 1)
+    \item $(\lambda + \mu)\vec{a} = \lambda\vec{a} + \mu\vec{a}$ \quad (Distributiv 2)
+    \item $1 \cdot \vec{a} = \vec{a}$ \quad (Einselement)
+\end{enumerate}
+
+\textbf{Beispiele für Vektorräume:}
+\begin{itemize}
+    \item $\mathbb{R}^n$ (Vektoren mit $n$ Komponenten)
+    \item $\mathbb{P}_n[x]$: Polynome vom Grad $\leq n$
+    \item $\mathbb{R}^{m \times n}$: Menge aller $m \times n$-Matrizen
+    \item $\mathbb{Z}^n/2$: Datenworte mit $n$ Bits (über Körper $\mathbb{Z}/2$)
+\end{itemize}
+
+\textbf{Kein} Vektorraum: Polynome vom Grad $= n$ (Addition kann Grad reduzieren).
+
+\textbf{Abgeleitete Regeln:}
+$0 \cdot \vec{a} = \vec{0}$, \quad $\lambda \cdot \vec{0} = \vec{0}$, \quad $(-1) \cdot \vec{a} = -\vec{a}$
+
+\subsection{Unterräume}
+Eine Teilmenge $U \subseteq V$ ist ein \emph{Unterraum} von $V$, wenn $U$ selbst ein Vektorraum ist.
+
+\textbf{Unterraumkriterien} ($U \neq \emptyset$):
+\begin{enumerate}
+    \item $\vec{a}, \vec{b} \in U \Rightarrow \vec{a} + \vec{b} \in U$ \quad (abgeschlossen unter Addition)
+    \item $\lambda \in \mathbb{R},\, \vec{a} \in U \Rightarrow \lambda\vec{a} \in U$ \quad (abgeschlossen unter Skalarmultiplikation)
+\end{enumerate}
+
+\textbf{Wichtig:} Falls $\vec{0} \notin U$, dann ist $U$ kein Unterraum.
+
+\textbf{Beispiele:}
+\begin{itemize}
+    \item $\{\vec{0}\}$ ist immer ein Unterraum (\emph{Nullvektorraum})
+    \item Geraden/Ebenen durch den Ursprung sind Unterräume von $\mathbb{R}^2$/$\mathbb{R}^3$
+    \item Geraden/Ebenen \textbf{nicht} durch den Ursprung: \textbf{keine} Unterräume
+    \item Symmetrische Matrizen $S^{m \times m} \subseteq \mathbb{R}^{m \times m}$: Unterraum
+    \item $\mathbb{P}_2[x] \subseteq \mathbb{P}_4[x]$: Unterraum
+    \item Lösungsmenge von $A\vec{x} = \vec{0}$: Unterraum von $\mathbb{R}^n$ (\emph{Kern} von $A$)
+    \item Lösungsmenge von $A\vec{x} = \vec{c}$ mit $\vec{c} \neq \vec{0}$: \textbf{kein} Unterraum
+\end{itemize}
+
+\subsection{Linearer Spann}
+Der lineare Spann ist die Menge aller Linearkombinationen und bildet einen Unterraum von $V$.
+\[
+    \operatorname{span}(\vec{b}_1, \ldots, \vec{b}_n) = \left\{ \sum_{k=1}^{n} \lambda_k \vec{b}_k \;\middle|\; \lambda_k \in \mathbb{R} \right\}
+\]
