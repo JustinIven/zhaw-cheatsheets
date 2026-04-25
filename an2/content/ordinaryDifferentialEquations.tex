@@ -1,0 +1,59 @@
+\section{Differentialgleichungen}
+
+\textbf{Differentialgleichung (DGL):} Funktionalgleichung, in der die gesuchte Funktion, ihre Ableitung(en) und ihre Variablen vorkommen. Drückt eine Beziehung zwischen einer Grösse und ihrer Veränderung aus.
+
+\begin{itemize}
+    \item \textbf{Ordnung:} Ordnung der höchsten vorkommenden Ableitung.
+    \item \textbf{Allgemeine Lösung:} Enthält bei DGL $n$-ter Ordnung $n$ unabhängige Parameter.
+    \item \textbf{Partikuläre Lösung:} Durch zusätzliche Bedingungen festgelegt:
+    \begin{itemize}
+        \item \textit{Anfangsbedingungen:} $y(x_0),\, y'(x_0),\, \dots,\, y^{(n-1)}(x_0)$
+        \item \textit{Randbedingungen:} $y(x_1),\, y(x_2),\, \dots,\, y(x_n)$
+    \end{itemize}
+    \item \textbf{Gewöhnlich:} Gesuchte Funktion hängt von \textit{einer} Variablen ab (vs.\ \textit{partiell}: mehrere Variablen).
+\end{itemize}
+
+\subsection{Gewöhnliche DGL 1.\ Ordnung}
+Form: $y' = F(x,y)$.
+Falls eine Lösungskurve durch $(x_0, y_0)$ geht, hat sie dort die Steigung $F(x_0, y_0)$ -- daraus ergibt sich das \textbf{Richtungsfeld}.
+
+\subsubsection{Euler-Schritte (numerisch)}
+Startpunkt $(x_0, y_0)$, Schrittweite $h$:
+\[
+    x_{n+1} = x_n + h, \qquad y_{n+1} = y_n + h \cdot F(x_n, y_n)
+\]
+Kleinere Schrittweite $\Rightarrow$ genauere Approximation.
+
+\subsection{Separierbare DGL}
+\textbf{Verwenden bei:}
+\[y' = f(x) \cdot g(y)\]
+
+\textbf{Vorgehen:}
+\begin{enumerate}
+    \item $\displaystyle y' = \frac{dy}{dx} = f(x) \cdot g(y)$
+    \item Trennung der Variablen: $\displaystyle \frac{1}{g(y)} \, dy = f(x)\,dx$
+    \item Beidseitig integrieren: $\displaystyle \int \frac{1}{g(y)} \, dy = \int f(x)\,dx$
+    \item Nach $y$ auflösen (falls möglich).
+\end{enumerate}
+
+\subsection{Lineare DGL 1.\ Ordnung}
+\textbf{Verwenden bei:} 
+\[y' + f(x) \cdot y = g(x)\]
+
+\(g(x)\) wird als \textbf{Störglied} bezeichnet. 
+\[
+    g(x): \begin{cases}
+        = 0 & \text{homogene DGL} \\
+        \neq 0 & \text{inhomogene DGL}
+    \end{cases}
+\]
+
+\textbf{Lösung für homogene DGL:}
+\[
+    y = C \cdot e^{-F(x)}
+\]
+
+\textbf{Lösung für inhomogene DGL:}
+\[
+    y = \int g(x) \cdot e^{F(x)}\,dx \cdot e^{-F(x)}
+\]

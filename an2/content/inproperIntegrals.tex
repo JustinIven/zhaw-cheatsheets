@@ -1,0 +1,17 @@
+\section{Uneigentliche Integrale}
+Ein Integral heisst \textbf{uneigentlich}, wenn der Integrationsbereich unbeschränkt ist oder der Integrand eine Polstelle besitzt. Es \textbf{konvergiert}, falls der Grenzwert existiert und endlich ist, sonst \textbf{divergiert} es.
+
+\subsection{Uneigentlicher Integrationsbereich}
+\begin{align*}
+    \int_a^\infty f(x)\,dx &= \lim_{t\to \infty} \int_a^t f(x)\,dx \\
+    \int_{-\infty}^b f(x)\,dx &= \lim_{t\to -\infty} \int_t^b f(x)\,dx \\
+    \int_{-\infty}^{\infty} f(x)\,dx &= \int_{-\infty}^{c} f(x)\,dx + \int_{c}^{\infty} f(x)\,dx
+\end{align*}
+Beide Teilintegrale müssen einzeln konvergieren.
+
+\subsection{Integrale über Polstellen}
+Ist \(f\) an der Stelle \(x_0 \in [a,b]\) nicht definiert, so wird aufgeteilt:
+\begin{align*}
+    \int_a^b f(x)\,dx &= \lim_{t\to x_0^-} \int_a^t f(x)\,dx + \lim_{t\to x_0^+} \int_t^b f(x)\,dx
+\end{align*}
+Beide Grenzwerte müssen einzeln existieren.
