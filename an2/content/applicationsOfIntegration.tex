@@ -1,0 +1,68 @@
+\section{Anwendungen der Integration}
+
+\subsection{Mittelwert}
+Für \(f(x)\geq 0\) auf \([a,b]\):
+\[
+    \mu = \frac{1}{b-a}\int_a^b f(x)\,dx
+\]
+
+\subsection{Arbeitsintegral}
+Ist die Kraft ortsabhängig \(F=F(x)\), so beträgt die Arbeit auf dem Weg von \(a\) nach \(b\):
+\[
+    W = \int_a^b F(x)\,dx
+\]
+
+\subsection{Volumen eines Rotationskörpers}
+
+\subsubsection{Rotation um die \(x\)-Achse}
+Für \(f(x)\geq 0\) auf \([a,b]\):
+\[
+    V = \pi\int_a^b \bigl(f(x)\bigr)^2\,dx
+\]
+
+\subsubsection{Rotation um die \(y\)-Achse}
+Für \(x=g(y)\geq 0\) auf \([c,d]\):
+\[
+    V = \pi\int_c^d \bigl(g(y)\bigr)^2\,dy
+\]
+
+\subsection{Mantelfläche eines Rotationskörpers}
+
+\subsubsection{Rotation um die \(x\)-Achse}
+Für \(f(x)\geq 0\) auf \([a,b]\):
+\[
+    M = 2\pi\int_a^b f(x)\cdot\sqrt{1+(f'(x))^2}\,dx
+\]
+
+\subsubsection{Rotation um die \(y\)-Achse}
+Für \(x=g(y)\geq 0\) auf \([c,d]\):
+\[
+    M = 2\pi\int_c^d g(y)\cdot\sqrt{1+(g'(y))^2}\,dy
+\]
+
+\subsection{Bogenlänge einer ebenen Kurve}
+Länge der Kurve \(f(x)\) auf \([a,b]\):
+\[
+    s = \int_a^b \sqrt{1+(f'(x))^2}\,dx
+\]
+
+\subsection{Schwerpunkt}
+
+\subsubsection{Fläche zwischen zwei Kurven}
+Fläche zwischen \(f_o(x)\) und \(f_u(x)\) auf \([a,b]\) mit Flächeninhalt \(A\):
+\begin{align*}
+    x_S &= \frac{1}{A}\int_a^b x\cdot\bigl(f_o(x)-f_u(x)\bigr)\,dx \\
+    y_S &= \frac{1}{2A}\int_a^b \bigl(f_o^2(x)-f_u^2(x)\bigr)\,dx
+\end{align*}
+
+\subsubsection{Rotationskörper um die \(x\)-Achse}
+Für \(f(x)\geq 0\) auf \([a,b]\) mit Volumen \(V\):
+\[
+    x_S = \frac{\pi}{V}\int_a^b x\cdot f^2(x)\,dx, \quad y_S=0,\quad z_S=0
+\]
+
+\subsubsection{Rotationskörper um die \(y\)-Achse}
+Für \(x=g(y)\geq 0\) auf \([c,d]\) mit Volumen \(V\):
+\[
+    x_S = 0, \quad y_S = \frac{\pi}{V}\int_c^d y\cdot g^2(y)\,dy, \quad z_S=0
+\]
