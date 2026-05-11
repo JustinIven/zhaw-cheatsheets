@@ -1,0 +1,119 @@
+\section{Berechenbarkeitstheorie}
+
+\subsection{Church-Turing-These}
+\textbf{Intuitiv berechenbar:} Funktionen, die durch ein mechanisches Verfahren berechnet werden können.\\
+\textbf{Turing-berechenbar:} Funktionen, die von einer TM berechnet werden können.\\
+\textbf{Church-Turing-These:} Die Klasse der Turing-berechenbaren Funktionen stimmt mit der Klasse der intuitiv berechenbaren Funktionen überein.\\
+\textbf{Gandy's These M:} Alles, was mit einer endlichen Maschine berechnet werden kann, ist bereits Turing-berechenbar. 
+\textit{Nicht formal beweisbar.}
+
+\subsection{Turing-berechenbare Funktionen}
+Eine TM $T = (Q, \Sigma, \Gamma, \ldots)$ als partielle Funktion $T : \Sigma^* \to \Gamma^*$:
+\[
+    T(w) = \begin{cases} u & \text{falls } T \text{ auf } w \text{ mit } u \text{ auf dem Band anhält} \\ \uparrow & \text{falls } T \text{ bei Input } w \text{ nicht anhält} \end{cases}
+\]
+$f : \Sigma^* \to \Gamma^*$ heisst \textbf{Turing-berechenbar}, wenn es eine TM $T$ gibt mit $T(w) = f(w)$ für alle $w$ wo $f$ definiert ist.\\
+
+\subsection{LOOP-Programme}
+\textbf{Syntax:}
+\begin{itemize}
+    \item \textbf{Zuweisungen:} \texttt{x = y + c} und \texttt{x = y - c} wobei $x, y$ Variablen und $c \in \mathbb{N}$ ist.
+    \item \textbf{Sequenzen:} \texttt{P ; Q}
+    \item \textbf{Schleifen:} \texttt{Loop x Do P End}
+\end{itemize}
+\textbf{Semantik:} $P_k(n_1, \ldots, n_k) =$ Wert von $x_0$ nach Ablauf, mit $n_i$ in $x_i$.\\
+\textbf{Konventionen:} $x_0$ und Hilfsvariablen mit 0 initialisiert. Subtraktion $\geq 0$.
+
+\subsubsection{Bedingte Ausführung (IF x1=0 THEN P)}
+\begin{verbatim}
+x2 = x2 + 1;
+Loop x1 Do x2 = x2 - 1 End;
+Loop x2 Do P End
+\end{verbatim}
+
+\subsubsection{Verzweigung (IF x1=0 THEN P ELSE Q)}
+\begin{verbatim}
+x2 = x2 + 1; x3 = x3 + 1;
+Loop x1 Do x2 = x2 - 1; x4 = x3 + 0 End;
+Loop x2 Do P End;
+Loop x4 Do Q End
+\end{verbatim}
+
+\subsection{WHILE-Programme}
+Erweitern LOOP um: \texttt{While x > 0 Do P End}\\
+\begin{itemize}
+    \item Jedes LOOP-Programm ist ein WHILE-Programm
+    \item WHILE-Programme terminieren \textbf{nicht} immer
+\end{itemize}
+
+\subsection{GOTO-Programme}
+\textbf{Syntax:}
+\begin{itemize}
+    \item \texttt{Mk: xi = xj + c} / \texttt{Mk: xi = xj - c}
+    \item \texttt{Mk: If xi = c Then Goto Mr}
+    \item \texttt{Mk: Goto Mr}
+    \item \texttt{Mk: HALT}
+    \item Sequenzen: \texttt{P ; Q} (keine gemeinsamen Marker)
+\end{itemize}
+
+\subsection{Primitiv rekursive Funktionen}
+\subsubsection{Grundfunktionen}
+\begin{itemize}
+    \item \textbf{Konstante:} $c_k^n : \mathbb{N}^n \to \mathbb{N}$, $c_k^n(x_1, \ldots, x_n) = k$
+    \item \textbf{Nachfolger:} $\eta : \mathbb{N} \to \mathbb{N}$, $\eta(x) = x + 1$
+    \item \textbf{Projektion:} $\pi_k^n : \mathbb{N}^n \to \mathbb{N}$, $\pi_k^n(x_1, \ldots, x_n) = x_k$
+\end{itemize}
+
+\subsubsection{Abschluss durch Einsetzung}
+Sind $f, g_1, \ldots, g_k$ primitiv rekursiv mit $g_i : \mathbb{N}^n \to \mathbb{N}$, $f : \mathbb{N}^k \to \mathbb{N}$, dann auch:
+\[
+    h(\vec{x}) = f(g_1(\vec{x}), \ldots, g_k(\vec{x}))
+\]
+
+\subsubsection{Abschluss durch primitive Rekursion}
+Sind $h : \mathbb{N}^n \to \mathbb{N}$ und $g : \mathbb{N}^{n+2} \to \mathbb{N}$ primitiv rekursiv, dann auch $f : \mathbb{N}^{n+1} \to \mathbb{N}$ mit:
+\begin{align*}
+    f(0, \vec{x}) &= h(\vec{x}) \\
+    f(k+1, \vec{x}) &= g(f(k, \vec{x}), k, \vec{x})
+\end{align*}
+
+\subsubsection{Beispiele}
+\textbf{Addition:}
+$\text{Add}(0,y) = \pi_1^1(y)$, \quad $\text{Add}(x+1,y) = \eta(\pi_1^3(\text{Add}(x,y),x,y))$\\
+\textbf{Multiplikation:}
+$\text{Mult}(0,y) = c_0^1(y)$, \quad $\text{Mult}(x+1,y) = \text{Add}(\text{Mult}(x,y), \pi_2^2(x,y))$
+
+\subsection{Unvollständigkeit von LOOP / Prim. Rek.}
+LOOP-Programme und primitiv rekursive Funktionen sind \textbf{nicht} Turing-vollständig. Es gibt totale, berechenbare Funktionen, die nicht LOOP-berechenbar sind:
+
+\subsubsection{Ackermannfunktion}
+\begin{align*}
+    a(0, m) &= m + 1 \\
+    a(n+1, 0) &= a(n, 1) \\
+    a(n+1, m+1) &= a(n, a(n+1, m))
+\end{align*}
+\textbf{Eigenschaften:}
+\begin{itemize}
+    \item Turing-berechenbar (WHILE-Programm möglich)
+    \item \textbf{Nicht} primitiv rekursiv / LOOP-berechenbar
+    \item Total (überall definiert) -- Beweis via Induktion über lexikograph.\ Ordnung auf $\mathbb{N} \times \mathbb{N}$
+    \item Wächst schneller als jede primitiv rekursive Funktion
+\end{itemize}
+
+\subsubsection{LOOP-Interpreter}
+$I : \mathbb{N}^2 \to \mathbb{N}$ mit $I(\langle P \rangle, x) = P_1(x)$ für jedes LOOP-Programm $P$.\\
+\textbf{Satz:}
+\begin{itemize}
+    \item $I$ ist total und eindeutig (LOOP terminiert immer)
+    \item $I$ ist Turing-berechenbar
+    \item $I$ ist \textbf{nicht} LOOP-berechenbar
+\end{itemize}
+\textbf{Beweis (Widerspruch):} Angenommen $P_2$ ist LOOP-Interpreter. Definiere LOOP-Programm $Q$ mit $Q_1(x) = P_2(x,x) + 1$. Dann:
+\[
+    Q_1(\langle Q \rangle) = P_2(\langle Q \rangle, \langle Q \rangle) + 1 = Q_1(\langle Q \rangle) + 1 \quad \lightning
+\]
+
+\subsection{Überblick Berechnungsmodelle}
+\[
+    \underbrace{\text{LOOP} = \text{Prim.\ rek.}}_{\text{nicht Turing-vollständig}} \subsetneq \underbrace{\text{TM} = \text{WHILE} = \text{GOTO}}_{\text{Turing-vollständig}}
+\]
