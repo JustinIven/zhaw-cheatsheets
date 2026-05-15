@@ -1,0 +1,48 @@
+\section{Lineare Abbildungen}
+
+\subsection{Definition}
+Eine Abbildung $f: V \to W$ zwischen zwei reellen Vektorräumen heisst \emph{linear}, wenn für alle $\vec{x}, \vec{y} \in V$ und $\lambda \in \mathbb{R}$ gilt:
+\begin{enumerate}
+    \item $f(\vec{x} + \vec{y}) = f(\vec{x}) + f(\vec{y})$ \quad (Additivität)
+    \item $f(\lambda \cdot \vec{x}) = \lambda \cdot f(\vec{x})$ \quad (Homogenität)
+\end{enumerate}
+$f(\vec{x}) \in W$ heisst \emph{Bild} von $\vec{x}$.
+
+\textbf{Nicht linear} sind z.B.: $f(x) = x + 5$, $f(x) = x^2$, $f(x) = \cos(x)$, $f(x) = e^x$.\\
+Die einzigen linearen Abbildungen $\mathbb{R} \to \mathbb{R}$ sind $f(x) = m \cdot x$.
+
+\subsection{Abbildungsmatrix (Standardbasis)}
+Jede lineare Abbildung $f: \mathbb{R}^n \to \mathbb{R}^m$ lässt sich durch eine $m \times n$-Matrix $A$ darstellen:
+$$f(\vec{x}) = A \cdot \vec{x}$$
+Die Spalten von $A$ sind die Bilder der Standardbasisvektoren:
+$$A = \begin{pmatrix} | & | & & | \\ f(\vec{e}_1) & f(\vec{e}_2) & \cdots & f(\vec{e}_n) \\ | & | & & | \end{pmatrix}$$
+
+\subsection{Abbildungsmatrix (beliebige Basen)}
+Für Vektorräume $V$ mit Basis $\mathcal{B} = \{\vec{b}_1, \ldots, \vec{b}_n\}$ und $W$ mit Basis $\mathcal{C} = \{\vec{c}_1, \ldots, \vec{c}_m\}$:
+$$(f(\vec{x}))_\mathcal{C} = {}_\mathcal{C}A_\mathcal{B} \cdot \vec{x}_\mathcal{B}$$
+$${}_\mathcal{C}A_\mathcal{B} = \begin{pmatrix} | & | & & | \\ (f(\vec{b}_1))_\mathcal{C} & (f(\vec{b}_2))_\mathcal{C} & \cdots & (f(\vec{b}_n))_\mathcal{C} \\ | & | & & | \end{pmatrix}$$
+Die Spalten erhält man durch Lösen von LGS: $f(\vec{b}_i)$ als Linearkombination der $\vec{c}_j$ darstellen.
+
+\subsection{Wichtige lineare Abbildungen $\mathbb{R}^2 \to \mathbb{R}^2$}
+
+\begin{tabular}{@{}ll@{}}
+\textbf{Streckung} um $\lambda_1$ in $x$, $\lambda_2$ in $y$ & $\begin{pmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix}$ \\[8pt]
+\textbf{Rotation} um Winkel $\varphi$ & $\begin{pmatrix} \cos\varphi & -\sin\varphi \\ \sin\varphi & \cos\varphi \end{pmatrix}$ \\[8pt]
+\textbf{Spiegelung} an $x$-Achse & $\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$ \\[8pt]
+\textbf{Spiegelung} an $y$-Achse & $\begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}$ \\[8pt]
+\textbf{Punktspiegelung} am Ursprung & $\begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix}$ \\[8pt]
+\textbf{Scherung} in $x$-Ri.\ mit Faktor $m$ & $\begin{pmatrix} 1 & m \\ 0 & 1 \end{pmatrix}$ \\[8pt]
+\textbf{Proj.\ auf} $x$-Achse & $\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$ \\[8pt]
+\textbf{Proj.\ auf} $y$-Achse & $\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}$
+\end{tabular}
+
+\subsection{Projektion \& Spiegelung an Gerade}
+Für Gerade $g: ax + by = 0$ mit $a^2 + b^2 = 1$ (normiert!):
+
+\textbf{Orthogonale Projektion:}
+$P = \begin{pmatrix} 1-a^2 & -ab \\ -ab & 1-b^2 \end{pmatrix}$, \quad $p(\vec{x}) = \vec{x} - (\vec{n} \cdot \vec{x}) \cdot \vec{n}$
+
+\textbf{Spiegelung:}
+$S = \begin{pmatrix} 1-2a^2 & -2ab \\ -2ab & 1-2b^2 \end{pmatrix}$, \quad $s(\vec{x}) = \vec{x} - 2(\vec{n} \cdot \vec{x}) \cdot \vec{n}$
+
+Dabei ist $\vec{n} = \binom{a}{b}$ der normierte Normalenvektor.

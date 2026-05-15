@@ -55,3 +55,68 @@ Der lineare Spann ist die Menge aller Linearkombinationen und bildet einen Unter
 \[
     \operatorname{span}(\vec{b}_1, \ldots, \vec{b}_n) = \left\{ \sum_{k=1}^{n} \lambda_k \vec{b}_k \;\middle|\; \lambda_k \in \mathbb{R} \right\}
 \]
+
+\subsection{Erzeugendensystem}
+$\{\vec{b}_1, \ldots, \vec{b}_n\}$ ist \emph{Erzeugendensystem} von $V$, wenn $V = \operatorname{span}(\vec{b}_1, \ldots, \vec{b}_n)$.
+
+\textbf{Kriterium für $\mathbb{R}^m$:} Vektoren $\vec{b}_1, \ldots, \vec{b}_n \in \mathbb{R}^m$ als Spalten in $m \times n$-Matrix $B$ schreiben. Äquivalent:
+\begin{enumerate}
+    \item $\{\vec{b}_1, \ldots, \vec{b}_n\}$ ist Erzeugendensystem von $\mathbb{R}^m$
+    \item $B \cdot \vec{x} = \vec{a}$ ist für jedes $\vec{a} \in \mathbb{R}^m$ lösbar
+    \item $\operatorname{rg}(B) = m$
+\end{enumerate}
+
+\subsection{Lineare Unabhängigkeit}
+$\vec{b}_1, \ldots, \vec{b}_n$ sind \emph{linear unabhängig}, wenn aus $\lambda_1 \vec{b}_1 + \ldots + \lambda_n \vec{b}_n = \vec{0}$ folgt: $\lambda_1 = \ldots = \lambda_n = 0$.
+
+\textbf{Kriterium für $\mathbb{R}^m$:} Vektoren als Spalten in $m \times n$-Matrix $B$. Äquivalent:
+\begin{enumerate}
+    \item $\vec{b}_1, \ldots, \vec{b}_n$ sind linear unabhängig
+    \item $B \cdot \vec{x} = \vec{0}$ hat nur die Lösung $\vec{x} = \vec{0}$
+    \item $\operatorname{rg}(B) = n$
+\end{enumerate}
+
+\textbf{Zusammenhang:} Sind $\vec{b}_1, \ldots, \vec{b}_n$ linear unabhängig, so ist jede Linearkombination $\vec{a} = \lambda_1 \vec{b}_1 + \ldots + \lambda_n \vec{b}_n$ \textbf{eindeutig} (Koeffizienten eindeutig bestimmt).
+
+\subsection{Basis und Dimension}
+$\mathcal{B} = \{\vec{b}_1, \ldots, \vec{b}_n\}$ ist \emph{Basis} von $V$, wenn:
+\begin{enumerate}
+    \item $\mathcal{B}$ ist Erzeugendensystem von $V$
+    \item $\vec{b}_1, \ldots, \vec{b}_n$ sind linear unabhängig
+\end{enumerate}
+
+\textbf{Satz für $\mathbb{R}^n$:} Vektoren $\vec{b}_1, \ldots, \vec{b}_n \in \mathbb{R}^n$ als Spalten in $n \times n$-Matrix $B$. Äquivalent:
+\begin{enumerate}
+    \item $\vec{b}_1, \ldots, \vec{b}_n$ bilden eine Basis von $\mathbb{R}^n$
+    \item $\operatorname{rg}(B) = n$
+    \item $\det(B) \neq 0$
+    \item $B$ ist invertierbar
+    \item $B \cdot \vec{x} = \vec{c}$ hat eine eindeutige Lösung
+\end{enumerate}
+
+Eine Basis von $\mathbb{R}^n$ besteht aus genau $n$ Vektoren. Für Erzeugendensystem braucht man $\operatorname{rg}(B) = m$, für lineare Unabhängigkeit $\operatorname{rg}(B) = n$ $\Rightarrow$ Basis erfordert $m = n$.
+
+\textbf{Wichtige Basen:}
+\begin{itemize}
+    \item \emph{Standardbasis} von $\mathbb{R}^n$: $\mathcal{S} = \{\vec{e}_1, \ldots, \vec{e}_n\}$
+    \item \emph{Monombasis} von $\mathbb{P}_n[x]$: $\mathcal{M} = \{1, x, x^2, \ldots, x^n\}$
+\end{itemize}
+
+\textbf{Dimension:} $\dim(V)$ = Anzahl Vekotren die eine Basis $V$ bilden.
+\begin{itemize}
+    \item $\dim(\mathbb{R}^n) = n$, \quad $\dim(\mathbb{P}_n[x]) = n + 1$
+    \item $\dim(\mathbb{R}^{m \times n}) = m \cdot n$, \quad $\dim(S^{n \times n}) = \frac{n(n+1)}{2}$
+    \item Unterraum $U \subset V$: $\dim(U) \leq \dim(V)$
+    \item $\dim(\{\vec{0}\}) = 0$
+\end{itemize}
+
+\subsection{Komponentendarstellung und Basiswechsel}
+Bezüglich Basis $\mathcal{B} = \{\vec{b}_1, \ldots, \vec{b}_n\}$: \quad $\vec{a} = \alpha_1 \vec{b}_1 + \ldots + \alpha_n \vec{b}_n \;\Rightarrow\; \vec{a} = \begin{pmatrix} \alpha_1 \\ \vdots \\ \alpha_n \end{pmatrix}_{\!\mathcal{B}}$
+
+\textbf{$\mathcal{B} \to \mathcal{S}$:} Koeffizienten $\alpha_k$ und Basisvektoren $\vec{b}_k$ (in $\mathcal{S}$-Darstellung) einsetzen:
+\[
+    \vec{a}_{\mathcal{S}} = \alpha_1 \cdot \vec{b}_1 + \alpha_2 \cdot \vec{b}_2 + \ldots + \alpha_n \cdot \vec{b}_n = B \cdot \vec{a}_{\mathcal{B}}
+\]
+
+\textbf{$\mathcal{S} \to \mathcal{B}$:} LGS lösen: $B \cdot \vec{a}_{\mathcal{B}} = \vec{a}_{\mathcal{S}}$, wobei $B = (\vec{b}_1 \mid \vec{b}_2 \mid \ldots \mid \vec{b}_n)$.
+
