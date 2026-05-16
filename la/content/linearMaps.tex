@@ -46,3 +46,87 @@ $P = \begin{pmatrix} 1-a^2 & -ab \\ -ab & 1-b^2 \end{pmatrix}$, \quad $p(\vec{x}
 $S = \begin{pmatrix} 1-2a^2 & -2ab \\ -2ab & 1-2b^2 \end{pmatrix}$, \quad $s(\vec{x}) = \vec{x} - 2(\vec{n} \cdot \vec{x}) \cdot \vec{n}$
 
 Dabei ist $\vec{n} = \binom{a}{b}$ der normierte Normalenvektor.
+
+\subsection{Lineare Abbildungen $\mathbb{R}^3 \to \mathbb{R}^3$}
+
+\textbf{Zentrische Streckung} um Faktor $\lambda$: $A = \begin{pmatrix} \lambda & 0 & 0 \\ 0 & \lambda & 0 \\ 0 & 0 & \lambda \end{pmatrix}$
+
+\begin{tabular}{@{}ll@{}}
+\textbf{Proj.\ auf} $xy$-Ebene & $\begin{pmatrix} 1&0&0\\0&1&0\\0&0&0 \end{pmatrix}$ \\[6pt]
+\textbf{Spieg.\ an} $xy$-Ebene & $\begin{pmatrix} 1&0&0\\0&1&0\\0&0&-1 \end{pmatrix}$ \\[6pt]
+\textbf{Proj.\ auf} $x$-Achse & $\begin{pmatrix} 1&0&0\\0&0&0\\0&0&0 \end{pmatrix}$ \\[6pt]
+\textbf{Spieg.\ an} $x$-Achse & $\begin{pmatrix} 1&0&0\\0&-1&0\\0&0&-1 \end{pmatrix}$
+\end{tabular}
+
+Analog für $xz$-/$yz$-Ebene und $y$-/$z$-Achse durch Vertauschen der Einträge.
+
+\subsection{Projektion \& Spiegelung an Ebene ($\mathbb{R}^3$)}
+Für Ebene $E: ax + by + cz = 0$ mit $a^2+b^2+c^2=1$, $\vec{n}=\begin{pmatrix}a\\b\\c\end{pmatrix}$:
+
+\textbf{Orth.\ Projektion:} $P = E - \vec{n}\cdot\vec{n}^T = \begin{pmatrix} 1-a^2 & -ab & -ac \\ -ab & 1-b^2 & -bc \\ -ac & -bc & 1-c^2 \end{pmatrix}$
+
+\textbf{Spiegelung:} $S = E - 2\vec{n}\cdot\vec{n}^T = \begin{pmatrix} 1-2a^2 & -2ab & -2ac \\ -2ab & 1-2b^2 & -2bc \\ -2ac & -2bc & 1-2c^2 \end{pmatrix}$
+
+\subsection{Rotationen in $\mathbb{R}^3$}
+
+\begin{tabular}{@{}ll@{}}
+\textbf{Um $z$-Achse} & $\begin{pmatrix} \cos\varphi & -\sin\varphi & 0 \\ \sin\varphi & \cos\varphi & 0 \\ 0 & 0 & 1 \end{pmatrix}$ \\[10pt]
+\textbf{Um $x$-Achse} & $\begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\varphi & -\sin\varphi \\ 0 & \sin\varphi & \cos\varphi \end{pmatrix}$ \\[10pt]
+\textbf{Um $y$-Achse} & $\begin{pmatrix} \cos\varphi & 0 & \sin\varphi \\ 0 & 1 & 0 \\ -\sin\varphi & 0 & \cos\varphi \end{pmatrix}$
+\end{tabular}
+
+\textbf{Rotation um allg.\ Achse} durch Ursprung mit norm.\ Vektor $\vec{a}=\begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix}$:
+{\tiny
+$R = \begin{pmatrix} c+a_1^2(1-c) & a_1a_2(1-c)-a_3s & a_1a_3(1-c)+a_2s \\ a_1a_2(1-c)+a_3s & c+a_2^2(1-c) & a_2a_3(1-c)-a_1s \\ a_1a_3(1-c)-a_2s & a_2a_3(1-c)+a_1s & c+a_3^2(1-c) \end{pmatrix}$
+}
+
+mit $c = \cos(\varphi)$, $s = \sin(\varphi)$.
+
+\subsection{Kern und Bild}
+Für $f: V \to W$ mit $m \times n$-Abbildungsmatrix $A$:
+
+\textbf{Kern:} $\ker(A) = \{\vec{x} \in V \mid A \cdot \vec{x} = \vec{0}\}$ (Lösungsmenge des homogenen LGS)
+
+\textbf{Bild:} $\text{im}(A) = \text{span}(\vec{a}_1, \ldots, \vec{a}_n)$ (aufgespannt von Spalten von $A$)
+
+\textbf{Dimensionssatz:} $\dim(\text{im}(A)) = \text{rg}(A)$, \quad $\dim(\ker(A)) + \dim(\text{im}(A)) = n$
+
+$\text{im}(A)$ = Linearkombination der linear unabh.\ Spaltenvektoren von $A$.
+
+\subsection{Verknüpfung linearer Abbildungen}
+$f: U \to V$ mit Matrix $A$, $g: V \to W$ mit Matrix $B$:
+$$g \circ f: \vec{x} \mapsto B \cdot (A \cdot \vec{x}) = (B \cdot A) \cdot \vec{x}$$
+Die Matrix der \textbf{zuerst} ausgeführten Abbildung steht \textbf{rechts} im Produkt.
+
+\textbf{Spiegelungen:} $S^2 = E$ \\
+\textbf{Projektionen:} $P^2 = P$
+
+\subsection{Inverse einer linearen Abbildung}
+$f$ invertierbar $\Leftrightarrow$ $A$ invertierbar. Die Abbildungsmatrix der Inversen von $f$ ist $A^{-1}$.\\
+Es gilt: $B \cdot A = E \Rightarrow B = A^{-1}$.\\
+Projektionen sind \textbf{nicht} invertierbar ($\det(P) = 0$).
+
+\subsection{Basiswechsel}
+$\mathcal{S}$: Standardbasis, $\mathcal{B}$: andere Basis mit Vektoren $\vec{b}_1, \ldots, \vec{b}_n$.
+
+\textbf{$\mathcal{B} \to \mathcal{S}$:} ${}_\mathcal{S}T_\mathcal{B} = \begin{pmatrix} | & | \\ \vec{b}_{1\mathcal{S}} & \vec{b}_{2\mathcal{S}} \\ | & | \end{pmatrix}$ (Spalten = Basisvektoren von $\mathcal{B}$ bzgl.\ $\mathcal{S}$)
+
+\textbf{$\mathcal{S} \to \mathcal{B}$:} ${}_\mathcal{B}T_\mathcal{S} = {}_\mathcal{S}T_\mathcal{B}^{-1}$
+
+\textbf{Zusammenhang:} ${}_\mathcal{C}A_\mathcal{C} = {}_\mathcal{C}T_\mathcal{B} \cdot {}_\mathcal{B}A_\mathcal{B} \cdot {}_\mathcal{B}T_\mathcal{C} = {}_\mathcal{C}T_\mathcal{B} \cdot {}_\mathcal{B}A_\mathcal{B} \cdot {}_\mathcal{C}T_\mathcal{B}^{-1}$
+
+\subsection{Homogene Koordinaten}
+Translationen sind \textbf{nicht linear}. Trick: Vektoren um eine Komponente erweitern.
+\begin{itemize}
+    \item \textbf{Ortsvektor} (Punkt): letzte Komponente $= 1$ bsp. $\vec{p} = \begin{pmatrix} x \\ y \\ 1 \end{pmatrix}$
+    \item \textbf{Freier Vektor}: letzte Komponente $= 0$ bsp. $\vec{v} = \begin{pmatrix} v_x \\ v_y \\ 0 \end{pmatrix}$
+\end{itemize}
+
+\textbf{Translation} in $\mathbb{R}^2$ um $\vec{a}=\binom{a_1}{a_2}$: $T = \begin{pmatrix} 1 & 0 & a_1 \\ 0 & 1 & a_2 \\ 0 & 0 & 1 \end{pmatrix}$
+
+\textbf{Rotation + Translation} in $\mathbb{R}^2$:
+$\begin{pmatrix} \cos\varphi & -\sin\varphi & a_1 \\ \sin\varphi & \cos\varphi & a_2 \\ 0 & 0 & 1 \end{pmatrix}$
+
+\textbf{Translation} in $\mathbb{R}^3$ um $\vec{a}=\begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix}$: $T = \begin{pmatrix} 1&0&0&a_1 \\ 0&1&0&a_2 \\ 0&0&1&a_3 \\ 0&0&0&1 \end{pmatrix}$
+
+Lineare Abbildungsmatrizen werden analog um Zeile/Spalte mit $(0\;\cdots\;0\;1)$ erweitert.
