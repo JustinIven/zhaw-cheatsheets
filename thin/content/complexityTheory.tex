@@ -1,1 +1,49 @@
 \section{Komplexitätstheorie}
+
+\subsection{Zeitkomplexität (TM)}
+$\text{Time}_M(w) =$ Anzahl Konfigurationsübergänge von $M$ auf $w$.\\
+\textbf{Worst-Case:} $\text{Time}_M(n) = \max\{\text{Time}_M(w) \mid |w| = n\}$
+
+\subsection{$\mathcal{O}$-Notation (Landau-Symbole)}
+\begin{itemize}
+    \item $f \in \mathcal{O}(g)$: $\exists\, n_0, c$: $\forall\, n \geq n_0$: $f(n) \leq c \cdot g(n)$ \quad (obere Schranke)
+    \item $f \in \Omega(g)$: $\exists\, n_0, d$: $\forall\, n \geq n_0$: $f(n) \geq \frac{1}{d} \cdot g(n)$ \quad (untere Schranke)
+    \item $f \in \Theta(g)$: $f \in \mathcal{O}(g) \cap \Omega(g)$ \quad (asymptotisch gleich)
+\end{itemize}
+\textbf{Regeln:} $c \cdot f(n) \in \mathcal{O}(f(n))$;\; $c \in \mathcal{O}(1)$;\; $a_k n^k + \ldots + a_0 \in \mathcal{O}(n^k)$;\; transitiv. \\
+\textbf{Abfolge}: $1 \ll \log n \ll n \ll n \log n \ll n^2 \ll 2^n \ll n!$
+
+\subsection{Komplexitätsklassen}
+\textbf{P:} Alle Probleme, die eine \textbf{det.\ TM} in Polynomzeit löst.\\
+\textbf{NP:} Alle Probleme, die eine \textbf{NTM} in Polynomzeit löst. Äquivalent dazu: Menge aller Sprachen mit Polynomzeit-Verifizierer.\\
+$\mathbf{P} \mathrel{\widehat{=}}$ Lösung \textit{finden} in Polyzeit;\;
+$\mathbf{NP} \mathrel{\widehat{=}}$ Lösung \textit{verifizieren} in Polyzeit.\\
+\textbf{Offene Frage:} $\mathbf{P} = \mathbf{NP}$? \quad Vermutung: $\mathbf{P} \neq \mathbf{NP}$.\\[3pt]
+\textbf{NP-schwer:} $L$ ist NP-schwer, falls $\forall\, L' \in \mathbf{NP}$: $L' \preceq_p L$. Es existiert also eine polynomielle Reduktion von jedem NP-Problem auf $L$.\\
+\textbf{NP-vollständig:} $L \in \mathbf{NP}$ \textit{und} $L$ ist NP-schwer.\\
+Falls \textit{ein} NP-vollständiges $L \in \mathbf{P}$ $\Rightarrow$ $\mathbf{P} = \mathbf{NP}$.
+
+\subsection{Polynomzeit-Verifizierer}
+Ein Problem $A \in NP$ falls ein Verifizierungsproblem $A' \in P$ existiert, so dass 
+$$ w \in A \Leftrightarrow \exists z: (|z| \leq p(|w|) \land z\#w \in A')$$
+
+\subsection{Polynomielle Reduktion}
+$A \preceq_p B$: Es existiert eine in Polynomzeit berechenbare Funktion $f$ mit $w \in A \Leftrightarrow f(w) \in B$.\\
+
+\textbf{Bedeutet:} $B$ ist mind.\ so schwer wie $A$.\\
+\textbf{Satz:} $P_1$ NP-schwer, $P_2 \in \mathbf{NP}$, $P_1 \preceq_p P_2$ $\Rightarrow$ $P_2$ NP-vollständig.
+
+
+
+\subsection{SAT und Satz von Cook}
+\textbf{SAT:} Ist eine KNF-Formel erfüllbar?\\
+\textbf{Satz von Cook: SAT ist NP-vollständig.}\\
+\textit{SAT $\in$ NP:} Zeuge $= $ Belegung; Verifikation in Polyzeit.\\
+\textit{NP-schwer:} Berechnung einer polyzeit-NTM als KNF kodierbar.
+
+\subsection{CLIQUE ist NP-vollständig}
+\textbf{Clique:} $S \subseteq V$ paarweise verbunden. \\
+\textbf{Problem:} $\exists$ Clique der Grösse $k$?\\
+\textit{CLIQUE $\in$ NP:} Zeuge $= S$; Verifikation in $\mathcal{O}(n^2)$.\\
+\textit{SAT $\preceq_p$ CLIQUE:} Aus KNF $\varphi$ mit $m$ Klauseln: $k = m$, Knoten $[i,j]$ pro Literal, Kanten zwischen versch.\ Klauseln falls Literale nicht komplementär.\\
+$\varphi$ erfüllbar $\Leftrightarrow$ $G$ hat Clique der Grösse $k$.

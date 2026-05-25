@@ -67,24 +67,37 @@ INPUT(w); u = F(w); RETURN P(u)
 
 \subsection{Halteprobleme}
 
-\subsubsection{Spezielles Halteproblem (Selbstanwendungsproblem)}
+\subsubsection{Spezielles Halteproblem}
 $H_S := \{w \in \{0,1\}^* \mid T_w \text{ angesetzt auf } w \text{ hält}\}$\\
-\textbf{Gegeben:} Code $w$ einer TM $T_w$. \textbf{Gefragt:} Hält $T_w$ auf eigenem Code $w$?
+\textbf{Gegeben:} Code $w$ einer TM $T_w$. \\
+\textbf{Gefragt:} Hält $T_w$ auf eigenem Code $w$?
 
 \subsubsection{Allgemeines Halteproblem}
 $H := \{w\#x \in \{0,1,\#\}^* \mid T_w \text{ angesetzt auf } x \text{ hält}\}$\\
-\textbf{Gegeben:} Code $w$ einer TM $T_w$ und Input $x$. \textbf{Gefragt:} Hält $T_w$ auf $x$?
+\textbf{Gegeben:} Code $w$ einer TM $T_w$ und Input $x$. \\
+\textbf{Gefragt:} Hält $T_w$ auf Eingabewort $x$?
 
 \subsubsection{Leeres Halteproblem}
-$H_0 := \{w \in \{0,1\}^* \mid T_w \text{ angesetzt auf leeres Band hält}\}$\\
-\textbf{Gegeben:} Code $w$ einer TM $T_w$. \textbf{Gefragt:} Hält $T_w$ auf leerem Band?
+$H_0 := \{w \in \{0,1\}^* \mid T_w \text{ angesetzt auf $\varepsilon$ Band hält}\}$\\
+\textbf{Gegeben:} Code $w$ einer TM $T_w$. \\
+\textbf{Gefragt:} Hält $T_w$ auf leerem Band?
 
 \subsection{Unentscheidbarkeit der Halteprobleme}
 
-\subsubsection{Unentscheidbarkeit von $H_S$ (Widerspruchsbeweis)}
+\subsubsection{Unentscheidbarkeit von $H_S$}
 Annahme: TM $T$ entscheidet $H_S$. Konstruiere TM $P$:
 \begin{center}
-$\boxed{T} \to \boxed{\text{Band}=0?} \xrightarrow{0} \boxed{\text{Band}:=1} \to \boxed{\text{Halt}}$, bei 1: Endlosschleife
+\begin{tikzpicture}[node distance=2cm, auto]
+  \node (T) [draw, rectangle] {TM $T$};
+  \node (check) [draw, rectangle, right of=T] {Bandinhalt?};
+  \node (set) [draw, rectangle, right of=check] {Band:=1};
+  \node (halt) [draw, rectangle, right of=set] {Halt};
+  
+  \draw [->] (T) -- (check);
+  \draw [->] (check) -- node[above] {0} (set);
+  \draw [->] (set) -- (halt);
+  \draw [->] (check) to [out=250,in=290,looseness=4] node[below] {1} (check);
+\end{tikzpicture}
 \end{center}
 Sei $w$ der Code von $P$ ($T_w = P$):
 \begin{itemize}
