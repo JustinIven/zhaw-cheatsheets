@@ -58,7 +58,7 @@ Jeder Vektor im $\mathbb{R}^n$ wird durch $n$ reelle Komponenten bezüglich der 
 Der Verbindungsvektor von Punkt $P$ zu Punkt $Q$ und dessen Länge ist gegeben durch:
 \[
      \overrightarrow{PQ} = \vec r(Q) - \vec r(P), \qquad
-     |\overrightarrow{PQ}| = \sqrt{\sum_{i=1}^{n}(x_{Q,i}-x_{P,i})^2}
+     \overline{PQ} = |\overrightarrow{PQ}|
 \]
 
 
@@ -68,7 +68,7 @@ Der Verbindungsvektor von Punkt $P$ zu Punkt $Q$ und dessen Länge ist gegeben d
 Das \emph{Skalarprodukt} zweier Vektoren liefert eine reelle Zahl und misst den "Anteil" von $\vec{b}$ in Richtung $\vec{a}$. Es ist kommutativ und distributiv.
 
 \[
-     \vec a \cdot \vec b = |\vec a|\,|\vec b|\cos\varphi = \sum_{i=1}^{n} a_i b_i, \qquad 0 \le \varphi \le \pi
+     \vec a \cdot \vec b = \sum_{i=1}^{n} a_i b_i = |\vec a|\,|\vec b|\cos\varphi, \qquad 0 \le \varphi \le \pi
 \]
 
 \textbf{Eingenschafeten:}
@@ -105,4 +105,7 @@ Das \emph{Vektorprodukt} zweier Vektoren im $\mathbb{R}^3$ liefert einen neuen V
      \item $|\vec a \times \vec b|$ = Fläche des aufgespannten Parallelogramms
      \item $\vec a \times \vec b = \vec 0 \;\Leftrightarrow\; \vec a \parallel \vec b$
      \item $\vec a \times \vec b = -(\vec b \times \vec a)$ (Antikommutativität)
+     \item $\vec a \times (\vec b + \vec c) = \vec a \times \vec b + \vec a \times \vec c$ (Distributivität)
+     \item $\lambda(\vec a \times \vec b) = (\lambda\vec a) \times \vec b = \vec a \times (\lambda\vec b)$ (Homogenität)
+     \item $\vec e_1 \times \vec e_2 = \vec e_3$, \quad $\vec e_2 \times \vec e_3 = \vec e_1$, \quad $\vec e_3 \times \vec e_1 = \vec e_2$
 \end{itemize}
