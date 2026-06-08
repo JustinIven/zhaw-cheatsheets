@@ -1,6 +1,6 @@
 \section{Vektorräume}
 
-\subsection{Reeller Vektorraum}
+\subsection{Reeller Vektorraum (Axiome)}
 Ein \emph{reeller Vektorraum} ist eine Menge $V \neq \emptyset$ mit Addition $+: V \times V \to V$ und skalarer Multiplikation $\cdot: \mathbb{R} \times V \to V$, für die gilt ($\vec{a}, \vec{b}, \vec{c} \in V$, $\lambda, \mu \in \mathbb{R}$):
 
 \begin{enumerate}
@@ -49,7 +49,7 @@ Eine Teilmenge $U \subseteq V$ ist ein \emph{Unterraum} von $V$, wenn $U$ selbst
     \item Lösungsmenge von $A\vec{x} = \vec{c}$ mit $\vec{c} \neq \vec{0}$: \textbf{kein} Unterraum
 \end{itemize}
 
-\subsection{Linearer Spann}
+\subsection{Linearer Spann (lineare Hülle)}
 Der lineare Spann ist die Menge aller Linearkombinationen und bildet einen Unterraum von $V$.
 
 \[
@@ -111,12 +111,21 @@ Eine Basis von $\mathbb{R}^n$ besteht aus genau $n$ Vektoren. Für Erzeugendensy
 \end{itemize}
 
 \subsection{Komponentendarstellung und Basiswechsel}
-Bezüglich Basis $\mathcal{B} = \{\vec{b}_1, \ldots, \vec{b}_n\}$: \quad $\vec{a} = \alpha_1 \vec{b}_1 + \ldots + \alpha_n \vec{b}_n \;\Rightarrow\; \vec{a} = \begin{pmatrix} \alpha_1 \\ \vdots \\ \alpha_n \end{pmatrix}_{\!\mathcal{B}}$
+Für den Wechsel zwischen der Standardbasis $\mathcal{S}$ und $\mathcal{B} = \{\vec{b}_1, \ldots, \vec{b}_n\}$ gilt:
+\begin{align*}
+    \mathcal{B} \to \mathcal{S}: \quad &\vec{a}_{\mathcal{S}} = B \cdot \vec{a}_{\mathcal{B}} \\
+    \mathcal{S} \to \mathcal{B}: \quad &\vec{a}_{\mathcal{B}} = B^{-1} \cdot \vec{a}_{\mathcal{S}}
+\end{align*}
+wobei 
+\[
+B = \begin{pmatrix} | & | & & | \\ \vec{b}_{\mathcal{S}1} & \vec{b}_{\mathcal{S}2} & \cdots & \vec{b}_{\mathcal{S}n} \\ | & | & & | \end{pmatrix}
+\]
+
 
 \textbf{$\mathcal{B} \to \mathcal{S}$:} Koeffizienten $\alpha_k$ und Basisvektoren $\vec{b}_k$ (in $\mathcal{S}$-Darstellung) einsetzen:
 \[
     \vec{a}_{\mathcal{S}} = \alpha_1 \cdot \vec{b}_1 + \alpha_2 \cdot \vec{b}_2 + \ldots + \alpha_n \cdot \vec{b}_n = B \cdot \vec{a}_{\mathcal{B}}
 \]
 
-\textbf{$\mathcal{S} \to \mathcal{B}$:} LGS lösen: $B \cdot \vec{a}_{\mathcal{B}} = \vec{a}_{\mathcal{S}}$, wobei $B = (\vec{b}_1 \mid \vec{b}_2 \mid \ldots \mid \vec{b}_n)$.
+\textbf{$\mathcal{S} \to \mathcal{B}$:} LGS lösen: $\vec{a}_{\mathcal{B}} = B^{-1} \cdot \vec{a}_{\mathcal{S}}$, wobei $B = (\vec{b}_1 \mid \vec{b}_2 \mid \ldots \mid \vec{b}_n)$.
 

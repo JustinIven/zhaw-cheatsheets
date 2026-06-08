@@ -70,9 +70,9 @@ Für Ebene $E: ax + by + cz = 0$ mit $a^2+b^2+c^2=1$, $\vec{n}=\begin{pmatrix}a\
 \subsection{Rotationen in $\mathbb{R}^3$}
 
 \begin{tabular}{@{}ll@{}}
-\textbf{Um $z$-Achse} & $\begin{pmatrix} \cos\varphi & -\sin\varphi & 0 \\ \sin\varphi & \cos\varphi & 0 \\ 0 & 0 & 1 \end{pmatrix}$ \\[10pt]
-\textbf{Um $x$-Achse} & $\begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\varphi & -\sin\varphi \\ 0 & \sin\varphi & \cos\varphi \end{pmatrix}$ \\[10pt]
-\textbf{Um $y$-Achse} & $\begin{pmatrix} \cos\varphi & 0 & \sin\varphi \\ 0 & 1 & 0 \\ -\sin\varphi & 0 & \cos\varphi \end{pmatrix}$
+    \textbf{Um $x$-Achse} & $\begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\varphi & -\sin\varphi \\ 0 & \sin\varphi & \cos\varphi \end{pmatrix}$ \\[10pt]
+    \textbf{Um $y$-Achse} & $\begin{pmatrix} \cos\varphi & 0 & \sin\varphi \\ 0 & 1 & 0 \\ -\sin\varphi & 0 & \cos\varphi \end{pmatrix}$ \\[10pt]
+    \textbf{Um $z$-Achse} & $\begin{pmatrix} \cos\varphi & -\sin\varphi & 0 \\ \sin\varphi & \cos\varphi & 0 \\ 0 & 0 & 1 \end{pmatrix}$
 \end{tabular}
 
 \textbf{Rotation um allg.\ Achse} durch Ursprung mit norm.\ Vektor $\vec{a}=\begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix}$:
@@ -83,15 +83,49 @@ $R = \begin{pmatrix} c+a_1^2(1-c) & a_1a_2(1-c)-a_3s & a_1a_3(1-c)+a_2s \\ a_1a_
 mit $c = \cos(\varphi)$, $s = \sin(\varphi)$.
 
 \subsection{Kern und Bild}
-Für $f: V \to W$ mit $m \times n$-Abbildungsmatrix $A$:
 
-\textbf{Kern:} $\ker(A) = \{\vec{x} \in V \mid A \cdot \vec{x} = \vec{0}\}$ (Lösungsmenge des homogenen LGS)
+\subsubsection*{Kern}
+Der \textbf{Kern} einer linearen Abbildung $f: V \to W$ ist die Menge aller Vektoren aus $V$, die durch $f$ auf den Nullvektor $\vec{0}$ in $W$ abgebildet werden. \\[6pt]
 
-\textbf{Bild:} $\text{im}(A) = \text{span}(\vec{a}_1, \ldots, \vec{a}_n)$ (aufgespannt von Spalten von $A$)
+\textbf{Definition:} $\ker(f) = \{\vec{x} \in V \mid f(\vec{x}) = \vec{0}\}$
 
-\textbf{Dimensionssatz:} $\dim(\text{im}(A)) = \text{rg}(A)$, \quad $\dim(\ker(A)) + \dim(\text{im}(A)) = n$
+Für die Abbildungsmatrix $A$ (Dimension $m \times n$):
+$$\ker(A) = \{\vec{x} \in \mathbb{R}^n \mid A \cdot \vec{x} = \vec{0}\}$$
 
-$\text{im}(A)$ = Linearkombination der linear unabh.\ Spaltenvektoren von $A$.
+Dies ist die \textbf{Lösungsmenge des homogenen linearen Gleichungssystems} $A \vec{x} = \vec{0}$.
+
+\textbf{Eigenschaften:}
+\begin{itemize}
+    \item $\ker(f)$ ist ein Unterraum von $V$
+    \item $\vec{0} \in \ker(f)$ immer (da $f(\vec{0}) = \vec{0}$)
+    \item $f$ ist injektiv $\Leftrightarrow$ $\ker(f) = \{\vec{0}\}$ (nur der Nullvektor im Kern)
+\end{itemize}
+
+\subsubsection*{Bild}
+Das \textbf{Bild} einer linearen Abbildung $f: V \to W$ ist die Menge aller Vektoren aus $W$, die als Bild von mindestens einem Vektor aus $V$ auftreten. \\[6pt]
+
+\textbf{Definition:} $\text{im}(f) = \{f(\vec{x}) \mid \vec{x} \in V\} = \{\vec{y} \in W \mid \exists \vec{x} \in V: f(\vec{x}) = \vec{y}\}$
+
+Für die Abbildungsmatrix $A$ (Dimension $m \times n$):
+$$\text{im}(A) = \text{span}(\vec{a}_1, \vec{a}_2, \ldots, \vec{a}_n)$$
+
+Das Bild wird \textbf{aufgespannt} von den Spalten von $A$ (aufgespannter Spaltenraum). \\[6pt]
+
+\textbf{Eigenschaften:}
+\begin{itemize}
+    \item $\text{im}(f)$ ist ein Unterraum von $W$
+    \item $\text{im}(f)$ ist der Spaltenraum von $A$
+    \item $\dim(\text{im}(A)) = \text{Rang}(A)$ = Anzahl linear unabhängiger Spalten
+    \item $f$ ist surjektiv $\Leftrightarrow$ $\text{im}(f) = W$
+\end{itemize}
+
+\subsubsection*{Dimensionssatz}
+Für eine lineare Abbildung $f: V \to W$ mit $\dim(V) = n$ gilt:
+$$\dim(\ker(f)) + \dim(\text{im}(f)) = n$$
+
+Äquivalent mit Abbildungsmatrix $A$ ($m \times n$):
+$$\dim(\text{im}(A)) = \text{rg}(A)$$
+
 
 \subsection{Verknüpfung linearer Abbildungen}
 $f: U \to V$ mit Matrix $A$, $g: V \to W$ mit Matrix $B$:
@@ -118,10 +152,15 @@ $\mathcal{S}$: Standardbasis, $\mathcal{B}$: andere Basis mit Vektoren $\vec{b}_
 \subsection{Homogene Koordinaten}
 Translationen sind \textbf{nicht linear}. Trick: Vektoren um eine Komponente erweitern.
 \begin{itemize}
-    \item \textbf{Ortsvektor} (Punkt): letzte Komponente $= 1$ bsp. $\vec{p} = \begin{pmatrix} x \\ y \\ 1 \end{pmatrix}$
-    \item \textbf{Freier Vektor}: letzte Komponente $= 0$ bsp. $\vec{v} = \begin{pmatrix} v_x \\ v_y \\ 0 \end{pmatrix}$
+    \item \textbf{Ortsvektoren} (Punkt) sind am Ursprung angeheftet; letzte Komponente $= 1$ 
+    \item \textbf{Freier Vektoren} sind frei parallel verschiebbar; letzte Komponente $= 0$
 \end{itemize}
+\begin{align*}
+    \text{Ortsvektor: } \vec{p} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \\ 1 \end{pmatrix} \quad
+    \text{Freier Vektor: } \vec{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \\ 0 \end{pmatrix}
+\end{align*}
 
+\subsubsection{Homogene Abbildungsmatrizen}
 \textbf{Translation} in $\mathbb{R}^2$ um $\vec{a}=\binom{a_1}{a_2}$: $T = \begin{pmatrix} 1 & 0 & a_1 \\ 0 & 1 & a_2 \\ 0 & 0 & 1 \end{pmatrix}$
 
 \textbf{Rotation + Translation} in $\mathbb{R}^2$:
