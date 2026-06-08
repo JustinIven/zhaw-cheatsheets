@@ -19,6 +19,16 @@ mit
     \item Endzustandsmenge \(F \subseteq Q\).
 \end{itemize}
 
+\subsection{Graphische Darstellung}
+Der Übergang \(\delta(q_0, a) = q_1\) wird grafisch dargestellt als\\
+\begin{center}
+    \begin{tikzpicture}[main/.style = {draw, circle}]
+        \node[main] (q) {$q_0$};
+        \node[main] (p) [right=1.5cm of q] {$q_1$};
+        \draw[->] (q) to node[above] {\(a\)} (p);
+    \end{tikzpicture}
+\end{center}
+
 \subsection{Konfigurationen}
 Eine Konfiguration ist ein Paar
 \[
