@@ -71,7 +71,37 @@ Das \emph{Skalarprodukt} zweier Vektoren liefert eine reelle Zahl und misst den 
      \vec a \cdot \vec b = \sum_{i=1}^{n} a_i b_i = |\vec a|\,|\vec b|\cos\varphi, \qquad 0 \le \varphi \le \pi
 \]
 
-\textbf{Eingenschafeten:}
+\begin{center}
+\begin{tikzpicture}[scale=0.9,>=latex]
+     % vectors
+     \coordinate (O) at (0,0);
+     \coordinate (A) at (3,0);
+     \coordinate (B) at (1.6,1.7);
+     % projection of b onto a (foot point)
+     \coordinate (P) at (1.6,0);
+
+     % projection length helper line
+     \draw[dashed,gray] (B) -- (P);
+
+     % vector a
+     \draw[->,thick,blue] (O) -- (A) node[below right] {$\vec a$};
+     % vector b
+     \draw[->,thick,red]  (O) -- (B) node[above] {$\vec b$};
+
+     % projection b_a on a
+     \draw[->,very thick,red!60!black] (O) -- (P)
+          node[midway,below] {$\vec b_a$};
+
+     % angle phi
+     \pic[draw,->,"$\varphi$",angle radius=8mm,angle eccentricity=1.35]
+          {angle=A--O--B};
+
+     % right angle at foot point
+     \draw (P) ++(-0.18,0) -- ++(0,0.18) -- ++(0.18,0);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Eigenschaften:}
 \begin{itemize}
      \item Orthogonalitätstest: $\vec a \cdot \vec b = 0 \;\Leftrightarrow\; \vec a \perp \vec b$
      \item $\vec a \cdot \vec a = |\vec a|^2$
