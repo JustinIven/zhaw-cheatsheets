@@ -72,10 +72,10 @@ wobei
 \]
 gilt. Damit sind mehrere Folgezustände pro Symbol möglich.
 
-Akzeptanz: Es existiert mindestens ein Lauf, der in einem Zustand aus \(F\) endet.
+\textbf{Akzeptanz}: Es existiert mindestens ein Lauf, der in einem Zustand aus \(F\) endet.
 
 \subsection{Äquivalenz von DEA und NEA}
-Sein NEA \(N=(Q_N,\Sigma,\delta_N,q_{0N},F_N)\) kann in einen equivalenten DEA \(D=(Q_D,\Sigma,\delta_D,q_{0D},F_D)\) überführt werden durch
+Ein NEA \(N=(Q_N,\Sigma,\delta_N,q_{0N},F_N)\) kann in einen equivalenten DEA \(D=(Q_D,\Sigma,\delta_D,q_{0D},F_D)\) überführt werden durch
 \begin{itemize}
     \item \(Q_D = \mathcal{P}(Q_N)\) (Mengen von NEA-Zuständen),
     \item \(F_D = \{S \subseteq Q_N \mid S \cap F_N \neq \emptyset\}\) (DEA-Endzustände sind Mengen, die mindestens einen NEA-Endzustand enthalten),

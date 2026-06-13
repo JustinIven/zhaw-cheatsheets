@@ -40,6 +40,26 @@
 \input{content/decidability.tex}
 \input{content/complexityTheory.tex}
 
+\section{Chomsky-Hierarchie}
+\begin{center}
+     \begin{tikzpicture}[
+          font=\scriptsize,
+          box/.style={draw, rounded corners=2pt, inner sep=2pt, align=center},
+          lbl/.style={anchor=north, align=center}
+     ]
+          % Typ 0: rekursiv aufzählbar (Turingmaschine)
+          \node[box, fill=red!12, minimum width=4.1cm, minimum height=3cm] (t0) {};
+          \node[lbl] at (t0.north) {\textbf{Typ 0} -- rekursiv aufzählbar\\(Turingmaschine)};
+
+          % Typ 2: kontextfrei (Kellerautomat)
+          \node[box, fill=green!22, minimum width=3.8cm, minimum height=2cm, anchor=south] (t2) at ([yshift=2pt]t0.south) {};
+          \node[lbl] at (t2.north) {\textbf{Typ 2} -- kontextfrei\\(Kellerautomat)};
+
+          % Typ 3: regulär (endlicher Automat)
+          \node[box, fill=blue!18, minimum width=3.5cm, minimum height=1cm, anchor=south] (t3) at ([yshift=2pt]t2.south) {\textbf{Typ 3} -- regulär\\(endlicher Automat)};
+     \end{tikzpicture}
+\end{center}
+
 
 \vfill
 

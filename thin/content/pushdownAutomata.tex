@@ -33,17 +33,19 @@ Der Übergang \(\delta(q_0, a, x) = (q_1, w)\) wird grafisch dargestellt als\\
 \end{center}
 
 \subsection{Nichtdeterministischer Kellerautomat}
-Ein nichtdeterministischer Kellerautomat wird durch den selben Tupel wie der deterministische definiert, jedoch ist die Übergangsfunktion
+Ein nichtdeterministischer Kellerautomat wird durch den selben Tupel wie der deterministische definiert, jedoch ist die Übergangsfunktion:
 \[
-    \delta : Q \times (\Sigma \cup \{\varepsilon\}) \times \Gamma \to \mathcal{P}(Q \times \Gamma^*),
+    \delta : Q \times (\Sigma \cup \{\varepsilon\}) \times \Gamma \to \mathcal{P}(Q \times \Gamma^*)
 \]
+
+Sie sind mächtiger als deterministische Kellerautomaten. Bsp: \(\{aa^{\mathcal{R}}|a \in \{0,1\}^*\}\)
 
 \subsection{Konfigurationen}
 Eine Konfiguration ist ein Tripel
 \[
     (q,w,\gamma) \in Q \times \Sigma^* \times \Gamma^*
 \]
-mit aktuellem Zustand \(q\), Restwort \(w\) und Kellerinhalt \(\gamma\) (oberstes Symbol links).
+mit aktuellem Zustand \(q\), Restwort \(w\) und Kellerinhalt \(\gamma\) (oberstes Symbol).
 \begin{itemize}
     \item \((q_0,w,\$)\) ist die Startkonfiguration.
     \item \((q,\varepsilon,\gamma)\) ist eine Endkonfiguration.
@@ -71,4 +73,4 @@ Ein Wort \(w\) wird von \(M\) akzeptiert, wenn es eine Berechnung gibt, die von 
 \]
 
 \subsection{Beziehung zu Grammatiken}
-Eine Sprache ist kontextfrei genau dann, wenn es einen nichtdeterministischen Kellerautomaten gibt, der sie akzeptiert.
+Eine Sprache ist kontextfrei genau dann, wenn es einen \textit{nichtdeterministischen} Kellerautomaten gibt, der sie akzeptiert.

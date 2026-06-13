@@ -1,7 +1,7 @@
 \section*{Alphabete, Wörter und Sprachen}
 
 \subsection{Alphabet}
-Ein Alphabet ist eine endliche, nichtleere Menge von Symbolen. Bsp.:
+Ein Alphabet ist eine endliche, nichtleere Menge von Symbolen. Das  Bsp.:
 \[
     \Sigma = \{a,b,c\}, \quad
     \Sigma_\text{bool} = \{0,1\}, \quad
@@ -67,7 +67,7 @@ Die Konkatenation mit dem leeren Wort \(\varepsilon\) hat keine Auswirkung auf d
 \]
 
 \subsubsection{Wortpotenzen}
-Die \(n\)-te Potenz eines Wortes \(x\) wird für alle \(n \in \mathbb{N}\) definiert als
+Die \(n\)-te Potenz eines Wortes \(x\) wird für alle \(n \in \mathbb{N}\) rekursiv definiert als
 \begin{align*}
     x^0 &:= \varepsilon \\
     x^{n+1} &:= x^n x
@@ -85,6 +85,7 @@ Es gelten die folgenden Eigenschaften:
     \item \(\{\} = \emptyset\) ist die leere Sprache für jedes Alphabet \(\Sigma\).
     \item \(\{\varepsilon\}\) ist die Sprache, die nur das leere Wort enthält, für jedes Alphabet \(\Sigma\).
     \item \(\Sigma^*\) ist die Sprache aller Wörter über \(\Sigma\).
+    \item \(\varepsilon\) ist nicht allgemein in jeder Sprache \(L\) enthalten.
 \end{itemize}
 
 \subsubsection{Konkatenation}
