@@ -1,0 +1,33 @@
+{
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "VARIANT": "trixie",
+      "TYPST_VERSION": "0.15.1"
+    }
+  },
+  "name": "Typst",
+  "postCreateCommand": {
+    "installFonts": "[ ! -d 'fonts/' ] || { mkdir -p ~/.local/share/fonts/ && cp fonts/*.ttf ~/.local/share/fonts/ && fc-cache -f -v; }",
+    "linkTemplate": "mkdir -p ~/.local/share/typst/packages/local/zhaw-cheatsheets && ln -sfn ${containerWorkspaceFolder}/.template ~/.local/share/typst/packages/local/zhaw-cheatsheets/0.1.0"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "myriad-dreamin.tinymist", // Typst LSP and renderer.
+        "shardulm94.trailing-spaces" // Highlights straight whitespace
+      ],
+      "settings": {
+        "files.eol": "\n",
+        "editor.formatOnSave": true,
+        "[typst]": {
+          "editor.formatOnSave": true
+        },
+        "tinymist.formatterMode": "typstyle",
+        "files.associations": {
+          "*.typ": "typst"
+        }
+      }
+    }
+  }
+}

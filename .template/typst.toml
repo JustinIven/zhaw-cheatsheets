@@ -1,0 +1,5 @@
+[package]
+name = "zhaw-cheatsheets"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Justin Iven Müller"]
