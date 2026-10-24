@@ -29,8 +29,8 @@
   show link: set text(fill: myBlue)
 
   // remove list indentation.
-  set list(indent: 0pt, body-indent: 0.4em, spacing: 0.5em)
-  set enum(indent: 0pt, body-indent: 0.4em, spacing: 0.5em)
+  set list(indent: 0pt, body-indent: 0.4em, spacing: 0.6em)
+  set enum(indent: 0pt, body-indent: 0.4em, spacing: 0.6em)
 
   // tight spacing, blue section.
   show heading: it => block(above: 0.8em, below: 0.5em, it)
