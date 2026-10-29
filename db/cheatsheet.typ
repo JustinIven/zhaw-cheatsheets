@@ -4,4 +4,5 @@
 #show: cheatsheet.with(title: "Datenbanken")
 
 #include "content/relationalAlgebra.typ"
-//#include "content/entityRelationship.typ"
+#include "content/entityRelationship.typ"
+#include "content/normalization.typ"

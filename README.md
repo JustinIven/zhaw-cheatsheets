@@ -4,9 +4,11 @@ A collection of cheatsheets for my Bachelor's degree in Computer Science at ZHAW
 ## Contents
 - [**AN1 (Analysis 1)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/an1/cheatsheet.pdf)
 - [**AN2 (Analysis 2)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/an2/cheatsheet.pdf)
-- [**DM (Discrete Mathematics)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/dm/cheatsheet.pdf)
+- [**DB (Datenbanken)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/db/cheatsheet.pdf)
+- [**DM (Diskrete Mathematik)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/dm/cheatsheet.pdf)
 - [**INCO (Information und Codierung)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/inco/cheatsheet.pdf)
 - [**LA (Lineare Algebra)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/la/cheatsheet.pdf)
+- [**STs (Stochastik und Statistik)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/sts/cheatsheet.pdf)
 - [**THIN (Theoretische Informatik)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/thin/cheatsheet.pdf)
 - [**WING (Wirtschaft für Ingenieure)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/wing/cheatsheet.pdf)
 
