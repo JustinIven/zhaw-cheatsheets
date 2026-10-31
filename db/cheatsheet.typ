@@ -6,3 +6,4 @@
 #include "content/relationalAlgebra.typ"
 #include "content/entityRelationship.typ"
 #include "content/normalization.typ"
+#include "content/sqlDdlDml.typ"
