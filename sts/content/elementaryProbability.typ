@@ -28,13 +28,41 @@
 
 == Zufallsvariablen
 - *Zufallsvariable:* Funktion $X: Omega -> RR$; $X = x$ steht für Ereignis ${omega in Omega | X(omega) = x}$
-- *Dichtefunktion (PMF):* \ $f: RR -> [0,1]$, $f(x) = P(X = x)$
-- *Kumulative Verteilungsfunktion (CDF):* \ $F: RR -> [0,1]$, $F(x) = P(X <= x)$
+- *Dichtefunktion (PMF):*  $ f: RR -> [0,1], quad f(x) = P(X = x) $
+- *Kumulative Verteilungsfunktion (CDF):* $ F: RR -> [0,1], quad F(x) = P(X <= x) $
 
 *Eigenschaften:*
-+ $limits(sum)_(x=-infinity)^infinity f(x) = 1$, $F(z) = limits(sum)_(x=-infinity)^z f(x)$
-+ $limits(lim)_(x->infinity) F(x) = 1$, $limits(lim)_(x->-infinity) F(x) = 0$
-+ Monotonie: $x <= y => F(x) <= F(y)$
-+ $f(x) = F(x) - limits(lim)_(y->x^-) F(y)$ (Sprunghöhe)
-+ $P(a < X <= b) = F(b) - F(a)$ \ $P(a <= X <= b) = F(b) - limits(lim)_(x->a^-) F(x)$
-+ $P(X > b) = 1 - F(b)$, $P(X >= b) = 1 - limits(lim)_(x->b^-) F(x)$
++ $ sum_(x=-infinity)^infinity f(x) = 1, quad F(z) = sum_(x=-infinity)^z f(x) $
++ $ lim_(x->infinity) F(x) = 1, quad lim_(x->-infinity) F(x) = 0 $
++ Monotonie: $ x <= y => F(x) <= F(y) $
++ Sprunghöhe: $ f(x) = F(x) - lim_(y->x^-) F(y) $
++ $
+    & P(a < X <= b) = F(b) - F(a) \
+    & P(a <= X <= b) = F(b) - lim_(x->a^-) F(x)
+  $
++ $ P(X > b) = 1 - F(b), quad P(X >= b) = 1 - lim_(x->b^-) F(x) $
+
+== Kenngrössen
+*Lagemass:* Zentrum; *Streumass:* Abweichung vom Zentrum. Existieren nicht für jede Verteilung.
+- *Erwartungswert:* $mu = E(X) = limits(sum)_(x in RR) P(X = x) dot x$
+- *Varianz:* $sigma^2 = V(X) = limits(sum)_(x in RR) P(X = x) dot (x - E(X))^2$ (Einheit²)
+- *Standardabweichung:* $sigma = S(X) = sqrt(V(X))$ (Einheit wie $X$)
+
+*Rechenregeln* ($alpha, beta in RR$):
++ Linearität: $ E(X + Y) = E(X) + E(Y), quad E(alpha X) = alpha E(X) $
++ Verschiebungssatz: $ V(X) = E(X^2) - E(X)^2 = (limits(sum)_(x in RR) P(X = x) dot x^2) - E(X)^2 $
++ $ V(alpha X + beta) = alpha^2 dot V(X) $
+
+*Tschebyscheff* (gilt für *jede* Verteilung): W'keit, um mind. $k > 0$ von $E(X)$ abzuweichen, ist höchstens $S(X)^2 / k^2$.
+$
+  P(|X - E(X)| >= k) & <= S(X)^2 / k^2 \
+   P(|X - E(X)| < k) & >= 1 - S(X)^2 / k^2
+$
+Mit $k = c dot S(X)$: mind. $1 - 1/c^2$ der Werte liegen in $E(X) plus.minus c dot S(X)$.
+#block(breakable: false, table(
+  columns: 4,
+  align: center,
+  [Anteil in $E(X) plus.minus c S(X)$], [$c = 1$], [$c = sqrt(2)$], [$c = 2$],
+  [Tschebyscheff], [–], [$>= 50%$], [$>= 75%$],
+  [Normalverteilt], [$approx 68%$], [], [$approx 95%$],
+))
