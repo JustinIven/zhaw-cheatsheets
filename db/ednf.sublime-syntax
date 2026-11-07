@@ -1,0 +1,25 @@
+%YAML 1.2
+---
+name: EDNF
+file_extensions: [ednf]
+scope: source.ednf
+
+contexts:
+  main:
+    - match: '^\s*([A-Za-z][\w-]*)\s*(=)'
+      captures:
+        1: entity.name.function.ednf
+        2: keyword.operator.definition.ednf
+    - match: '"'
+      scope: punctuation.definition.string.begin.ednf
+      push: terminal
+    - match: '=|\|'
+      scope: keyword.operator.ednf
+    - match: '[\[\]{}()]'
+      scope: keyword.operator.grouping.ednf
+
+  terminal:
+    - meta_scope: string.quoted.double.ednf
+    - match: '"'
+      scope: punctuation.definition.string.end.ednf
+      pop: true

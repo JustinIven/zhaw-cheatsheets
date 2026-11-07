@@ -19,10 +19,10 @@
 
 == DDL
 === Schema (Datenbank)
-```
-"CREATE SCHEMA" <dbName>
-    ["AUTHORIZATION" <userName>] ";"
-"DROP SCHEMA" <dbName> ["CASCADE"] ";"
+```ednf
+"CREATE SCHEMA" dbName
+    ["AUTHORIZATION" userName] ";"
+"DROP SCHEMA" dbName ["CASCADE"] ";"
 ```
 - Auch `CREATE DATABASE`; `dbName` eindeutig; `userName` = Besitzer, nur er darf löschen
 - `DROP` löscht per Default nur leeres Schema; `CASCADE` löscht alle Elemente ohne Rückfrage
@@ -42,44 +42,44 @@
 )
 
 === Domain
-```
-"CREATE DOMAIN" <domainName> "AS"
+```ednf
+"CREATE DOMAIN" domainName "AS"
     dataType ["(" domain ")"]
     [attributeConstraintDef] ";"
-"DROP DOMAIN" <domainName> ";"
+"DROP DOMAIN" domainName ";"
 ```
 - Constraint auf *DB-Ebene*: Wertebereich gilt im ganzen Schema, einmal zentral definiert/gepflegt; v.~a. für Schlüssel-Attribute, ausführliche Formate
 - Bsp.: `CREATE DOMAIN ssn_type AS CHAR(9);` → Verwendung: `ssn ssn_type,`
 
 === CREATE TABLE
-```
-"CREATE TABLE" <tableName>
+```ednf
+"CREATE TABLE" tableName
   "(" tableElementDef {"," tableElementDef} ");"
 
-tableElementDef ::= columnDef | tableConstraintDef
+tableElementDef = columnDef | tableConstraintDef
 
-columnDef ::= <attributeName>
+columnDef = attributeName
     dataType ["(" domain ")"]
     [attributeConstraintDef]
 
-attributeConstraintDef ::=
-    ["CONSTRAINT" <constraintName>]
+attributeConstraintDef =
+    ["CONSTRAINT" constraintName]
     {"DEFAULT" defaultClause | "NOT NULL"
      | "CHECK" "(" checkCondition ")"}
 
-defaultClause ::=
-    "NULL" | <constant> | <systemVariable>
+defaultClause =
+    "NULL" | constant | systemVariable
 
-tableConstraintDef ::=
-    ["CONSTRAINT" <constraintName>]
+tableConstraintDef =
+    ["CONSTRAINT" constraintName]
     tableConstraintType
 
-tableConstraintType ::= CHECK mit mehreren Attr.
-  | "UNIQUE (" <attr> {"," <attr>} ")"
-  | "PRIMARY KEY (" <attr> {"," <attr>} ")"
-  | "FOREIGN KEY (" <attr> {"," <attr>} ")"
-    "REFERENCES" <tableName>
-    ["(" <attr> {"," <attr>} ")"]
+tableConstraintType = CHECK mit mehreren Attr.
+  | "UNIQUE (" attr {"," attr} ")"
+  | "PRIMARY KEY (" attr {"," attr} ")"
+  | "FOREIGN KEY (" attr {"," attr} ")"
+    "REFERENCES" tableName
+    ["(" attr {"," attr} ")"]
     [FK-Trigger {FK-Trigger}]
 ```
 ```sql
@@ -104,8 +104,8 @@ CREATE TABLE person (
 - *FOREIGN KEY:* minimal `FOREIGN KEY (a) REFERENCES T`; ohne Attributliste → *PK* von `T` referenziert (andere Attribute möglich, abzuraten). DBMS sichert *referentielle Integrität* (Eingabe, Löschen)
 
 === FK-Trigger
-```
-FK-Trigger ::= ("ON DELETE" | "ON UPDATE")
+```ednf
+FK-Trigger = ("ON DELETE" | "ON UPDATE")
   ("NO ACTION" | "SET NULL" | "SET DEFAULT"
    | "CASCADE")
 ```
@@ -129,10 +129,10 @@ CONSTRAINT PasstZuFK1 FOREIGN KEY (Modell)
 → Modell umbenannt: `PasstZu` übernimmt neuen Namen; Modell gelöscht: zugehörige `PasstZu`-Tupel gelöscht
 
 === ALTER TABLE
-```
-"ALTER TABLE" <tableName> action ";"
-action ::= "ADD" <column> | "DROP" <column>
-  | "ALTER" <column> | "ADD" constraint
+```ednf
+"ALTER TABLE" tableName action ";"
+action = "ADD" column | "DROP" column
+  | "ALTER" column | "ADD" constraint
   | "DROP" constraint
 ```
 - Jede Ebene änderbar: Table → TableElement → ElementConstraintDef
@@ -152,16 +152,16 @@ ALTER TABLE Zubehoerteil ALTER name DROP NOT NULL;
 - Mehrere Änderungen in einem `ALTER` = Erweiterung: PostgreSQL `ADD a int, ADD b char(20)`, Oracle `ADD (a int, b char(20))`
 
 === DROP TABLE
-```
-"DROP TABLE" <tableName> {"," <tableName>}
+```ednf
+"DROP TABLE" tableName {"," tableName}
     ["CASCADE" | "RESTRICT"] ";"
 ```
 - Löscht Tabelle inkl. Struktur; hängen Objekte ab (z.~B. FKs) → `CASCADE` nötig
 
 == DML
 === INSERT
-```
-"INSERT INTO" <tableName> ["(" attrList ")"]
+```ednf
+"INSERT INTO" tableName ["(" attrList ")"]
     ("VALUES (" valueList ")") | query ";"
 ```
 - Fügt immer *ganze Tupel* ein; Reihenfolge `attrList` ↔ `valueList` muss übereinstimmen
@@ -172,9 +172,9 @@ INSERT INTO Salaer (pNr, betrag)
 ```
 
 === UPDATE
-```
-"UPDATE" <tableName> "SET" <attr> "=" <wert>
-    {"," <attr> "=" <wert>}
+```ednf
+"UPDATE" tableName "SET" attr "=" wert
+    {"," attr "=" wert}
     ["WHERE" searchCondition] ";"
 ```
 - 4 Grundrechenoperationen erlaubt: `UPDATE Salaer SET betrag = 1.05 * betrag;`
@@ -184,8 +184,8 @@ UPDATE Salaer SET betrag = 1.05 * betrag WHERE pNr = 12;
 ```
 
 === DELETE
-```
-"DELETE FROM" <tableName>
+```ednf
+"DELETE FROM" tableName
     ["WHERE" searchCondition] ";"
 ```
 - Löscht immer *ganze Tupel*; *ohne Bedingung → ganze Tabelle geleert!*
