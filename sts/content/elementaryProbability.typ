@@ -1,3 +1,5 @@
+#import "@preview/cetz:0.4.2"
+
 = Elementare Wahrscheinlichkeitsrechnung
 
 == Diskrete Wahrscheinlichkeitsräume
@@ -66,3 +68,101 @@ Mit $k = c dot S(X)$: mind. $1 - 1/c^2$ der Werte liegen in $E(X) plus.minus c d
   [Tschebyscheff], [–], [$>= 50%$], [$>= 75%$],
   [Normalverteilt], [$approx 68%$], [], [$approx 95%$],
 ))
+
+== Bedingte Wahrscheinlichkeiten
+*Bedingte W'keit* von $B$ unter Bedingung $A$ ($P(A) != 0$):
+$ P(B|A) = P(A inter B) / P(A) $
+
+=== Vierfeldertafel
+Innenfelder = Schnitte, Ränder = Summen (Randw'keiten), Total $1$. Bedingt: Nenner = Rand der Bedingung, nicht Total.
+#align(center, table(
+  columns: 4,
+  align: center + horizon,
+  stroke: 0.4pt,
+  inset: 3pt,
+  table.header([], [$B$], [$overline(B)$], [$Sigma$]),
+  [$A$], [$P(A inter B)$], [$P(A inter overline(B))$], [$P(A)$],
+  [$overline(A)$], [$P(overline(A) inter B)$], [$P(overline(A) inter overline(B))$], [$P(overline(A))$],
+  [$Sigma$], [$P(B)$], [$P(overline(B))$], [$1$],
+))
+
+#block(breakable: false)[
+  === Ereignisbaum
+  #align(center, cetz.canvas({
+    import cetz.draw: *
+    set-style(stroke: 0.4pt)
+    let root = (0, 0)
+    let l1 = ((1.5, 0.9), (1.5, -0.9))
+    let l2 = ((3.2, 1.35), (3.2, 0.45), (3.2, -0.45), (3.2, -1.35))
+    let n1 = ($A$, $overline(A)$)
+    let n2 = ($B$, $overline(B)$, $B$, $overline(B)$)
+    let e1 = ($P(A)$, $P(overline(A))$)
+    let e2 = ($P(B|A)$, $P(overline(B)|A)$, $P(B|overline(A))$, $P(overline(B)|overline(A))$)
+    let res = (
+      $P(A inter B)$,
+      $P(A inter overline(B))$,
+      $P(overline(A) inter B)$,
+      $P(overline(A) inter overline(B))$,
+    )
+    let lbl(a, b, body) = content(
+      (a, 50%, b),
+      text(6pt, body),
+      frame: "rect",
+      fill: white,
+      stroke: none,
+      padding: 0.03,
+    )
+    let node(p, body) = content(p, text(6pt, body), frame: "circle", fill: white, padding: 0.04)
+    for i in range(2) {
+      line(root, l1.at(i))
+      for j in range(2) { line(l1.at(i), l2.at(2 * i + j)) }
+    }
+    for i in range(2) {
+      lbl(root, l1.at(i), e1.at(i))
+      for j in range(2) { lbl(l1.at(i), l2.at(2 * i + j), e2.at(2 * i + j)) }
+    }
+    circle(root, radius: 0.06, fill: black)
+    for i in range(2) { node(l1.at(i), n1.at(i)) }
+    for k in range(4) {
+      node(l2.at(k), n2.at(k))
+      content((l2.at(k).at(0) + 0.2, l2.at(k).at(1)), text(6pt, $= #res.at(k)$), anchor: "west")
+    }
+  }))
+]
+- Von einem Verzweigungspunkt ausgehende Ereignisse paarweise disjunkt
+- Summe der Übergangsw'keiten pro Verzweigung $= 1$
+
+*Sätze:*
++ *Multiplikationssatz (Pfadw'keit):* W'keiten entlang eines Pfades multiplizieren
+  $ P(A inter B) = P(A) dot P(B|A) = P(B) dot P(A|B) $
++ *Totale W'keit:* Pfadw'keiten aller Pfade zum selben Endergebnis addieren
+  $ P(B) = P(A) dot P(B|A) + P(overline(A)) dot P(B|overline(A)) $
++ *Bayes:*
+  $ P(A|B) = (P(A) dot P(B|A)) / P(B) $
+
+== Stochastische Unabhängigkeit
+Zwei Ereignisse heissen _stochastisch unabhängig_, falls gilt:
+$ P(A inter B) = P(A) dot P(B) $
+Dann folgt:
+$ P(B) != 0 arrow.double.long P(A|B) = P(A) $
+$ P(A) != 0 arrow.double.long P(B|A) = P(B) $
+
+=== Sätze
+Für einen diskreten Wahrscheinlichkeitsraum $(Omega, P)$ und zwei Ereignisse $A, B in Omega$ sind folgende Aussagen äquivalent:
+- $A$ und $B$ stochastisch unabhängig sind.
+- $A$ und $B\\ Omega$ stochastisch unabhängig sind.
+- $A\\Omega$ und $B\\Omega$ stochastisch unabhängig sind.
+
+=== Vollständige Unabhängigkeit von $n$ Ereignissen
+Die Ereignisse $A_1, ..., A_n$ heissen _vollständig unabhängig_, wenn für jede Teilmenge $I subset.eq {1, ..., n}$ mit $|I| >= 2$ gilt:
+$ P(inter.big_(i in I) A_i) = product_(i in I) P(A_i) $
+Dies entspricht $2^n - n - 1$ Gleichungen.
+
+=== Zufallsvariablen
+Für einen diskreten Wahrscheinlichkeitsraum $(Omega, P)$ und zwei stochastisch unabhängige Zufallsvariablen $X,Y : Omega arrow R$ gelten folgende Eigenschaften:
+
++ *Multiplikativität des Erwartungswertes:* Sofern $E(X)$ und $E(Y)$ existieren, gilt:
+$ E(X dot Y) = E(X) dot E(Y) $
+
++ *Additivität der Varianz:* Sofern die Varianzen $V(X)$ und $V(Y)$ existieren, gilt:
+$ V(X + Y) = V(X) + V(Y) $
