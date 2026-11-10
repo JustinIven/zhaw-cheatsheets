@@ -9,7 +9,7 @@ A collection of cheatsheets for my Bachelor's degree in Computer Science at ZHAW
 - [**HM1 (Höhere Mathematik für Informatiker 1)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/hm1/cheatsheet.pdf)
 - [**INCO (Information und Codierung)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/inco/cheatsheet.pdf)
 - [**LA (Lineare Algebra)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/la/cheatsheet.pdf)
-- [**STs (Stochastik und Statistik)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/sts/cheatsheet.pdf)
+- [**STS (Stochastik und Statistik)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/sts/cheatsheet.pdf)
 - [**THIN (Theoretische Informatik)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/thin/cheatsheet.pdf)
 - [**WING (Wirtschaft für Ingenieure)**](https://raw.githubusercontent.com/justiniven/zhaw-cheatsheets/main/wing/cheatsheet.pdf)
 
